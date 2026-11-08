@@ -43,8 +43,8 @@ a{color:inherit;text-decoration:none}
 .nav a:hover::after{transform:scaleX(1);transform-origin:left}
 .nav a.on{color:var(--gold-hi)}
 .nav a.on::after{transform:scaleX(1)}
-.nav-cta{margin-left:6px;padding:11px 22px;border:1px solid var(--ink);border-radius:2px;font-size:13px;font-weight:700;color:var(--ink);background:transparent;transition:background .25s,color .25s}
-.nav-cta:hover{background:var(--ink);color:var(--bg)}
+.nav-cta{margin-left:6px;padding:10px 20px;border:1px solid #a9873f;border-radius:2px;font-size:12.5px;font-weight:700;color:#1a1306;background:#d2ae6d;box-shadow:inset 0 2px 3px rgba(0,0,0,.28),inset 0 -2px 2px rgba(255,255,255,.16);transition:background .25s}
+.nav-cta:hover{background:#fec95e}
 .nav-toggle{display:none;background:none;border:0;cursor:pointer;width:42px;height:42px;place-items:center;z-index:70}
 .nav-toggle span{display:block;width:24px;height:2px;background:var(--ink);margin:5px auto;transition:transform .3s,opacity .3s}
 .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
