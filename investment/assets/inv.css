@@ -27,7 +27,7 @@ a{color:inherit;text-decoration:none}
 [data-reveal].in{opacity:1;transform:none}
 
 /* ---------- header ---------- */
-.site-head{position:fixed;inset:0 0 auto;z-index:60;transition:background .35s,box-shadow .35s,border-color .35s;border-bottom:1px solid transparent}
+.site-head{position:fixed;inset:0 0 auto;z-index:60;transition:background .35s,box-shadow .35s,border-color .35s;border-bottom:1px solid transparent;background:linear-gradient(180deg,rgba(12,13,15,.68),rgba(12,13,15,0))}
 .site-head.scrolled{background:rgba(12,13,15,.93);backdrop-filter:blur(16px);border-bottom-color:var(--line)}
 .head-inner{display:flex;align-items:center;justify-content:space-between;height:76px}
 .brand{display:flex;align-items:center;gap:12px}
@@ -36,7 +36,7 @@ a{color:inherit;text-decoration:none}
 .brand .word{font-family:var(--serif);font-weight:700;font-size:19px;letter-spacing:.04em;line-height:1.05}
 .brand .word small{display:block;font-family:var(--sans);font-weight:600;font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-hi)}
 .nav{display:flex;align-items:center;gap:30px}
-.nav a{font-size:13.5px;font-weight:600;color:var(--muted);letter-spacing:.02em;position:relative;padding:4px 0;transition:color .25s}
+.nav a{font-size:13.5px;font-weight:600;color:rgba(245,241,232,.9);letter-spacing:.02em;position:relative;padding:4px 0;transition:color .25s;text-shadow:0 1px 10px rgba(0,0,0,.55)}
 .nav a::after{content:"";position:absolute;left:0;bottom:-2px;width:100%;height:1px;background:var(--gold-hi);transform:scaleX(0);transform-origin:right;transition:transform .35s cubic-bezier(.16,.75,.28,1)}
 .nav a:hover{color:var(--ink)}
 .nav a:hover::after{transform:scaleX(1);transform-origin:left}
@@ -197,8 +197,8 @@ body.glow-on .cursor-glow{opacity:1}
 /* ---------- mobile ---------- */
 @media(max-width:920px){
   .hero{padding:130px 0 80px}
-  .hero__veil{background:linear-gradient(180deg,rgba(12,13,15,.82) 0%,rgba(12,13,15,.68) 55%,rgba(12,13,15,.9) 100%)}
-  .hero__bg img{object-position:center center}
+  .hero__veil{background:linear-gradient(180deg,rgba(12,13,15,.85) 0%,rgba(12,13,15,.6) 50%,rgba(12,13,15,.66) 100%)}
+  .hero__bg img{object-position:62% center}
   .hero__scroll{display:none}
   .split{grid-template-columns:1fr}
   .split .media{order:-1}
