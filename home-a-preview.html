@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AA Group of Companies — Home A · Design Preview</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0e0f12">
+<link rel="icon" type="image/png" href="media/site/Untitled-1-01-300x93.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+:root{
+  --gold:#d2ae6d; --gold-hi:#fec95e; --gold-deep:#a9873f; --gold-tint:#f3e7cf;
+  --gold-100:#f3e2a8; --gold-300:#e2c278; --gold-500:#c9a24a; --gold-700:#9c7a2e;
+  --ink:#1f2326; --charcoal:#32373c; --ivory:#faf7f2;
+  --bg:#0e0f12; --panel:#141619; --panel-2:#17191d; --panel-3:#1b1e21;
+  --evergreen:#2f5d5a; --green-700:#1f4d3a; --green-500:#2d6a4f;
+  --line-dark:rgba(255,255,255,.12); --line-gold:rgba(210,174,109,.28);
+  --ease-out:cubic-bezier(.22,1,.36,1); --ease-in-out:cubic-bezier(.65,0,.35,1);
+  --t-fast:160ms; --t-med:320ms; --t-slow:640ms;
+  --max:1200px; --gutter:clamp(20px,4vw,48px);
+  --header-h:84px;
+  --radius-sm:8px; --radius:14px; --radius-lg:22px; --radius-pill:999px;
+  --sh-2:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3),0 20px 48px rgba(0,0,0,.25);
+  --sh-3:0 2px 4px rgba(0,0,0,.5),0 16px 40px rgba(0,0,0,.45),0 40px 90px rgba(0,0,0,.4);
+  --sh-gold:0 0 0 1px rgba(201,162,74,.35),0 12px 32px rgba(201,162,74,.18);
+  --serif:"Cormorant Garamond","Times New Roman",Georgia,serif;
+  --sans:"Manrope","Segoe UI",Helvetica,Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 8px)}
+body{background:var(--bg);color:var(--ivory);font-family:var(--sans);line-height:1.6;font-size:16px;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip}
+a{color:var(--gold-hi);text-decoration:none}
+img{max-width:100%;display:block}
+.container{max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
+:focus{outline:none}
+:focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px;border-radius:4px}
+
+/* subtle grain for heaviness */
+body.grain::before{content:"";position:fixed;inset:0;z-index:9000;pointer-events:none;opacity:.045;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-size:180px 180px}
+
+.ico{width:1.1em;height:1.1em;flex:none;vertical-align:-.18em}
+.ico--sm{width:15px;height:15px}
+.ico--lg{width:22px;height:22px}
+
+/* ===== typography ===== */
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-hi);flex-wrap:wrap;max-width:100%}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--gold);flex:none}
+.eyebrow--center::after{content:"";width:28px;height:1px;background:var(--gold)}
+.section__title{font-family:var(--serif);font-weight:600;font-size:clamp(32px,4.4vw,56px);line-height:1.08;letter-spacing:-.02em;color:var(--ivory)}
+.section__title em{font-style:italic;color:var(--gold)}
+.section__lede{color:rgba(250,247,242,.68);max-width:60ch;margin-top:16px;font-size:16px}
+.section__hair{width:48px;height:1px;background:var(--gold-deep);margin:24px 0}
+
+/* ===== reveal (dheere-dheere) ===== */
+.js [data-reveal]{opacity:0;translate:0 26px}
+.js [data-reveal="left"]{translate:-30px 0}
+.js [data-reveal="scale"]{scale:.96}
+.js [data-reveal].is-in{opacity:1;translate:0 0;scale:1;transition:opacity var(--t-slow) var(--ease-out),translate var(--t-slow) var(--ease-out),scale var(--t-slow) var(--ease-out);transition-delay:var(--d,0ms)}
+@media(prefers-reduced-motion:reduce){.js [data-reveal]{opacity:1;translate:0 0;scale:1;transition:none}}
+
+/* ===== buttons ===== */
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:14px;letter-spacing:.02em;
+  padding:13px 26px;border-radius:var(--radius-pill);border:1px solid transparent;cursor:pointer;white-space:nowrap;
+  transition:transform var(--t-fast),box-shadow var(--t-fast),background var(--t-fast),color var(--t-fast),border-color var(--t-fast)}
+.btn--gold{background:linear-gradient(120deg,var(--gold-700),var(--gold-300) 45%,var(--gold-100) 70%,var(--gold-500));color:#1b1406;box-shadow:0 10px 30px -10px rgba(210,174,109,.5)}
+.btn--gold:hover{transform:translateY(-2px);box-shadow:0 16px 36px -10px rgba(210,174,109,.8)}
+.btn--outline{border-color:var(--line-dark);color:var(--ivory);background:rgba(255,255,255,.02)}
+.btn--outline:hover{border-color:var(--gold);background:rgba(255,255,255,.06);transform:translateY(-2px)}
+.btn--ghost{color:var(--gold-hi);padding-inline:10px}
+.btn--sm{padding:10px 18px;font-size:13px}
+
+/* ===== header ===== */
+.header{position:fixed;inset:0 0 auto 0;z-index:100;transition:background var(--t-med) var(--ease-out),border-color var(--t-med),box-shadow var(--t-med);
+  border-bottom:1px solid transparent}
+.header.is-scrolled{background:rgba(14,15,18,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line-dark);box-shadow:0 12px 32px -12px rgba(0,0,0,.6)}
+.progress{position:absolute;left:0;bottom:-1px;height:2px;width:100%;transform-origin:0 50%;scale:var(--p,0) 1;
+  background:linear-gradient(90deg,var(--gold-700),var(--gold-100),var(--gold-500));pointer-events:none}
+.header__inner{height:var(--header-h);display:flex;align-items:center;justify-content:space-between;gap:24px}
+.header__logo{display:inline-flex;align-items:center}
+.header__logo img{height:44px;width:auto;filter:brightness(0) invert(1) sepia(.3) saturate(2.2) hue-rotate(5deg) brightness(1.05)}
+.logo-fallback{font-family:var(--serif);font-weight:600;font-size:22px;color:var(--ivory)}
+.nav{display:flex;align-items:center;gap:6px}
+.nav a{position:relative;color:rgba(250,247,242,.78);font-size:13.5px;font-weight:600;letter-spacing:.01em;padding:9px 14px;border-radius:var(--radius-pill);transition:color var(--t-fast),background var(--t-fast)}
+.nav a:hover{color:var(--ivory)}
+.nav a[aria-current="page"]{color:var(--gold-hi)}
+.nav a[aria-current="page"]::after{content:"";position:absolute;left:14px;right:14px;bottom:3px;height:1px;background:var(--gold-hi)}
+.nav a.nav__book{color:var(--gold-hi)}
+.nav a.nav__book:hover{background:rgba(210,174,109,.08)}
+.nav-toggle{display:none;background:none;border:1px solid var(--line-dark);border-radius:var(--radius-pill);padding:11px 14px;cursor:pointer}
+.nav-toggle .bars{display:flex;flex-direction:column;gap:5px}
+.nav-toggle .bars span{display:block;width:18px;height:2px;background:var(--ivory);transition:transform var(--t-fast),opacity var(--t-fast)}
+.header__cta{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:13.5px;color:#1b1406;background:linear-gradient(120deg,var(--gold-700),var(--gold-300) 45%,var(--gold-100) 70%,var(--gold-500));
+  padding:11px 20px;border-radius:var(--radius-pill);box-shadow:0 10px 26px -10px rgba(210,174,109,.5);transition:transform var(--t-fast),box-shadow var(--t-fast)}
+.header__cta:hover{transform:translateY(-2px);box-shadow:0 16px 34px -10px rgba(210,174,109,.75)}
+
+/* ===== hero ===== */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;
+  padding-top:var(--header-h);padding-bottom:72px;background:#0e0f12}
+.hero__bg{position:absolute;inset:0;z-index:0;overflow:hidden;background:
+  radial-gradient(90% 70% at 80% 32%,rgba(210,174,109,.15),transparent 56%),
+  radial-gradient(64% 52% at 12% 16%,rgba(47,93,90,.22),transparent 62%),
+  radial-gradient(84% 60% at 50% 112%,rgba(47,93,90,.18),transparent 62%),
+  linear-gradient(180deg,#0b0c0e 0%,#111316 46%,#0e0f12 100%)}
+.hero__bg::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 0%,transparent 52%,rgba(11,12,14,.5) 100%);box-shadow:inset 0 0 190px rgba(0,0,0,.55)}
+.hero__inner{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.hero__inner>div{min-width:0}
+.hero__eyebrow{margin-bottom:22px}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(44px,6.2vw,90px);line-height:1.06;letter-spacing:-.02em;color:var(--ivory)}
+.hero h1 em{font-style:italic;color:var(--gold);font-weight:600}
+.mask{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
+.mask__in{display:block}
+html.js .hero h1.replay .mask__in{translate:0 112%;animation:maskIn 1s var(--ease-out) var(--d,0s) both}
+@keyframes maskIn{to{translate:0 0}}
+.hero__sub{color:rgba(250,247,242,.72);font-size:16px;max-width:48ch;margin-top:24px}
+.hero__founder{display:flex;align-items:center;gap:14px;margin-top:26px;padding:12px 18px 12px 12px;border:1px solid var(--line-dark);border-radius:var(--radius-pill);background:rgba(255,255,255,.03);width:max-content;max-width:100%}
+.hf-img{width:46px;height:46px;border-radius:50%;object-fit:cover;object-position:50% 10%;flex:none;border:1px solid var(--line-gold)}
+.hf-txt b{display:block;font-size:14px;color:var(--ivory);font-weight:700}
+.hf-txt span{font-size:12px;color:rgba(250,247,242,.62)}
+.hf-txt em{color:var(--gold-hi);font-style:normal}
+.hero__actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+.book-hero{display:flex;gap:18px;align-items:center;margin-top:34px}
+.book-hero img{width:78px;height:auto;border-radius:4px 10px 10px 4px;box-shadow:0 26px 50px -18px rgba(0,0,0,.85),0 8px 16px -8px rgba(0,0,0,.6);border:1px solid var(--line-gold);rotate:-3deg;filter:brightness(1.2) contrast(1.04)}
+.book-hero figcaption{font-size:12.5px;color:rgba(250,247,242,.7);line-height:1.5;max-width:280px}
+.book-hero figcaption b{color:var(--gold-hi)}
+.book-hero figcaption a{color:var(--gold-hi);text-decoration:underline;text-underline-offset:3px}
+
+/* portrait stage (founder photo badi + monogram peeche + chips neeche) */
+.portrait-stage{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:560px}
+.portrait-stage__halo{position:absolute;inset:8% 4%;z-index:0;pointer-events:none;
+  background:radial-gradient(50% 50% at 50% 42%,rgba(254,201,94,.22),rgba(210,174,109,.08) 48%,transparent 72%);
+  animation:glowPulse 6s ease-in-out infinite}
+@keyframes glowPulse{0%,100%{opacity:.5;scale:.96}50%{opacity:1;scale:1.05}}
+.portrait-wrap{position:relative;display:grid;place-items:center;z-index:1}
+.mono-panel{position:absolute;left:50%;top:0;translate:-50% -26%;z-index:0;pointer-events:none;opacity:.4}
+.mono-panel span{display:block;font-family:var(--serif);font-weight:700;font-size:min(420px,50vw);line-height:.7;letter-spacing:-.05em;color:transparent;
+  background:linear-gradient(120deg,var(--gold-700),var(--gold-300) 35%,var(--gold-100) 55%,var(--gold-500));
+  -webkit-background-clip:text;background-clip:text;filter:drop-shadow(0 0 60px rgba(210,174,109,.22))}
+.portrait{position:relative;z-index:2;width:min(420px,72vw);border-radius:var(--radius-lg);overflow:hidden;
+  border:1px solid var(--line-gold);box-shadow:var(--sh-3),0 0 0 1px rgba(210,174,109,.12);
+  background:linear-gradient(160deg,#1b1e21,#0e0f12)}
+.portrait img{width:100%;height:clamp(420px,58vh,620px);object-fit:cover;object-position:50% 12%;filter:saturate(.96) contrast(1.02)}
+.portrait::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(14,15,18,0) 55%,rgba(14,15,18,.55) 100%)}
+.portrait__caption{position:absolute;left:20px;bottom:18px;z-index:3;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(250,247,242,.75);font-weight:600}
+.portrait__caption b{color:var(--gold-hi)}
+.chips{position:relative;z-index:3;display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:26px}
+.chip{font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--gold-hi);
+  padding:6px 12px;border:1px solid var(--line-gold);border-radius:var(--radius-pill);background:rgba(210,174,109,.06);
+  transition:background var(--t-fast),border-color var(--t-fast),transform var(--t-fast)}
+.chip:hover{background:rgba(210,174,109,.14);border-color:var(--gold);transform:translateY(-2px)}
+.scrollcue{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(250,247,242,.55);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+.scrollcue i{display:block;width:1px;height:42px;background:var(--gold-hi);transform-origin:top;animation:cue 1.9s ease-in-out infinite}
+@keyframes cue{0%{scale:1 0}55%{scale:1 1}100%{scale:1 1;opacity:0}}
+.hero__credit{position:absolute;right:24px;bottom:16px;z-index:2;font-size:11px;color:rgba(250,247,242,.4)}
+
+/* ===== evergreen strip ===== */
+.strip{background:linear-gradient(120deg,var(--green-700),var(--green-500) 60%,#1f4d3a);border-block:1px solid var(--line-dark)}
+.strip__inner{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;padding-block:26px}
+.strip__item{display:flex;flex-direction:column;gap:4px;padding-inline:24px;border-left:1px solid rgba(255,255,255,.14)}
+.strip__item:first-child{border-left:none;padding-left:0}
+.strip__item b{color:var(--gold-300);font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+.strip__item span{color:rgba(250,247,242,.85);font-size:13.5px;line-height:1.5}
+.strip__item a:hover{text-decoration:underline;text-underline-offset:3px}
+@media(prefers-reduced-motion:no-preference){
+  html.js .strip{overflow:hidden}
+  html.js .strip__inner{display:flex;width:max-content;max-width:none;margin-inline:0;padding-inline:24px;gap:0;animation:mq 40s linear infinite}
+  html.js .strip__item{flex:none;margin-right:56px;border-left:none;padding-left:0}
+  html.js .strip:hover .strip__inner{animation-play-state:paused}
+}
+@keyframes mq{to{translate:-50% 0}}
+
+/* ===== stats ===== */
+.stat-band{background:var(--panel);border-bottom:1px solid var(--line-dark)}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding-block:72px}
+.stat__num{font-family:var(--serif);font-weight:700;font-size:clamp(46px,6vw,80px);line-height:1;letter-spacing:-.03em;color:transparent;
+  background:linear-gradient(110deg,var(--gold-700),var(--gold-300) 40%,var(--gold-100) 60%,var(--gold-500));
+  -webkit-background-clip:text;background-clip:text;font-variant-numeric:tabular-nums}
+.stat__label{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:rgba(250,247,242,.6);margin-top:10px;font-weight:600}
+
+/* ===== standard (4 pillars) ===== */
+.std{position:relative;background:var(--panel-2);border-bottom:1px solid var(--line-dark);overflow:hidden}
+.std__ghost{position:absolute;top:-20px;right:clamp(.5rem,3vw,2rem);font:400 clamp(6rem,18vw,15rem)/1 var(--sans);letter-spacing:-.05em;
+  color:transparent;-webkit-text-stroke:1px rgba(210,174,109,.14);pointer-events:none;user-select:none}
+.std__grid{display:grid;grid-template-columns:5fr 7fr;gap:56px;padding-block:100px 88px}
+.std__intro{position:sticky;top:calc(var(--header-h) + 32px);align-self:start}
+.std__lede{color:rgba(250,247,242,.68);font-size:15px;max-width:340px;line-height:1.6;margin-top:4px}
+.std__rail{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.std__pillar{padding:0 26px;border-left:1px solid var(--line-dark)}
+.std__pillar:first-child{border-left:none;padding-left:0}
+.std__num{font-family:var(--serif);font-weight:800;font-size:clamp(56px,6vw,92px);line-height:.95;color:transparent;
+  background:linear-gradient(115deg,var(--gold-deep),var(--gold) 45%,var(--gold-hi));-webkit-background-clip:text;background-clip:text}
+.std__pillar h3{font-family:var(--serif);font-size:21px;font-weight:600;color:var(--ivory);margin:12px 0 8px}
+.std__pillar p{font-size:13px;color:rgba(250,247,242,.64);line-height:1.55}
+.std__proof{margin-top:14px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-hi);font-weight:700}
+.std__strip{grid-column:1/-1;display:flex;gap:40px;margin-top:56px;padding-top:24px;border-top:1px solid var(--line-dark);flex-wrap:wrap}
+.std__strip span{font-size:12px;color:rgba(250,247,242,.55);letter-spacing:.06em;text-transform:uppercase;display:inline-flex;align-items:center;gap:10px}
+.std__strip span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold)}
+
+/* ===== founder & book ===== */
+.founder{background:var(--bg);position:relative}
+.founder__grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center;padding-block:100px}
+.founder__portrait{position:relative;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line-gold);box-shadow:var(--sh-3)}
+.founder__portrait img{width:100%;height:auto;object-fit:cover;object-position:50% 12%}
+.founder__portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(14,15,18,.5))}
+.founder__quote{font-family:var(--serif);font-size:clamp(20px,2.4vw,28px);line-height:1.4;color:var(--gold-100);font-style:italic;margin-top:28px}
+.founder__quote::before{content:"“";color:var(--gold-hi);font-size:1.6em;line-height:0;vertical-align:-.2em;margin-right:2px}
+.book-grid{display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:center;margin-top:44px;padding:34px;border:1px solid var(--line-dark);border-radius:var(--radius-lg);background:var(--panel)}
+.book-grid img{width:200px;height:auto;border-radius:6px 14px 14px 6px;box-shadow:0 34px 66px -22px rgba(0,0,0,.85),0 12px 22px -10px rgba(0,0,0,.55);border:1px solid var(--line-gold);rotate:-3deg;filter:brightness(1.14) contrast(1.03)}
+.book-info h3{font-family:var(--serif);font-size:28px;font-weight:600;color:var(--ivory)}
+.book-info .role{font-size:13px;color:var(--gold-hi);margin-top:4px;letter-spacing:.02em}
+.book-facts{list-style:none;margin-top:18px;display:grid;gap:10px}
+.book-facts li{position:relative;padding-left:22px;font-size:14px;color:rgba(250,247,242,.72);line-height:1.55}
+.book-facts li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--gold)}
+.buy-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.photo-note{font-size:11px;color:rgba(250,247,242,.5);margin-top:14px;letter-spacing:.02em}
+
+/* ===== cta band ===== */
+.cta{background:linear-gradient(120deg,#1f4d3a,#2f5d5a 60%,#1f4d3a);border-top:1px solid var(--line-dark)}
+.cta__inner{display:flex;align-items:center;justify-content:space-between;gap:32px;padding-block:72px;flex-wrap:wrap}
+.cta h2{font-family:var(--serif);font-weight:600;font-size:clamp(28px,3.6vw,44px);line-height:1.1;color:var(--ivory)}
+.cta h2 em{color:var(--gold-300);font-style:italic}
+.cta p{color:rgba(250,247,242,.8);margin-top:12px;max-width:52ch}
+
+/* ===== footer ===== */
+.site-footer{background:var(--panel-2);border-top:1px solid var(--line-dark)}
+.footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;padding-block:72px 48px}
+.footer-brand img{height:40px;width:auto;filter:brightness(0) invert(1) sepia(.3) saturate(2.2) hue-rotate(5deg) brightness(1.05);margin-bottom:18px}
+.footer-brand p{color:rgba(250,247,242,.62);font-size:14px;max-width:34ch;line-height:1.6}
+.footer-col b{display:block;font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-hi);margin-bottom:18px}
+.footer-col{display:flex;flex-direction:column;gap:11px}
+.footer-col a{color:rgba(250,247,242,.72);font-size:14px;width:max-content;max-width:100%;background:linear-gradient(currentColor,currentColor) no-repeat 0 100%/0 1px;transition:background-size var(--t-med) var(--ease-out),color var(--t-fast);padding-bottom:2px}
+.footer-col a:hover{color:var(--ivory);background-size:100% 1px}
+.social-row{display:flex;gap:10px;margin-top:6px}
+.social{display:grid;place-items:center;width:40px;height:40px;border:1px solid var(--line-dark);border-radius:50%;color:rgba(250,247,242,.7);background:none!important;transition:border-color var(--t-fast),color var(--t-fast),transform var(--t-fast)}
+.social:hover{border-color:var(--gold);color:var(--gold-hi);transform:translateY(-2px)}
+.social svg{width:18px;height:18px}
+.footnotes{border-top:1px solid var(--line-dark);padding-block:24px;display:grid;gap:6px}
+.footnotes p{font-size:11.5px;color:rgba(250,247,242,.45);line-height:1.6}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:16px;border-top:1px solid var(--line-dark);padding-block:22px;flex-wrap:wrap}
+.footer-bottom span{font-size:12px;color:rgba(250,247,242,.5)}
+.footer-bottom span:last-child{color:var(--gold-hi);letter-spacing:.04em}
+
+/* ===== responsive ===== */
+@media(max-width:1000px){
+  .hero__inner{grid-template-columns:1fr;gap:40px}
+  .portrait-stage{min-height:0}
+  .std__grid{grid-template-columns:1fr;gap:48px}
+  .std__intro{position:static}
+  .std__rail{grid-template-columns:repeat(2,1fr);gap:32px 0}
+  .founder__grid{grid-template-columns:1fr;gap:40px}
+  .footer-top{grid-template-columns:1fr 1fr;gap:36px}
+}
+@media(max-width:760px){
+  .nav{position:fixed;inset:var(--header-h) 0 auto 0;flex-direction:column;align-items:stretch;gap:4px;padding:16px;
+    background:rgba(14,15,18,.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--line-dark);
+    opacity:0;visibility:hidden;pointer-events:none;translate:0 -12px;transition:opacity var(--t-med) var(--ease-out),translate var(--t-med) var(--ease-out),visibility var(--t-med)}
+  .nav.is-open{opacity:1;visibility:visible;pointer-events:auto;translate:0 0}
+  .nav a{padding:13px 16px;font-size:15px}
+  .nav-toggle{display:inline-flex}
+  .header__cta{display:none}
+  .header__logo img{height:36px}
+  .eyebrow{font-size:10px;letter-spacing:.16em}
+  .hero h1{font-size:clamp(40px,10vw,64px)}
+  .stat-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .book-grid{grid-template-columns:1fr;justify-items:center;text-align:center}
+  .book-facts li{text-align:left}
+  .buy-links{justify-content:center}
+  .footer-top{grid-template-columns:1fr}
+  .std__rail{grid-template-columns:1fr;gap:26px}
+  .std__pillar{padding:0 0 26px;border-left:none;border-bottom:1px solid var(--line-dark)}
+  .std__pillar:last-child{border-bottom:none}
+  .strip__inner{grid-template-columns:1fr}
+  .portrait img{height:clamp(360px,64vw,520px)}
+  .scrollcue{display:none}
+}
+</style>
+</head>
+<body class="grain">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="monoG-front" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9c7a2e"/><stop offset="50%" stop-color="#e2c278"/><stop offset="100%" stop-color="#f3e2a8"/>
+    </linearGradient>
+    <linearGradient id="monoG-back" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7a5c1e"/><stop offset="100%" stop-color="#c9a24a"/>
+    </linearGradient>
+  </defs>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="13 5 20 12 13 19"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></symbol>
+  <symbol id="i-facebook" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7h2.4l.4-2.8h-2.8V9.4c0-.8.3-1.4 1.5-1.4h1.4V5.5c-.3 0-1.1-.1-2-.1-2 0-3.4 1.2-3.4 3.5v2.3H8.6V14h2.4v7h2.5z"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-youtube" viewBox="0 0 24 24" fill="currentColor"><path d="M22.5 7.2a2.8 2.8 0 0 0-2-2C18.9 4.7 12 4.7 12 4.7s-6.9 0-8.5.5a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1 12a29 29 0 0 0 .5 4.8 2.8 2.8 0 0 0 2 2c1.6.5 8.5.5 8.5.5s6.9 0 8.5-.5a2.8 2.8 0 0 0 2-2A29 29 0 0 0 23 12a29 29 0 0 0-.5-4.8zM9.8 15.1V8.9L15.5 12l-5.7 3.1z"/></symbol>
+  <symbol id="i-tiktok" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z"/></symbol>
+  <symbol id="i-whatsapp" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.5 14.1c-.2.7-1.2 1.3-1.9 1.4-.5.1-1.2.2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.4.7-.4h.5c.2 0 .4 0 .6.4.2.5.7 1.8.8 1.9.1.1.1.3 0 .5l-.4.6c-.1.2-.3.4-.1.6.2.3.8 1.4 1.8 2.2 1.3 1.1 2.3 1.4 2.6 1.6.3.1.5.1.7-.1l.9-1c.2-.3.4-.2.6-.1.2.1 1.4.7 1.6.8.2.1.4.1.5.2 0 .1 0 .7-.2 1.2z"/></symbol>
+</svg>
+
+<header class="header" id="top">
+  <span class="progress" aria-hidden="true"></span>
+  <div class="container header__inner">
+    <a class="header__logo" href="#top" aria-label="AA Group of Companies — home">
+      <img src="media/site/Untitled-1-01-300x93.png" alt="AA Group of Companies" width="300" height="93" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+      <span class="logo-fallback" hidden>AA <b style="color:var(--gold-hi)">Group</b></span>
+    </a>
+    <nav class="nav" id="site-nav" aria-label="Primary">
+      <a href="#top" aria-current="page">Home</a>
+      <a href="#standard">About us</a>
+      <a href="#divisions">Company divisions</a>
+      <a href="#team">Team profile</a>
+      <a href="#contact">Contact</a>
+      <a href="aa-book.html" class="nav__book">The book</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav"><span class="bars"><span></span><span></span><span></span></span></button>
+    <a class="header__cta" href="#contact">Contact us <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="container hero__inner">
+      <div>
+        <p class="eyebrow hero__eyebrow" data-reveal>AA Group of Companies · Family-led since 2004</p>
+        <h1 class="replay" aria-label="One restaurant, 2004. Five businesses today.">
+          <span class="mask"><span class="mask__in" style="--d:.08s"><em>One</em> restaurant, <em>2004.</em></span></span>
+          <span class="mask"><span class="mask__in" style="--d:.22s"><em>Five</em> businesses today.</span></span>
+        </h1>
+        <p class="hero__sub" data-reveal style="--d:.3s">Built by Atiq Ahmad and still family-led: 60+ restaurants, 1,200+ people, 120 managers, one way of working.</p>
+        <div class="hero__founder" data-reveal style="--d:.38s">
+          <img class="hf-img" src="media/book/atiq-portrait.webp" alt="Atiq Ahmad — Founder and President of AA Group of Companies" width="750" height="1024" decoding="async">
+          <div class="hf-txt"><b>Atiq Ahmad</b><span>Founder &amp; President — author of <em>Thinking into Success</em></span></div>
+        </div>
+        <div class="hero__actions" data-reveal style="--d:.46s">
+          <a class="btn btn--gold" href="#standard">Our story <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn--outline" href="#divisions">Explore the group</a>
+        </div>
+        <figure class="book-hero" data-reveal style="--d:.54s">
+          <img src="media/book/book-cover.webp" alt="Thinking into Success by Atiq Ahmad — book cover" width="752" height="1024" loading="lazy" decoding="async">
+          <figcaption><b>By Atiq Ahmad.</b> 100% of proceeds go to orphans. <a href="aa-book.html">The full book page →</a></figcaption>
+        </figure>
+      </div>
+
+      <div class="portrait-stage" data-reveal="scale" style="--d:.25s">
+        <span class="portrait-stage__halo" aria-hidden="true"></span>
+        <div class="portrait-wrap">
+          <div class="mono-panel" aria-hidden="true"><span>AA</span></div>
+          <figure class="portrait">
+            <img src="media/book/atiq-portrait.webp" alt="Atiq Ahmad — Founder and President of AA Group of Companies" width="750" height="1024" fetchpriority="high" decoding="async">
+            <figcaption class="portrait__caption">Atiq Ahmad · <b>Founder &amp; President</b></figcaption>
+          </figure>
+        </div>
+        <div class="chips" aria-label="AA Group divisions">
+          <span class="chip">Food</span><span class="chip">Investment</span><span class="chip">Commodities</span><span class="chip">Travel</span><span class="chip">Healthcare</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STRIP ===== -->
+  <div class="strip" aria-label="Recognition and news">
+    <div class="strip__inner">
+      <a class="strip__item" href="https://triec.ca/aa-group-of-companies-shortlisted-applicant-for-the-7th-annual-is-awards/" target="_blank" rel="noopener noreferrer">
+        <b>Recognition</b><span>Shortlisted — 7th Annual IS Awards, TRIEC</span>
+      </a>
+      <a class="strip__item" href="https://www.urdupoint.com/en/pakistan/pakistani-entrepreneur-atiq-ahmads-book-1933269.html" target="_blank" rel="noopener noreferrer">
+        <b>Book launch</b><span>"Thinking into Success" launched in Dubai, 22 Feb 2025 — graced by H.E. Hussain Muhammad, Consul General of Pakistan</span>
+      </a>
+      <div class="strip__item">
+        <b>Available at</b><span>Amazon · Gulf News store · Kinokuniya</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== STATS ===== -->
+  <div class="stat-band">
+    <div class="container stat-grid">
+      <div data-reveal><div class="stat__num" data-count="60" data-suffix="+">60+</div><div class="stat__label">Restaurants</div></div>
+      <div data-reveal style="--d:.08s"><div class="stat__num" data-count="1200" data-suffix="+">1,200+</div><div class="stat__label">Team members</div></div>
+      <div data-reveal style="--d:.16s"><div class="stat__num" data-count="120" data-suffix="">120</div><div class="stat__label">Certified managers</div></div>
+      <div data-reveal style="--d:.24s"><div class="stat__num" data-count="5" data-suffix="">5</div><div class="stat__label">Divisions</div></div>
+    </div>
+  </div>
+
+  <!-- ===== STANDARD ===== -->
+  <section class="std" id="standard">
+    <span class="std__ghost" aria-hidden="true">AA</span>
+    <div class="container std__grid">
+      <div class="std__intro" data-reveal>
+        <p class="eyebrow">The AA Standard</p>
+        <h2 class="section__title" style="margin-top:14px">What did not change between one restaurant and five.</h2>
+        <div class="section__hair" aria-hidden="true"></div>
+        <p class="std__lede">Scale is the easy part to see. These four carried it from the first restaurant to 1,200 people.</p>
+      </div>
+      <div class="std__rail">
+        <div class="std__pillar" data-reveal style="--d:0">
+          <div class="std__num" aria-hidden="true">01</div>
+          <h3>Family-led</h3>
+          <p>One family founded the group and still leads it. Decisions are made close to the work, not far from it.</p>
+          <div class="std__proof">Founded 2018 · Still family-led</div>
+        </div>
+        <div class="std__pillar" data-reveal style="--d:.1s">
+          <div class="std__num" aria-hidden="true">02</div>
+          <h3>Discipline</h3>
+          <p>The same standard in the sixtieth restaurant as in the first. Systems, not shortcuts.</p>
+          <div class="std__proof">60+ restaurants · One way of working</div>
+        </div>
+        <div class="std__pillar" data-reveal style="--d:.2s">
+          <div class="std__num" aria-hidden="true">03</div>
+          <h3>Leadership</h3>
+          <p>Managers are the business. The group grows the people who run the floor.</p>
+          <div class="std__proof">120 managers · 1,200+ people</div>
+        </div>
+        <div class="std__pillar" data-reveal style="--d:.3s">
+          <div class="std__num" aria-hidden="true">04</div>
+          <h3>Giving back</h3>
+          <p>Success is measured by what it returns. Every dollar the founder's book earns goes to orphans.</p>
+          <div class="std__proof">100% of proceeds to orphans</div>
+        </div>
+      </div>
+      <div class="std__strip" data-reveal>
+        <span>Shortlisted — TRIEC IS Awards</span><span>Book launch covered by APP / UrduPoint, Dubai</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOUNDER & BOOK ===== -->
+  <section class="founder" id="team">
+    <div class="container">
+      <div class="founder__grid">
+        <figure class="founder__portrait" data-reveal="left">
+          <img src="media/book/atiq-portrait.webp" alt="Atiq Ahmad — Founder and President of AA Group of Companies" width="750" height="1024" loading="lazy" decoding="async">
+        </figure>
+        <div data-reveal>
+          <p class="eyebrow">Founder &amp; Book</p>
+          <h2 class="section__title" style="margin-top:14px">The story, written down.</h2>
+          <div class="section__hair" aria-hidden="true"></div>
+          <p class="section__lede">Atiq Ahmad arrived in Canada in 2004 and opened his first Popeyes restaurant within a year. The lessons from building five businesses are now a book.</p>
+          <p class="founder__quote">Success is measured by what it returns — and every dollar this book earns returns to the children who need it most.</p>
+
+          <div class="book-grid">
+            <img src="media/book/book-cover.webp" alt="Thinking into Success by Atiq Ahmad" width="752" height="1024" loading="lazy" decoding="async">
+            <div class="book-info">
+              <h3>Thinking into Success</h3>
+              <div class="role">By Atiq Ahmad · Launched Dubai, 22 February 2025</div>
+              <ul class="book-facts">
+                <li>Insights on entrepreneurship, leadership, and personal growth for aspiring entrepreneurs.</li>
+                <li>Launch graced by H.E. Hussain Muhammad, Consul General of Pakistan.</li>
+                <li>All proceeds from sales support orphans.</li>
+              </ul>
+              <div class="buy-links">
+                <a class="btn btn--gold btn--sm" href="https://www.thinkingintosuccess.ca/#price" target="_blank" rel="noopener noreferrer">Order — book site <svg class="ico ico--sm" aria-hidden="true"><use href="#i-ext"/></svg></a>
+                <a class="btn btn--outline btn--sm" href="https://www.amazon.ae/Thinking-Into-SUCCESS-Blueprint-Enterpreneurial/dp/1069004405" target="_blank" rel="noopener noreferrer">Amazon.ae <svg class="ico ico--sm" aria-hidden="true"><use href="#i-ext"/></svg></a>
+                <a class="btn btn--outline btn--sm" href="https://store.gulfnews.com/" target="_blank" rel="noopener noreferrer">Gulf News <svg class="ico ico--sm" aria-hidden="true"><use href="#i-ext"/></svg></a>
+                <a class="btn btn--outline btn--sm" href="https://uae.kinokuniya.com/" target="_blank" rel="noopener noreferrer">Kinokuniya <svg class="ico ico--sm" aria-hidden="true"><use href="#i-ext"/></svg></a>
+              </div>
+            </div>
+          </div>
+          <p class="photo-note">All photography is real — drawn from the AA Group company archive and the press. No stock photos, no AI-generated imagery.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta" id="divisions">
+    <div class="container cta__inner">
+      <div>
+        <p class="eyebrow" data-reveal>Five businesses. One family.</p>
+        <h2 data-reveal style="--d:.08s">From one restaurant in 2004 to <em>five divisions</em> today.</h2>
+        <p data-reveal style="--d:.16s">Food, investment, commodities, travel, and healthcare — each one routes you straight to the right place.</p>
+      </div>
+      <a class="btn btn--gold" href="#contact" data-reveal style="--d:.24s">Explore the group <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" id="contact">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="media/site/Untitled-1-01-300x93.png" alt="AA Group of Companies" width="300" height="93" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+        <span class="logo-fallback" hidden><b>AA Group of Companies</b></span>
+        <p>Family-led in Woodbridge, Ontario, and proud of the people who make it work.</p>
+      </div>
+      <div class="footer-col">
+        <b>Divisions</b>
+        <a href="#divisions">Popeyes Louisiana Kitchen</a>
+        <a href="#divisions">AA Investment Group</a>
+        <a href="#divisions">AA Commodity Group</a>
+        <a href="https://aatourism.ca/" target="_blank" rel="noopener noreferrer">AA Travel &amp; Tourism</a>
+        <a href="https://www.ontariocardioimaging.com/" target="_blank" rel="noopener noreferrer">Ontario Cardio Imaging</a>
+      </div>
+      <div class="footer-col">
+        <b>Group</b>
+        <a href="#top">Home</a>
+        <a href="#standard">About us</a>
+        <a href="#divisions">Company divisions</a>
+        <a href="#team">Team profile</a>
+        <a href="#contact">Contact</a>
+        <a href="aa-book.html">The book</a>
+      </div>
+      <div class="footer-col">
+        <b>Connect</b>
+        <a href="mailto:contact@aagroupofcompanies.com">contact@aagroupofcompanies.com</a>
+        <a href="tel:+19058561500">(905) 856-1500</a>
+        <div class="social-row">
+          <a class="social" href="https://www.facebook.com/aagroupofcompaniesofficial" target="_blank" rel="noopener noreferrer" aria-label="AA Group on Facebook"><svg aria-hidden="true"><use href="#i-facebook"/></svg></a>
+          <a class="social" href="https://www.instagram.com/aagroupofcompaniesofficial/" target="_blank" rel="noopener noreferrer" aria-label="AA Group on Instagram"><svg aria-hidden="true"><use href="#i-instagram"/></svg></a>
+          <a class="social" href="https://www.youtube.com/@AAGroupofCompaniesOfficial" target="_blank" rel="noopener noreferrer" aria-label="AA Group on YouTube"><svg aria-hidden="true"><use href="#i-youtube"/></svg></a>
+          <a class="social" href="https://www.tiktok.com/@aagroupofcompanies" target="_blank" rel="noopener noreferrer" aria-label="AA Group on TikTok"><svg aria-hidden="true"><use href="#i-tiktok"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footnotes">
+      <p>¹ 60+ restaurant locations and $75M+ Popeyes division revenue, as published on aagroupofcompanies.com/company-divisions.</p>
+      <p>Popeyes® is a registered trademark of its owner. AA Group of Companies operates Popeyes restaurants as a franchisee.</p>
+      <p>All photography on this site is real — drawn from the AA Group company archive (2020–2024) and the press. No stock photos, no AI-generated imagery.</p>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 AA Group of Companies. All rights reserved. · Est. 2018 · Woodbridge, Ontario, Canada</span>
+      <span>Home A · Design preview</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* scroll progress */
+  var progress = document.querySelector('.progress');
+  function onScroll(){
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    if(progress && h > 0){ progress.style.setProperty('--p', (y/h).toFixed(3)); }
+    document.querySelector('.header').classList.toggle('is-scrolled', y > 24);
+    if(!reduced){ parallax(y); }
+  }
+  function parallax(y){
+    var stage = document.querySelector('.portrait-stage');
+    if(stage && window.innerWidth > 760){ stage.style.translate = '0 ' + (y * 0.06) + 'px'; }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* reveal (dheere-dheere) */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); }
+    });
+  }, {threshold:.14, rootMargin:'0px 0px -8% 0px'});
+  Array.prototype.forEach.call(document.querySelectorAll('[data-reveal]'), function(el){ io.observe(el); });
+
+  /* count-up stats */
+  function countUp(el){
+    var target = parseInt(el.getAttribute('data-count'), 10) || 0;
+    var suffix = el.getAttribute('data-suffix') || '';
+    var dur = 1400, t0 = null;
+    function frame(t){
+      if(!t0) t0 = t;
+      var p = Math.min((t - t0)/dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      var val = Math.round(target * eased);
+      el.textContent = val.toLocaleString('en-CA') + (p === 1 ? suffix : '');
+      if(p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+  var cio = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ countUp(e.target); cio.unobserve(e.target); } });
+  }, {threshold:.5});
+  Array.prototype.forEach.call(document.querySelectorAll('[data-count]'), function(el){ cio.observe(el); });
+
+  /* mobile nav */
+  var toggle = document.querySelector('.nav-toggle');
+  var nav = document.getElementById('site-nav');
+  if(toggle && nav){
+    toggle.addEventListener('click', function(){
+      var open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+    nav.addEventListener('click', function(e){ if(e.target.tagName === 'A'){ nav.classList.remove('is-open'); toggle.setAttribute('aria-expanded','false'); } });
+  }
+})();
+</script>
+</body>
+</html>
