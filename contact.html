@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — AA Group of Companies</title>
+<meta name="description" content="Contact AA Group of Companies in Woodbridge, Ontario. Reach the head office, the Dubai commodity office, or the Pickering clinic directly.">
+<meta name="theme-color" content="#0e0f12">
+<link rel="icon" type="image/png" href="media/site/Untitled-1-01-300x93.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="grain">
+
+<header class="header" id="top">
+  <span class="progress" aria-hidden="true"></span>
+  <div class="container header__inner">
+    <a class="header__logo" href="index.html" aria-label="AA Group of Companies — home">
+      <img src="media/site/Untitled-1-01-300x93.png" alt="AA Group of Companies" width="300" height="93" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+      <span class="logo-fallback" hidden>AA <b style="color:var(--gold-hi)">Group</b></span>
+    </a>
+    <nav class="nav" id="site-nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About us</a>
+      <a href="divisions.html">Company divisions</a>
+      <a href="team.html">Team profile</a>
+      <a href="contact.html" aria-current="page">Contact</a>
+      <a href="book.html" class="nav__book">The book</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav"><span class="bars"><span></span><span></span><span></span></span></button>
+    <a class="header__cta" href="contact.html">Contact us <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="page-hero__crumb">AA Group of Companies</p>
+      <h1>One front door. <em>Every division.</em></h1>
+      <p class="page-hero__lede">Reach the group directly, or go straight to the division you need — head office in Woodbridge, a commodity office in Dubai, and a cardiac clinic in Pickering.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- form -->
+        <div data-reveal>
+          <div class="sec__head" style="margin-bottom:24px">
+            <p class="eyebrow">Send a message</p>
+            <h2 class="section__title" style="margin-top:14px;font-size:clamp(28px,3.6vw,44px)">How can we help?</h2>
+          </div>
+          <form class="form" id="contact-form" novalidate>
+            <div class="field">
+              <label for="cf-name">Your name</label>
+              <input id="cf-name" name="name" type="text" placeholder="Full name" required>
+            </div>
+            <div class="field">
+              <label for="cf-email">Email</label>
+              <input id="cf-email" name="email" type="email" placeholder="you@example.com" required>
+            </div>
+            <div class="field">
+              <label for="cf-division">Division</label>
+              <select id="cf-division" name="division">
+                <option>AA Group — general</option>
+                <option>Popeyes Louisiana Kitchen</option>
+                <option>AA Investment Group</option>
+                <option>AA Commodity Group</option>
+                <option>AA Travel &amp; Tourism</option>
+                <option>Ontario Cardio Imaging</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="cf-msg">Message</label>
+              <textarea id="cf-msg" name="message" placeholder="Tell us what you need…" required></textarea>
+            </div>
+            <button class="btn btn--gold" type="submit">Send message <svg class="ico ico--sm" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            <p class="form-note">This opens your email app with the message pre-filled. We reply during business hours.</p>
+          </form>
+        </div>
+
+        <!-- contact cards -->
+        <div data-reveal style="--d:.08s">
+          <div class="sec__head" style="margin-bottom:24px">
+            <p class="eyebrow">Direct contacts</p>
+            <h2 class="section__title" style="margin-top:14px;font-size:clamp(28px,3.6vw,44px)">Reach us directly.</h2>
+          </div>
+          <div class="contact-cards">
+            <div class="card dc">
+              <b>Head office</b>
+              <span>Woodbridge, Ontario, Canada · Mon–Fri 9:00–17:00</span>
+              <a href="tel:+19058561500">(905) 856-1500</a>
+              <a href="mailto:contact@aagroupofcompanies.com">contact@aagroupofcompanies.com</a>
+            </div>
+            <div class="card dc">
+              <b>AA Commodity Group</b>
+              <span>Dubai, United Arab Emirates</span>
+              <a href="tel:+97148529242">+971 (04) 852 9242</a>
+              <a href="mailto:info@aacommodities.ca">info@aacommodities.ca</a>
+            </div>
+            <div class="card dc">
+              <b>Ontario Cardio Imaging</b>
+              <span>1690 Desran Street, Unit 230, Pickering ON L1V 0G9 · Mon–Fri 10–6, Sat 10–3</span>
+              <a href="tel:+19054269555">905-426-9555</a>
+              <a href="mailto:info@ontariocardioimaging.com">info@ontariocardioimaging.com</a>
+            </div>
+            <div class="card dc">
+              <b>AA Travel &amp; Tourism</b>
+              <span>Trip planning and itineraries</span>
+              <a href="https://aatourism.ca/" target="_blank" rel="noopener noreferrer">aatourism.ca</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta">
+    <div class="container cta__inner">
+      <div>
+        <p class="eyebrow" data-reveal>Follow the group</p>
+        <h2 data-reveal style="--d:.08s">See the people and the <em>work</em> behind it.</h2>
+      </div>
+      <a class="btn btn--gold" href="gallery.html" data-reveal style="--d:.16s">View gallery <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="media/site/Untitled-1-01-300x93.png" alt="AA Group of Companies" width="300" height="93" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+        <span class="logo-fallback" hidden><b>AA Group of Companies</b></span>
+        <p>Family-led in Woodbridge, Ontario, and proud of the people who make it work.</p>
+      </div>
+      <div class="footer-col">
+        <b>Divisions</b>
+        <a href="divisions.html#popeyes">Popeyes Louisiana Kitchen</a>
+        <a href="divisions.html#investment">AA Investment Group</a>
+        <a href="divisions.html#commodity">AA Commodity Group</a>
+        <a href="https://aatourism.ca/" target="_blank" rel="noopener noreferrer">AA Travel &amp; Tourism</a>
+        <a href="https://www.ontariocardioimaging.com/" target="_blank" rel="noopener noreferrer">Ontario Cardio Imaging</a>
+      </div>
+      <div class="footer-col">
+        <b>Group</b>
+        <a href="index.html">Home</a>
+        <a href="about.html">About us</a>
+        <a href="divisions.html">Company divisions</a>
+        <a href="team.html">Team profile</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+        <a href="book.html">The book</a>
+      </div>
+      <div class="footer-col">
+        <b>Connect</b>
+        <a href="mailto:contact@aagroupofcompanies.com">contact@aagroupofcompanies.com</a>
+        <a href="tel:+19058561500">(905) 856-1500</a>
+        <div class="social-row">
+          <a class="social" href="https://www.facebook.com/aagroupofcompaniesofficial" target="_blank" rel="noopener noreferrer" aria-label="AA Group on Facebook"><svg aria-hidden="true"><use href="#i-facebook"/></svg></a>
+          <a class="social" href="https://www.instagram.com/aagroupofcompaniesofficial/" target="_blank" rel="noopener noreferrer" aria-label="AA Group on Instagram"><svg aria-hidden="true"><use href="#i-instagram"/></svg></a>
+          <a class="social" href="https://www.youtube.com/@AAGroupofCompaniesOfficial" target="_blank" rel="noopener noreferrer" aria-label="AA Group on YouTube"><svg aria-hidden="true"><use href="#i-youtube"/></svg></a>
+          <a class="social" href="https://www.tiktok.com/@aagroupofcompanies" target="_blank" rel="noopener noreferrer" aria-label="AA Group on TikTok"><svg aria-hidden="true"><use href="#i-tiktok"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footnotes">
+      <p>¹ 60+ restaurant locations and $75M+ Popeyes division revenue, as published on aagroupofcompanies.com/company-divisions.</p>
+      <p>Popeyes® is a registered trademark of its owner. AA Group of Companies operates Popeyes restaurants as a franchisee.</p>
+      <p>All photography on this site is real — drawn from the AA Group company archive (2020–2024) and the press. No stock photos, no AI-generated imagery.</p>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 AA Group of Companies. All rights reserved. · Est. 2018 · Woodbridge, Ontario, Canada</span>
+      <span>AA Group · Contact</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+<script>
+/* contact form → mailto */
+(function(){
+  var f = document.getElementById('contact-form');
+  if(!f) return;
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = (document.getElementById('cf-name').value || '').trim();
+    var email = (document.getElementById('cf-email').value || '').trim();
+    var div = document.getElementById('cf-division').value;
+    var msg = (document.getElementById('cf-msg').value || '').trim();
+    var to = div === 'AA Commodity Group' ? 'info@aacommodities.ca'
+           : div === 'Ontario Cardio Imaging' ? 'info@ontariocardioimaging.com'
+           : 'contact@aagroupofcompanies.com';
+    var subject = 'Website enquiry — ' + div;
+    var body = 'Name: ' + name + '\nEmail: ' + email + '\n\n' + msg;
+    window.location.href = 'mailto:' + to + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  });
+})();
+</script>
+</body>
+</html>
