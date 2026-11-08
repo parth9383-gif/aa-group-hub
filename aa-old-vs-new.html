@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Old website vs the new one — Dashava IT × AA Group</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Side by side: what aagroupofcompanies.com does today, and what the new single-file hub does instead. Internal pitch page by Dashava IT.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+:root{
+  --gold:#d2ae6d; --gold-2:#fec95e; --gold-3:#a9873f;
+  --ink:#1f2326; --charcoal:#32373c;
+  --bg:#faf7f2; --paper:#fff; --line:#e6e0d5;
+  --old:#b4503c; --old-bg:#f6ebe7;
+  --ok:#3f7a54;
+  --serif:"Cormorant Garamond",Georgia,serif;
+  --sans:"Manrope",system-ui,sans-serif;
+  --r:18px; --r-lg:22px;
+  --shadow:0 10px 30px rgba(31,35,38,.08);
+  --max:1120px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans)}
+h1,h2,h3,.stat b{font-family:var(--serif);font-weight:600;letter-spacing:.01em}
+
+/* masthead — always dark, like the hub header */
+.mast{background:var(--ink);color:#fff;padding:56px 24px 48px}
+.mast .wrap{max-width:var(--max);margin:0 auto}
+.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.mast h1{font-size:clamp(36px,5vw,56px);margin:14px 0 10px;line-height:1.05}
+.intro{font-size:18px;color:#d8d4cc;max-width:62ch;margin:0}
+.stamp{font-size:13px;color:#a7a39a;margin-top:18px}
+
+/* legend */
+.legend{max-width:var(--max);margin:28px auto 0;padding:0 24px;font-size:14px;color:var(--charcoal)}
+
+/* compare */
+.compare{max-width:var(--max);margin:0 auto;padding:24px 24px 48px}
+.row{margin:0 0 40px}
+.label h2{font-size:30px;margin:0 0 4px}
+.label p{margin:0 0 16px;color:var(--charcoal);font-size:15px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);
+      padding:26px 26px 22px;box-shadow:var(--shadow)}
+.card h3{font-size:24px;margin:10px 0 6px}
+.card .lead{margin:0 0 12px;color:var(--charcoal)}
+.tag{display:inline-block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+     padding:4px 10px;border-radius:999px}
+
+.card.old{background:var(--old-bg);border-color:#e7cfc6}
+.card.old .tag{background:var(--old);color:#fff}
+.card.old h3{color:var(--old)}
+.card.old .evidence li::marker{color:var(--old)}
+
+.card.new{border:1.5px solid var(--gold);box-shadow:0 14px 36px rgba(210,174,109,.18)}
+.card.new .tag{background:var(--gold);color:var(--ink)}
+.card.new h3{color:var(--gold-3)}
+.card.new .evidence li::marker{color:var(--ok)}
+
+.evidence{margin:0;padding-left:20px;font-size:15px}
+.evidence li{margin:0 0 6px}
+.evidence code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:rgba(31,35,38,.06);
+               padding:1px 6px;border-radius:6px}
+
+/* verdict */
+.verdict{background:var(--ink);color:#fff;padding:52px 24px}
+.verdict .wrap{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.stat{text-align:center;border:1px solid rgba(254,201,94,.25);border-radius:var(--r-lg);padding:28px 18px}
+.stat b{display:block;font-size:clamp(32px,4vw,44px);line-height:1.1;color:var(--gold-2)}
+.stat span{display:block;margin-top:10px;font-size:14px;color:#d8d4cc}
+
+/* notes */
+.notes{max-width:var(--max);margin:0 auto;padding:36px 24px;font-size:14px;color:var(--charcoal)}
+.notes p{max-width:78ch;margin-bottom:10px}
+
+/* footer CTA */
+.cta{background:var(--charcoal);color:#fff;padding:48px 24px;text-align:center}
+.cta h2{font-size:34px;margin:0 0 8px}
+.cta p{margin:0 auto 22px;max-width:58ch;color:#d8d4cc}
+.btn{display:inline-block;background:var(--gold);color:var(--ink);font-weight:700;
+     padding:14px 26px;border-radius:999px;text-decoration:none}
+.btn:hover{background:var(--gold-2)}
+.sign{margin-top:20px;font-size:13px;color:#a7a39a}
+
+/* reveal — same pattern as hub, scoped to .js */
+.js .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important;transition:none}}
+
+@media (max-width:800px){
+  .mast{padding:40px 20px 34px}
+  .mast h1{font-size:34px}
+  .intro{font-size:16px}
+  .grid{grid-template-columns:1fr;gap:14px}
+  .card{padding:20px 18px 16px}
+  .card h3{font-size:21px}
+  .label h2{font-size:26px}
+  .verdict .wrap{grid-template-columns:1fr;gap:14px}
+  .stat b{font-size:36px}
+  .cta h2{font-size:28px}
+  .btn{display:block;width:100%;text-align:center}
+}
+
+@media print{
+  @page{margin:16mm}
+  body{background:#fff;color:#000;font-size:11pt}
+  .mast,.verdict,.cta{background:#fff!important;color:#000!important;
+                      border-bottom:1pt solid #000}
+  .eyebrow,.stat b{color:#000!important}
+  .mast{padding:0 0 10pt}
+  .intro,.stamp,.sign,.notes,.legend{color:#333!important}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10pt}
+  .card{box-shadow:none;border:1pt solid #999;border-radius:6pt;
+        padding:10pt 12pt;break-inside:avoid}
+  .card.old{background:#f4f4f4;border-color:#999}
+  .card.new{border:1.5pt solid #000}
+  .tag{border:1pt solid #000;background:none!important;color:#000!important}
+  .row{break-inside:avoid;margin-bottom:14pt}
+  .verdict .wrap{grid-template-columns:repeat(3,1fr);gap:8pt;padding:10pt 0}
+  .stat{border:1pt solid #999;padding:8pt}
+  .btn{display:none}
+  .cta::after{content:"Contact Dashava IT to book the walkthrough.";
+              display:block;font-size:11pt}
+  .reveal{opacity:1!important;transform:none!important}
+  a[href^="http"]::after{content:" (" attr(href) ")";font-size:9pt;color:#555}
+}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="wrap">
+    <p class="eyebrow">Dashava IT × AA Group of Companies</p>
+    <h1>Old website vs the new one</h1>
+    <p class="intro">Side by side: what aagroupofcompanies.com does today, and what the new single-file hub does instead.</p>
+    <p class="stamp">Old site measured 7 Nov 2026 · New site: aa-group-hub.html v4</p>
+  </div>
+</header>
+
+<main>
+  <p class="legend">Left column: the current WordPress site, as measured. Right column: the new hub, as built and verified.</p>
+
+  <div class="compare">
+
+    <!-- 1 Speed -->
+    <section class="row reveal" aria-labelledby="lbl-speed">
+      <div class="label">
+        <h2 id="lbl-speed">Speed</h2>
+        <p>The first thing a visitor feels, and the first thing search engines score.</p>
+      </div>
+      <div class="grid">
+        <div class="card old">
+          <span class="tag">Old site</span>
+          <h3>3.27 seconds to load the homepage</h3>
+          <p class="lead">WordPress, a general-purpose theme and its plugin stack, measured from a standard connection.</p>
+          <ul class="evidence">
+            <li>Homepage fully loaded in <strong>3.27 s</strong> (our measurement, 7 Nov 2026)</li>
+            <li>Multiple theme and plugin requests on every page</li>
+            <li>Media served from the WordPress uploads folder, much of it full-size</li>
+          </ul>
+        </div>
+        <div class="card new">
+          <span class="tag">New site</span>
+          <h3>One file, about 0.9 MB in total</h3>
+          <p class="lead">The entire hub, including gallery and team images, ships as a single HTML file with local media.</p>
+          <ul class="evidence">
+            <li>No WordPress, no plugin requests, no external theme assets</li>
+            <li>All media stored locally and sized for the page (~0.9 MB including the gallery)</li>
+            <li>Nothing to update, patch or cache-bust on the server side</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 Structure & SEO -->
+    <section class="row reveal" aria-labelledby="lbl-structure">
+      <div class="label">
+        <h2 id="lbl-structure">Structure &amp; SEO</h2>
+        <p>How search engines and AI assistants read the site, not just how people do.</p>
+      </div>
+      <div class="grid">
+        <div class="card old">
+          <span class="tag">Old site</span>
+          <h3>Thin crawl signals</h3>
+          <p class="lead">The basics exist, but they are default plugin output rather than a deliberate structure.</p>
+          <ul class="evidence">
+            <li><code>robots.txt</code> returns a <strong>301 redirect</strong> — no proper crawl rules are served</li>
+            <li>Sitemap generated by All in One SEO; a thin index with little beyond page URLs</li>
+            <li>No FAQ structured data anywhere on the site</li>
+            <li>No Person or Book markup for the founder or the published book</li>
+          </ul>
+        </div>
+        <div class="card new">
+          <span class="tag">New site</span>
+          <h3>Seven clear sections with schema behind them</h3>
+          <p class="lead">Home · Divisions · Founder &amp; Book · Gallery · Leadership · FAQ · Contact — each a named tab, each machine-readable.</p>
+          <ul class="evidence">
+            <li><strong>FAQPage</strong> schema on 10 question-and-answer pairs (written for answer-engine results)</li>
+            <li><strong>Person + Book</strong> schema on the Founder &amp; Book tab</li>
+            <li>Consistent headings and section IDs, so every tab is addressable and indexable</li>
+            <li>Print stylesheet included, so the same page doubles as a clean PDF</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 Facts & numbers -->
+    <section class="row reveal" aria-labelledby="lbl-facts">
+      <div class="label">
+        <h2 id="lbl-facts">Facts &amp; numbers</h2>
+        <p>A group this size is judged on whether its own pages agree with each other.</p>
+      </div>
+      <div class="grid">
+        <div class="card old">
+          <span class="tag">Old site</span>
+          <h3>Three facts, two versions each</h3>
+          <p class="lead">Different pages were written at different times and never reconciled.</p>
+          <ul class="evidence">
+            <li>Restaurant count: <strong>60+</strong> on one page, <strong>42</strong> on another</li>
+            <li>Group revenue: <strong>$75M</strong> on one page, <strong>$50M</strong> on another</li>
+            <li>Copyright line: <strong>©2018</strong> in one footer, <strong>©2025</strong> in another</li>
+            <li>Contact page still carries template placeholder offices that are not the group's</li>
+          </ul>
+        </div>
+        <div class="card new">
+          <span class="tag">New site</span>
+          <h3>One set of numbers, used everywhere</h3>
+          <p class="lead">We took the figures the group currently publishes as its latest and applied them across every tab.</p>
+          <ul class="evidence">
+            <li><strong>60+ restaurants</strong> — same figure on Home, Divisions and FAQ</li>
+            <li><strong>$75M+ revenue</strong> — same figure on Home and FAQ</li>
+            <li><strong>©2026</strong> in the single footer</li>
+            <li>Contact tab shows only the group's real contact details and a working form</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 Credibility & content -->
+    <section class="row reveal" aria-labelledby="lbl-credibility">
+      <div class="label">
+        <h2 id="lbl-credibility">Credibility &amp; content</h2>
+        <p>The proof the group already has, and whether the site shows it.</p>
+      </div>
+      <div class="grid">
+        <div class="card old">
+          <span class="tag">Old site</span>
+          <h3>Real assets, mostly out of sight</h3>
+          <p class="lead">The awards, the book and the team exist — the site just doesn't lead with them.</p>
+          <ul class="evidence">
+            <li>"Gallery" page shows only division logos; the awards photography is not there</li>
+            <li>Team portraits exist but are buried at <code>/team-profile</code></li>
+            <li>No press or recognition strip on the homepage</li>
+            <li>No section for the founder's published book</li>
+            <li>No careers page at all</li>
+          </ul>
+        </div>
+        <div class="card new">
+          <span class="tag">New site</span>
+          <h3>The same assets, finally on the front page</h3>
+          <p class="lead">Nothing here was invented — the portraits, awards photos and logos came from the old site. We rebuilt the frame around them.</p>
+          <ul class="evidence">
+            <li><strong>Press &amp; recognition strip</strong> on Home: TRIEC shortlist, Dubai book launch</li>
+            <li><strong>Founder &amp; Book tab</strong>: launch photo, buy links, Person + Book schema</li>
+            <li><strong>Gallery</strong> rebuilt in year groups — 2020 · 2022 · 2023 · 2024 — with a lightbox</li>
+            <li><strong>9 named team portraits</strong> on the Leadership tab, not a sub-page</li>
+            <li><strong>Home archive banner</strong> featuring the 2024 awards</li>
+            <li><strong>Careers strip</strong> and a <strong>WhatsApp</strong> floating button for direct enquiries</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 Visual & feel -->
+    <section class="row reveal" aria-labelledby="lbl-visual">
+      <div class="label">
+        <h2 id="lbl-visual">Visual &amp; feel</h2>
+        <p>Whether the site looks like the group it represents.</p>
+      </div>
+      <div class="grid">
+        <div class="card old">
+          <span class="tag">Old site</span>
+          <h3>A stock theme doing its best</h3>
+          <p class="lead">Layout and type are the theme's defaults; the group's identity is applied on top rather than built in.</p>
+          <ul class="evidence">
+            <li>Generic WordPress theme structure and typography</li>
+            <li>Logos as the main visual content; little photography above the fold</li>
+            <li>Mixed copyright years and template leftovers give an unmaintained impression</li>
+          </ul>
+        </div>
+        <div class="card new">
+          <span class="tag">New site</span>
+          <h3>Dark ink and gold, built for the group</h3>
+          <p class="lead">A deliberate palette and type system, applied consistently from the first pixel to the print view.</p>
+          <ul class="evidence">
+            <li>Dark ink header, gold accents, Cormorant Garamond headings, Manrope body</li>
+            <li>Header stays dark on every tab — verified in Chrome</li>
+            <li>Soft reveal animations on scroll, with full <code>prefers-reduced-motion</code> support</li>
+            <li>Rounded cards, soft shadows and generous spacing throughout</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 Mobile -->
+    <section class="row reveal" aria-labelledby="lbl-mobile">
+      <div class="label">
+        <h2 id="lbl-mobile">Mobile</h2>
+        <p>Most first visits to a hospitality group happen on a phone.</p>
+      </div>
+      <div class="grid">
+        <div class="card old">
+          <span class="tag">Old site</span>
+          <h3>Responsive by theme default</h3>
+          <p class="lead">It fits the screen, but it carries the full desktop load and the same scattered content.</p>
+          <ul class="evidence">
+            <li>Same 3.27 s homepage load, with no mobile-specific trimming</li>
+            <li>Team and awards content remain several taps deep</li>
+            <li>No direct-message action for a visitor who just wants to ask a question</li>
+          </ul>
+        </div>
+        <div class="card new">
+          <span class="tag">New site</span>
+          <h3>Hamburger menu, one-tap contact</h3>
+          <p class="lead">The seven tabs collapse into a working mobile menu; the gallery and lightbox are touch-friendly.</p>
+          <ul class="evidence">
+            <li>Mobile hamburger menu — <strong>tested and working</strong> in Chrome</li>
+            <li>WhatsApp float and contact form reachable from every tab</li>
+            <li>Lightweight single file, so the phone downloads the hub once and moves between tabs instantly</li>
+            <li><strong>0 JavaScript errors</strong> on load, desktop and mobile</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <section class="verdict">
+    <div class="wrap">
+      <div class="stat reveal"><b>0</b><span>JavaScript errors in a real Chrome session</span></div>
+      <div class="stat reveal"><b>One set of numbers</b><span>60+ restaurants · $75M+ revenue · ©2026, on every tab</span></div>
+      <div class="stat reveal"><b>2020 – 2024</b><span>awards archive gallery, year-grouped, with 9 team portraits</span></div>
+    </div>
+  </section>
+
+  <section class="notes">
+    <p><strong>On the old-site figures.</strong> Everything in the left column was measured or observed by Dashava IT on 7 November 2026 on aagroupofcompanies.com. The 3.27-second figure is our own single measurement of the homepage; a different connection or time of day will produce a different number. The redirect on <code>robots.txt</code>, the sitemap behaviour and the contradictory figures were observed directly on the live pages that day.</p>
+    <p><strong>On the group's numbers.</strong> "60+ restaurants" and "$75M+ revenue" are not Dashava IT's claims. They are the figures the group already publishes on its own pages; we selected the most recent of the two conflicting versions and applied it consistently. If the group confirms different figures, the hub changes them in one place.</p>
+    <p><strong>On the new-site figures.</strong> "0 JavaScript errors", the working mobile menu, the always-dark header and the reveal animations were checked in a real Chrome session, not inferred. We have not published a load-time figure for the new hub because it depends on where it is hosted; the file size (~0.9 MB including all gallery images) is the measurable fact.</p>
+  </section>
+</main>
+
+<footer class="cta">
+  <h2>See it move</h2>
+  <p>The hub opens in any browser from a single file. Book a 20-minute walkthrough and we will go tab by tab, on desktop and on a phone, and answer anything the comparison above raises.</p>
+  <a class="btn" href="mailto:contact@AAGroupOfCompanies.com?subject=Website%20walkthrough">Book the walkthrough</a>
+  <p class="sign">Prepared by Dashava IT for AA Group of Companies · aa-group-hub.html v4</p>
+</footer>
+
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+<script>
+(function(){
+  if(!('IntersectionObserver' in window)){
+    var all = document.querySelectorAll('.reveal');
+    for(var i=0;i<all.length;i++){ all[i].classList.add('in'); }
+    return;
+  }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {rootMargin:'0px 0px -8% 0px', threshold:.1});
+  var els = document.querySelectorAll('.reveal');
+  for(var j=0;j<els.length;j++){ io.observe(els[j]); }
+})();
+</script>
+</body>
+</html>
