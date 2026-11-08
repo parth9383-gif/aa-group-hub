@@ -249,9 +249,9 @@ body.glow-on .cursor-glow{opacity:1}
 [data-theme="light"] .nav-toggle span{background:var(--ink)}
 /* hero — rich photo + frosted cream panel */
 [data-theme="light"] .hero{background:var(--bg)}
-[data-theme="light"] .hero__bg img{filter:saturate(1.08) contrast(1.04);opacity:1}
-[data-theme="light"] .hero__veil{background:linear-gradient(90deg,rgba(246,241,232,.55) 0%,rgba(246,241,232,.18) 45%,rgba(246,241,232,0) 100%)}
-[data-theme="light"] .hero__text{background:#F3EFE6;border:1px solid rgba(27,25,21,.14)}
+[data-theme="light"] .hero__bg img{filter:sepia(.14) saturate(1.02) brightness(1.06) contrast(1.02);opacity:1}
+[data-theme="light"] .hero__veil{background:linear-gradient(90deg,rgba(246,241,232,.82) 0%,rgba(246,241,232,.52) 45%,rgba(246,241,232,.24) 78%,rgba(246,241,232,.06) 100%)}
+[data-theme="light"] .hero__text{background:#F6F1E8;border:1px solid rgba(30,26,22,.12);box-shadow:0 24px 48px -26px rgba(70,52,24,.22)}
 [data-theme="light"] .hero__scroll{color:var(--gold);text-shadow:none}
 [data-theme="light"] .hero__scroll::after{background:linear-gradient(var(--gold),transparent)}
 /* cards — white + hairline + warm shadow */
@@ -269,7 +269,7 @@ body.glow-on .cursor-glow{opacity:1}
 [data-theme="light"] .site-foot{--ink:#F6F1E8;--muted:rgba(246,241,232,.68);--dim:rgba(246,241,232,.48);--gold-hi:#D6B86A;--line:rgba(246,241,232,.14);background:#17130E;border-top:1px solid rgba(192,138,90,.28)}
 .theme-toggle{background:none;border:1px solid var(--line-gold);border-radius:999px;width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;color:var(--gold-hi);font-size:15px;transition:background .25s,transform .18s;flex:none}
 .theme-toggle:hover{background:rgba(210,174,109,.14);transform:translateY(-1px)}
-[data-theme="light"] .theme-toggle{background:#FFFFFF;border-color:var(--line);color:var(--gold-deep)}
+[data-theme="light"] .theme-toggle{background:#F6F1E8;border-color:var(--line);color:var(--gold-deep)}
 [data-theme="light"] .theme-toggle:hover{background:rgba(192,138,90,.1)}
 @media(max-width:920px){
   [data-theme="light"] .hero__veil{background:linear-gradient(180deg,rgba(246,241,232,.2) 0%,rgba(246,241,232,.75) 70%,var(--bg) 100%)}

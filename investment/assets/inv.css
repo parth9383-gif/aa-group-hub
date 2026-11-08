@@ -222,7 +222,7 @@ body.glow-on .cursor-glow{opacity:1}
 /* ===== LIGHT MODE — paper-and-brass (Fable design) ===== */
 [data-theme="light"]{
   --txt-rgb:27,25,21;                    /* #1B1915 */
-  --bg:#F4EFE6; --bg-2:#FFFFFF; --panel:#FFFFFF; --panel-2:#FBF8F2;
+  --bg:#F4EFE6; --bg-2:#FBF8F2; --panel:#FBF8F2; --panel-2:#F6F1E8;
   --ink:#1B1915; --muted:#3E3A33; --dim:#6B655A;
   --gold:#7A5A1C; --gold-hi:#7A5A1C; --gold-deep:#5F4710;
   --evergreen:#2F5F52;
@@ -259,7 +259,7 @@ body.glow-on .cursor-glow{opacity:1}
 [data-theme="light"] .site-foot{--ink:#F4EFE6;--muted:rgba(244,239,230,.68);--dim:rgba(244,239,230,.48);--gold-hi:#D6B86A;--line:rgba(244,239,230,.14);background:#15130F;border-top:1px solid rgba(210,174,109,.28)}
 .theme-toggle{background:none;border:1px solid var(--line-gold);border-radius:999px;width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;color:var(--gold-hi);font-size:15px;transition:background .25s,transform .18s;flex:none}
 .theme-toggle:hover{background:rgba(210,174,109,.14);transform:translateY(-1px)}
-[data-theme="light"] .theme-toggle{background:#FFFFFF;border-color:var(--line);color:var(--gold-deep)}
+[data-theme="light"] .theme-toggle{background:#FBF8F2;border-color:var(--line);color:var(--gold-deep)}
 [data-theme="light"] .theme-toggle:hover{background:rgba(122,90,28,.08)}
 @media(max-width:760px){
   [data-theme="light"] .nav{background:rgba(251,248,242,.98)}
