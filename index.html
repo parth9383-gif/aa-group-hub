@@ -6,7 +6,7 @@
 <title>AA Group of Companies — Woodbridge, Ontario</title>
 <meta name="description" content="AA Group of Companies is a family-led holding company in Woodbridge, Ontario, operating five businesses across food, investment, commodities, travel, and healthcare.">
 <meta name="theme-color" content="#1f2326">
-<link rel="icon" type="image/webp" href="https://www.aagroupofcompanies.com/wp-content/uploads/2024/01/AA-Group-Fav.webp">
+<link rel="icon" type="image/webp" href="media/site/AA-Group-Fav.webp">
 <meta property="og:title" content="AA Group of Companies — Woodbridge, Ontario">
 <meta property="og:description" content="Five businesses. One family. We build what lasts, and we build it with people first.">
 <meta property="og:image" content="https://aagroupofcompanies.com/wp-content/uploads/2023/10/AA-Group-Logo.gif">
@@ -490,7 +490,7 @@ a.strip__item:hover{color:#fff;border-left-color:var(--gold-hi)}
 }
 @media(max-width:800px){.gallery-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:480px){.gallery-grid{grid-template-columns:1fr}}
-.lightbox{border:none;background:transparent;max-width:min(880px,92vw);padding:0;color:#fff;overflow:visible}
+.lightbox{border:none;background:transparent;max-width:min(880px,92vw);margin:auto;inset:0;width:fit-content;height:fit-content;max-height:92vh;padding:0;color:#fff;overflow:visible}
 .lightbox::backdrop{background:rgba(15,17,19,.88);backdrop-filter:blur(4px)}
 .lightbox img{max-width:100%;max-height:76vh;border-radius:var(--radius);display:block;margin:0 auto;box-shadow:var(--shadow-3)}
 .lb-cap{text-align:center;margin-top:12px;font-size:14px;color:#d9dde5}
@@ -678,6 +678,11 @@ html.js .mask__in{translate:0 112%}
   body[data-cur="off"] .cur,body:has(dialog[open]) .cur{opacity:0}
 }
 @media print{.cur{display:none!important}}
+
+/* v7 fixes: grid children may shrink, long emails/handles wrap, never widen the page */
+.contact-grid>*,.division-contacts>*,.loc-grid>*{min-width:0}
+.contact-row>a,.contact-row>span:not(.lbl){min-width:0;overflow-wrap:anywhere}
+html,body{overflow-x:clip}
 </style>
 </head>
 <body class="grain">
@@ -706,7 +711,7 @@ html.js .mask__in{translate:0 112%}
   <span class="progress" aria-hidden="true"></span>
   <div class="container header__inner">
     <a class="header__logo" href="#home" aria-label="AA Group of Companies — home">
-      <img src="https://www.aagroupofcompanies.com/wp-content/uploads/2023/10/Untitled-1-01-300x93.png" alt="AA Group of Companies" width="300" height="93" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+      <img src="media/site/Untitled-1-01-300x93.png" alt="AA Group of Companies" width="300" height="93" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
       <span class="logo-fallback" hidden>AA <b>Group</b></span>
     </a>
     <nav class="nav" id="site-nav" role="tablist" aria-label="Primary">
@@ -888,7 +893,7 @@ html.js .mask__in{translate:0 112%}
         <!-- Popeyes -->
         <div class="card div-card" id="popeyes" data-reveal>
           <div class="div-logo">
-            <img src="https://www.aagroupofcompanies.com/wp-content/uploads/2024/05/Popeyesss.webp" alt="Popeyes Louisiana Kitchen" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <img src="media/site/Popeyesss.webp" alt="Popeyes Louisiana Kitchen" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
             <span class="logo-fallback" hidden>Popeyes Louisiana Kitchen</span>
           </div>
           <h3>Popeyes<sup>®</sup> Louisiana Kitchen</h3>
@@ -909,7 +914,7 @@ html.js .mask__in{translate:0 112%}
         <!-- Investment -->
         <div class="card div-card" id="investment" data-reveal>
           <div class="div-logo">
-            <img src="https://www.aagroupofcompanies.com/wp-content/uploads/2024/05/AA-Investment-Group.png" alt="AA Investment Group" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <img src="media/site/AA-Investment-Group.png" alt="AA Investment Group" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
             <span class="logo-fallback" hidden>AA Investment Group</span>
           </div>
           <h3>AA Investment Group</h3>
@@ -929,7 +934,7 @@ html.js .mask__in{translate:0 112%}
         <!-- Commodity -->
         <div class="card div-card" id="commodity" data-reveal>
           <div class="div-logo">
-            <img src="https://www.aagroupofcompanies.com/wp-content/uploads/2024/05/AA-Commodity-Group.png" alt="AA Commodity Group" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <img src="media/site/AA-Commodity-Group.png" alt="AA Commodity Group" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
             <span class="logo-fallback" hidden>AA Commodity Group</span>
           </div>
           <h3>AA Commodity Group</h3>
@@ -950,7 +955,7 @@ html.js .mask__in{translate:0 112%}
         <!-- Travel -->
         <div class="card div-card" id="travel" data-reveal>
           <div class="div-logo">
-            <img src="https://www.aagroupofcompanies.com/wp-content/uploads/2024/05/AA-Travel-Tourism-copy.png" alt="AA Travel &amp; Tourism" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <img src="media/site/AA-Travel-Tourism-copy.png" alt="AA Travel &amp; Tourism" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
             <span class="logo-fallback" hidden>AA Travel &amp; Tourism</span>
           </div>
           <h3>AA Travel &amp; Tourism</h3>
@@ -970,7 +975,7 @@ html.js .mask__in{translate:0 112%}
         <!-- Cardio -->
         <div class="card div-card" id="cardio" data-reveal>
           <div class="div-logo">
-            <img src="https://www.aagroupofcompanies.com/wp-content/uploads/2025/06/OntarioCardio.webp" alt="Ontario Cardio Imaging" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+            <img src="media/site/OntarioCardio.webp" alt="Ontario Cardio Imaging" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
             <span class="logo-fallback" hidden>Ontario Cardio Imaging</span>
           </div>
           <h3>Ontario Cardio Imaging</h3>
@@ -1058,15 +1063,15 @@ html.js .mask__in{translate:0 112%}
       <div class="gallery-group">
       <h2 class="gallery-title">Leadership &amp; press</h2>
       <div class="gallery-grid">
-        <figure class="g-item" role="button" aria-haspopup="dialog" data-reveal tabindex="0"><img src="https://www.aagroupofcompanies.com/wp-content/uploads/2024/02/WhatsApp-Image-2024-02-01-at-08.28.22-1-1021x1024.jpeg" alt="Atiq Ahmad" loading="lazy"><figcaption>Atiq Ahmad<small>Founder &amp; President</small></figcaption></figure>
-        <figure class="g-item" role="button" aria-haspopup="dialog" data-reveal tabindex="0"><img src="https://www.aagroupofcompanies.com/wp-content/uploads/2024/02/WhatsApp-Image-2024-02-01-at-08.28.19-1021x1024.jpeg" alt="Naseer Malik" loading="lazy"><figcaption>Naseer Malik<small>Senior Vice President</small></figcaption></figure>
-        <figure class="g-item" role="button" aria-haspopup="dialog" data-reveal tabindex="0"><img src="https://www.aagroupofcompanies.com/wp-content/uploads/2024/02/WhatsApp-Image-2024-02-01-at-08.09.37-1021x1024.jpeg" alt="Junaid Ahmad" loading="lazy"><figcaption>Junaid Ahmad<small>VP, Finance &amp; Development</small></figcaption></figure>
-        <figure class="g-item" role="button" aria-haspopup="dialog" data-reveal tabindex="0"><img src="https://www.aagroupofcompanies.com/wp-content/uploads/2024/02/WhatsApp-Image-2024-02-01-at-08.28.18-1021x1024.jpeg" alt="Amjad Ahmed" loading="lazy"><figcaption>Amjad Ahmed<small>VP, Advisor to the President</small></figcaption></figure>
-        <figure class="g-item" role="button" aria-haspopup="dialog" data-reveal tabindex="0"><img src="https://www.aagroupofcompanies.com/wp-content/uploads/2024/02/WhatsApp-Image-2024-02-01-at-08.28.20-1021x1024.jpeg" alt="Ebrahim Ismail" loading="lazy"><figcaption>Ebrahim Ismail<small>Managing Director, AA Travel &amp; Tourism</small></figcaption></figure>
-        <figure class="g-item" role="button" aria-haspopup="dialog" data-reveal tabindex="0"><img src="https://www.aagroupofcompanies.com/wp-content/uploads/2024/02/23423-1021x1024.jpg" alt="Aamir Sheeraz" loading="lazy"><figcaption>Aamir Sheeraz<small>Managing Director, AA Commodity Group</small></figcaption></figure>
-        <figure class="g-item" role="button" aria-haspopup="dialog" data-reveal tabindex="0"><img src="https://www.aagroupofcompanies.com/wp-content/uploads/2024/02/WhatsApp-Image-2024-02-01-at-08.28.20-1-1021x1024.jpeg" alt="Taimoor Hassan" loading="lazy"><figcaption>Taimoor Hassan<small>Director of Operations, Popeyes</small></figcaption></figure>
-        <figure class="g-item" role="button" aria-haspopup="dialog" data-reveal tabindex="0"><img src="https://www.aagroupofcompanies.com/wp-content/uploads/2024/02/WhatsApp-Image-2024-02-01-at-08.28.21-1-1021x1024.jpeg" alt="Hatib Sheikh" loading="lazy"><figcaption>Hatib Sheikh<small>Operations Manager, Popeyes</small></figcaption></figure>
-        <figure class="g-item" role="button" aria-haspopup="dialog" data-reveal tabindex="0"><img src="https://www.aagroupofcompanies.com/wp-content/uploads/2024/02/WhatsApp-Image-2024-02-01-at-08.28.22-1021x1024.jpeg" alt="Faatir Chaudhary" loading="lazy"><figcaption>Faatir Chaudhary<small>Operations Manager, Popeyes</small></figcaption></figure>
+        <figure class="g-item" role="button" aria-haspopup="dialog" data-reveal tabindex="0"><img src="media/site/WhatsApp-Image-2024-02-01-at-08.28.22-1-1021x1024.jpeg" alt="Atiq Ahmad" loading="lazy"><figcaption>Atiq Ahmad<small>Founder &amp; President</small></figcaption></figure>
+        <figure class="g-item" role="button" aria-haspopup="dialog" data-reveal tabindex="0"><img src="media/site/WhatsApp-Image-2024-02-01-at-08.28.19-1021x1024.jpeg" alt="Naseer Malik" loading="lazy"><figcaption>Naseer Malik<small>Senior Vice President</small></figcaption></figure>
+        <figure class="g-item" role="button" aria-haspopup="dialog" data-reveal tabindex="0"><img src="media/site/WhatsApp-Image-2024-02-01-at-08.09.37-1021x1024.jpeg" alt="Junaid Ahmad" loading="lazy"><figcaption>Junaid Ahmad<small>VP, Finance &amp; Development</small></figcaption></figure>
+        <figure class="g-item" role="button" aria-haspopup="dialog" data-reveal tabindex="0"><img src="media/site/WhatsApp-Image-2024-02-01-at-08.28.18-1021x1024.jpeg" alt="Amjad Ahmed" loading="lazy"><figcaption>Amjad Ahmed<small>VP, Advisor to the President</small></figcaption></figure>
+        <figure class="g-item" role="button" aria-haspopup="dialog" data-reveal tabindex="0"><img src="media/site/WhatsApp-Image-2024-02-01-at-08.28.20-1021x1024.jpeg" alt="Ebrahim Ismail" loading="lazy"><figcaption>Ebrahim Ismail<small>Managing Director, AA Travel &amp; Tourism</small></figcaption></figure>
+        <figure class="g-item" role="button" aria-haspopup="dialog" data-reveal tabindex="0"><img src="media/site/23423-1021x1024.jpg" alt="Aamir Sheeraz" loading="lazy"><figcaption>Aamir Sheeraz<small>Managing Director, AA Commodity Group</small></figcaption></figure>
+        <figure class="g-item" role="button" aria-haspopup="dialog" data-reveal tabindex="0"><img src="media/site/WhatsApp-Image-2024-02-01-at-08.28.20-1-1021x1024.jpeg" alt="Taimoor Hassan" loading="lazy"><figcaption>Taimoor Hassan<small>Director of Operations, Popeyes</small></figcaption></figure>
+        <figure class="g-item" role="button" aria-haspopup="dialog" data-reveal tabindex="0"><img src="media/site/WhatsApp-Image-2024-02-01-at-08.28.21-1-1021x1024.jpeg" alt="Hatib Sheikh" loading="lazy"><figcaption>Hatib Sheikh<small>Operations Manager, Popeyes</small></figcaption></figure>
+        <figure class="g-item" role="button" aria-haspopup="dialog" data-reveal tabindex="0"><img src="media/site/WhatsApp-Image-2024-02-01-at-08.28.22-1021x1024.jpeg" alt="Faatir Chaudhary" loading="lazy"><figcaption>Faatir Chaudhary<small>Operations Manager, Popeyes</small></figcaption></figure>
         <figure class="g-item" role="button" aria-haspopup="dialog" data-reveal tabindex="0"><img src="https://photo-cdn.urdupoint.com/media/2025/02/_2/740x404/pic_1740590036.jpg" alt="Book launch of Thinking into Success in Dubai, 22 February 2025" loading="lazy"><figcaption>Book launch, Dubai<small>22 Feb 2025 · Photo: APP (via UrduPoint)</small></figcaption></figure>
       </div>
       </div><!-- /gallery-group people -->
@@ -1195,7 +1200,7 @@ html.js .mask__in{translate:0 112%}
       <p class="section__lede" data-reveal>Led by a founder who built this group restaurant by restaurant, and a team with decades of experience across food, finance, aviation, commodities, and travel.</p>
 
       <div class="card founder" data-reveal>
-        <div class="portrait lg"><img src="https://www.aagroupofcompanies.com/wp-content/uploads/2024/02/WhatsApp-Image-2024-02-01-at-08.28.22-1-1021x1024.jpeg" alt="Atiq Ahmad" loading="lazy" onerror="this.parentElement.style.background='#1f2326';this.parentElement.textContent='AA';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';this.parentElement.style.fontFamily='var(--serif)';this.parentElement.style.fontSize='52px';this.parentElement.style.color='var(--gold-hi)'"></div>
+        <div class="portrait lg"><img src="media/site/WhatsApp-Image-2024-02-01-at-08.28.22-1-1021x1024.jpeg" alt="Atiq Ahmad" loading="lazy" onerror="this.parentElement.style.background='#1f2326';this.parentElement.textContent='AA';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';this.parentElement.style.fontFamily='var(--serif)';this.parentElement.style.fontSize='52px';this.parentElement.style.color='var(--gold-hi)'"></div>
         <div>
           <h3>Atiq Ahmad</h3>
           <div class="role">President</div>
@@ -1204,14 +1209,14 @@ html.js .mask__in{translate:0 112%}
       </div>
 
       <div class="team-grid">
-        <div class="card person" data-reveal><div class="portrait"><img src="https://www.aagroupofcompanies.com/wp-content/uploads/2024/02/WhatsApp-Image-2024-02-01-at-08.28.19-1021x1024.jpeg" alt="Naseer Malik" loading="lazy"></div><h3>Naseer Malik</h3><div class="role">Senior Vice President</div><p>Master's degree, University of Toronto. Operations management.</p></div>
-        <div class="card person" data-reveal><div class="portrait"><img src="https://www.aagroupofcompanies.com/wp-content/uploads/2024/02/WhatsApp-Image-2024-02-01-at-08.09.37-1021x1024.jpeg" alt="Junaid Ahmad" loading="lazy"></div><h3>Junaid Ahmad</h3><div class="role">VP, Finance &amp; Development</div><p>Master's in Finance. QSR experience.</p></div>
-        <div class="card person" data-reveal><div class="portrait"><img src="https://www.aagroupofcompanies.com/wp-content/uploads/2024/02/WhatsApp-Image-2024-02-01-at-08.28.18-1021x1024.jpeg" alt="Amjad Ahmed" loading="lazy"></div><h3>Amjad Ahmed</h3><div class="role">VP, Advisor to the President</div><p>Aeronautical engineer; retired Group Captain (Pakistan Air Force); former DGM-QHSE (PIA).</p></div>
-        <div class="card person" data-reveal><div class="portrait"><img src="https://www.aagroupofcompanies.com/wp-content/uploads/2024/02/WhatsApp-Image-2024-02-01-at-08.28.20-1021x1024.jpeg" alt="Ebrahim Ismail" loading="lazy"></div><h3>Ebrahim Ismail</h3><div class="role">Managing Director, AA Travel &amp; Tourism</div></div>
-        <div class="card person" data-reveal><div class="portrait"><img src="https://www.aagroupofcompanies.com/wp-content/uploads/2024/02/23423-1021x1024.jpg" alt="Aamir Sheeraz" loading="lazy"></div><h3>Aamir Sheeraz</h3><div class="role">Managing Director, AA Commodity Group</div></div>
-        <div class="card person" data-reveal><div class="portrait"><img src="https://www.aagroupofcompanies.com/wp-content/uploads/2024/02/WhatsApp-Image-2024-02-01-at-08.28.20-1-1021x1024.jpeg" alt="Taimoor Hassan" loading="lazy"></div><h3>Taimoor Hassan</h3><div class="role">Director of Operations, Popeyes</div></div>
-        <div class="card person" data-reveal><div class="portrait"><img src="https://www.aagroupofcompanies.com/wp-content/uploads/2024/02/WhatsApp-Image-2024-02-01-at-08.28.21-1-1021x1024.jpeg" alt="Hatib Sheikh" loading="lazy"></div><h3>Hatib Sheikh</h3><div class="role">Operations Manager, Popeyes</div></div>
-        <div class="card person" data-reveal><div class="portrait"><img src="https://www.aagroupofcompanies.com/wp-content/uploads/2024/02/WhatsApp-Image-2024-02-01-at-08.28.22-1021x1024.jpeg" alt="Faatir Chaudhary" loading="lazy"></div><h3>Faatir Chaudhary</h3><div class="role">Operations Manager, Popeyes</div></div>
+        <div class="card person" data-reveal><div class="portrait"><img src="media/site/WhatsApp-Image-2024-02-01-at-08.28.19-1021x1024.jpeg" alt="Naseer Malik" loading="lazy"></div><h3>Naseer Malik</h3><div class="role">Senior Vice President</div><p>Master's degree, University of Toronto. Operations management.</p></div>
+        <div class="card person" data-reveal><div class="portrait"><img src="media/site/WhatsApp-Image-2024-02-01-at-08.09.37-1021x1024.jpeg" alt="Junaid Ahmad" loading="lazy"></div><h3>Junaid Ahmad</h3><div class="role">VP, Finance &amp; Development</div><p>Master's in Finance. QSR experience.</p></div>
+        <div class="card person" data-reveal><div class="portrait"><img src="media/site/WhatsApp-Image-2024-02-01-at-08.28.18-1021x1024.jpeg" alt="Amjad Ahmed" loading="lazy"></div><h3>Amjad Ahmed</h3><div class="role">VP, Advisor to the President</div><p>Aeronautical engineer; retired Group Captain (Pakistan Air Force); former DGM-QHSE (PIA).</p></div>
+        <div class="card person" data-reveal><div class="portrait"><img src="media/site/WhatsApp-Image-2024-02-01-at-08.28.20-1021x1024.jpeg" alt="Ebrahim Ismail" loading="lazy"></div><h3>Ebrahim Ismail</h3><div class="role">Managing Director, AA Travel &amp; Tourism</div></div>
+        <div class="card person" data-reveal><div class="portrait"><img src="media/site/23423-1021x1024.jpg" alt="Aamir Sheeraz" loading="lazy"></div><h3>Aamir Sheeraz</h3><div class="role">Managing Director, AA Commodity Group</div></div>
+        <div class="card person" data-reveal><div class="portrait"><img src="media/site/WhatsApp-Image-2024-02-01-at-08.28.20-1-1021x1024.jpeg" alt="Taimoor Hassan" loading="lazy"></div><h3>Taimoor Hassan</h3><div class="role">Director of Operations, Popeyes</div></div>
+        <div class="card person" data-reveal><div class="portrait"><img src="media/site/WhatsApp-Image-2024-02-01-at-08.28.21-1-1021x1024.jpeg" alt="Hatib Sheikh" loading="lazy"></div><h3>Hatib Sheikh</h3><div class="role">Operations Manager, Popeyes</div></div>
+        <div class="card person" data-reveal><div class="portrait"><img src="media/site/WhatsApp-Image-2024-02-01-at-08.28.22-1021x1024.jpeg" alt="Faatir Chaudhary" loading="lazy"></div><h3>Faatir Chaudhary</h3><div class="role">Operations Manager, Popeyes</div></div>
         <div class="card person" data-reveal><div class="portrait"><div class="portrait-inner">+</div></div><h3>Our teams</h3><div class="role">1,200+ team members</div><p>120 certified managers across our restaurants and divisions.</p></div>
       </div>
 
@@ -1381,7 +1386,7 @@ html.js .mask__in{translate:0 112%}
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="https://www.aagroupofcompanies.com/wp-content/uploads/2023/10/Untitled-1-01-300x93.png" alt="AA Group of Companies" width="300" height="93" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+        <img src="media/site/Untitled-1-01-300x93.png" alt="AA Group of Companies" width="300" height="93" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
         <span class="logo-fallback" hidden><b>AA Group of Companies</b></span>
         <p>Family-led in Woodbridge, Ontario, and proud of the people who make it work.</p>
       </div>
@@ -1691,7 +1696,7 @@ html.js .mask__in{translate:0 112%}
         var img = f.querySelector('img');
         var full = f.getAttribute('data-full');
         lbImg.src = full || img.src; lbImg.alt = img.alt;
-        lbCap.textContent = f.querySelector('figcaption').innerText;
+        var fc = f.querySelector('figcaption').cloneNode(true); Array.prototype.forEach.call(fc.querySelectorAll('small'), function(sm){ sm.textContent = ' \u2014 ' + sm.textContent; }); lbCap.textContent = fc.textContent;
         lb.showModal();
       }
       f.addEventListener('click', open);
