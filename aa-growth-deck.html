@@ -191,6 +191,21 @@ body,td{font-size:14px}
   .slide{display:block!important;max-width:none;border-radius:0;box-shadow:none;margin:0 0 12px;page-break-after:always;aspect-ratio:16/9}
   body{background:#fff}
 }
+
+/* slide 30-31 additions (turn 36: picture proof) */
+.pics{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.pic{position:relative;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#000;aspect-ratio:16/8.4}
+.pic img{display:block;width:100%;height:100%;object-fit:cover}
+.pic span{position:absolute;left:8px;top:8px;background:rgba(10,12,14,.88);color:#fff;font-size:9.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:4px 9px;border-radius:99px}
+.pic.bad span{color:#ff9a9a}
+.pic.good span{color:var(--gold-hi)}
+.piclink{margin-top:13px;font-size:12px;color:var(--slate)}
+.piclink a{color:var(--gold);font-weight:700}
+.road{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}
+.rstep{background:rgba(245,241,232,.05);border:1px solid rgba(245,241,232,.14);border-radius:10px;padding:14px}
+.rstep b{display:block;color:var(--gold-hi);font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px}
+.rstep p{font-size:11.5px;line-height:1.45;color:rgba(245,241,232,.75)}
+.rstep small{display:block;margin-top:6px;font-size:10px;color:rgba(245,241,232,.45)}
 </style>
 </head>
 <body>
@@ -737,11 +752,46 @@ body,td{font-size:14px}
       <div class="slideno">29</div>
     </section>
 
+    <!-- 30 PICTURE PROOF -->
+    <section class="slide">
+      <div class="pad">
+        <div class="eyebrow">Picture proof — old vs new</div>
+        <h2>Same screenshots. Arrows on the exact mistakes.</h2>
+        <div class="pics">
+          <div class="pic bad"><img src="media/compare/old-top.png" alt="Old site top" loading="lazy"><span>Old · first screen</span></div>
+          <div class="pic good"><img src="media/compare/new-hero.png" alt="New site hero" loading="lazy"><span>New · first screen</span></div>
+          <div class="pic bad"><img src="media/compare/old-grid.png" alt="Old divisions grid" loading="lazy"><span>Old · divisions (4 vs 5)</span></div>
+          <div class="pic good"><img src="media/compare/new-div.png" alt="New divisions tab" loading="lazy"><span>New · divisions tab</span></div>
+        </div>
+        <div class="piclink">Full annotated walkthrough with measured arrows → <a href="aa-old-vs-new.html">aa-old-vs-new.html</a> · Live: <a href="https://parth9383-gif.github.io/aa-group-hub/" target="_blank" rel="noopener noreferrer">parth9383-gif.github.io/aa-group-hub</a></div>
+      </div>
+      <div class="slideno">30</div>
+    </section>
+
+    <!-- 31 ROADMAP -->
+    <section class="slide dark">
+      <div class="pad">
+        <div class="eyebrow">Aage aur behtar</div>
+        <h2>Seven forward steps — every arrow is a move up.</h2>
+        <div class="road">
+          <div class="rstep"><b>1 · Access</b><p>GSC + GA4 + GBP + social admin — real baseline.</p><small>proof se shuru</small></div>
+          <div class="rstep"><b>2 · Domain</b><p>Real domain + DNS + master OG image.</p><small>har share branded</small></div>
+          <div class="rstep"><b>3 · Trust</b><p>Testimonials, hero clips, Atiq-approved book quotes.</p><small>sirf approved lines</small></div>
+          <div class="rstep"><b>4 · Community</b><p>Giving-Back strip + holidays calendar + multilingual.</p><small>UR/HI/PA/AR reviewer</small></div>
+          <div class="rstep"><b>5 · Tooling</b><p>Presence-Scan + live rank tracker + auto monthly report.</p><small>proof-of-work</small></div>
+          <div class="rstep"><b>6 · Search layers</b><p>FAQ expansion, local pages, llms.txt for AI engines.</p><small>AEO/GEO/AI</small></div>
+          <div class="rstep"><b>7 · Paid</b><p>Ads switch on only after free baselines prove conversion.</p><small>no blind spend</small></div>
+        </div>
+      </div>
+      <div class="slideno">31</div>
+    </section>
+
+
   </div>
 
   <div class="controls">
     <button id="prev" aria-label="Previous slide">←</button>
-    <span class="counter" id="counter">1 / 29</span>
+    <span class="counter" id="counter">1 / 31</span>
     <button id="next" aria-label="Next slide">→</button>
     <div class="dots" id="dots"></div>
   </div>

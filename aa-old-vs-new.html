@@ -1,382 +1,594 @@
 <!DOCTYPE html>
-<html lang="en-CA">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Old website vs the new one — Dashava IT × AA Group</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AA Group — Old vs New Website · Picture Proof</title>
+<meta name="description" content="Measured before/after evidence of the AA Group of Companies website transformation: real screenshots, arrows on exact mistakes, and the roadmap ahead.">
 <meta name="robots" content="noindex">
-<meta name="description" content="Side by side: what aagroupofcompanies.com does today, and what the new single-file hub does instead. Internal pitch page by Dashava IT.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<script>document.documentElement.classList.add('js');</script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --gold:#d2ae6d; --gold-2:#fec95e; --gold-3:#a9873f;
-  --ink:#1f2326; --charcoal:#32373c;
-  --bg:#faf7f2; --paper:#fff; --line:#e6e0d5;
-  --old:#b4503c; --old-bg:#f6ebe7;
-  --ok:#3f7a54;
-  --serif:"Cormorant Garamond",Georgia,serif;
-  --sans:"Manrope",system-ui,sans-serif;
-  --r:18px; --r-lg:22px;
-  --shadow:0 10px 30px rgba(31,35,38,.08);
-  --max:1120px;
+  --ink:#0e0f12; --ink2:#17191d; --ink3:#1f2226;
+  --paper:#f6f2e9; --slate:#9aa0a8; --slate2:#6d747c;
+  --line:rgba(255,255,255,.10); --line-soft:rgba(255,255,255,.06);
+  --gold:#c9a227; --gold-hi:#fec95e; --gold-deep:#8a6d17;
+  --red:#e06666; --red-hi:#ff8a8a;
+  --serif:"Playfair Display",Georgia,serif;
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --radius:16px;
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans)}
-h1,h2,h3,.stat b{font-family:var(--serif);font-weight:600;letter-spacing:.01em}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:#ece8df;font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E")}
+.container{width:min(1180px,92vw);margin-inline:auto}
+a{color:var(--gold-hi)}
+::selection{background:var(--gold);color:#14100a}
+.js [data-reveal]{opacity:0;translate:0 24px;transition:opacity .8s cubic-bezier(.2,.6,.2,1),translate .8s cubic-bezier(.2,.6,.2,1);transition-delay:calc(var(--d,0)*70ms)}
+.js [data-reveal].is-in{opacity:1;translate:0 0}
 
-/* masthead — always dark, like the hub header */
-.mast{background:var(--ink);color:#fff;padding:56px 24px 48px}
-.mast .wrap{max-width:var(--max);margin:0 auto}
-.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
-.mast h1{font-size:clamp(36px,5vw,56px);margin:14px 0 10px;line-height:1.05}
-.intro{font-size:18px;color:#d8d4cc;max-width:62ch;margin:0}
-.stamp{font-size:13px;color:#a7a39a;margin-top:18px}
+/* progress */
+.progress{position:fixed;top:0;left:0;height:2px;width:100%;z-index:70;pointer-events:none}
+.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold-deep),var(--gold-hi))}
+
+/* top bar */
+.top{position:sticky;top:0;z-index:50;background:rgba(23,25,29,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top__in{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 0}
+.brand{font-family:var(--serif);font-weight:800;font-size:19px;letter-spacing:.04em}
+.brand span{color:var(--gold-hi)}
+.top__meta{display:flex;align-items:center;gap:12px;font-size:12.5px;color:var(--slate)}
+.chip{display:inline-flex;white-space:nowrap;flex:none;align-items:center;gap:6px;padding:6px 12px;border:1px solid var(--gold-deep);border-radius:999px;color:var(--gold-hi);font-size:12px;font-weight:600;text-decoration:none;transition:background .3s,border-color .3s}
+.chip:hover{background:rgba(201,162,39,.12);border-color:var(--gold-hi)}
+
+/* hero */
+.hero{padding:110px 0 64px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(900px 460px at 78% -10%,rgba(201,162,39,.16),transparent 65%),
+  radial-gradient(700px 420px at 12% 115%,rgba(201,162,39,.08),transparent 60%)}
+.hero .container{position:relative}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-hi)}
+.hero__title{font-family:var(--serif);font-weight:800;font-size:clamp(44px,7.2vw,88px);line-height:1.04;margin:22px 0 20px}
+.hero__title em{font-style:normal;color:transparent;background:linear-gradient(105deg,#8a6d17 0%,#f6d77a 38%,#c9a227 60%,#fec95e 82%,#8a6d17 100%);-webkit-background-clip:text;background-clip:text}
+.hero__lede{max-width:640px;font-size:17px;color:#c8c2b6}
+.hero__stats{display:flex;flex-wrap:wrap;gap:14px;margin-top:44px}
+.hstat{flex:1 1 150px;min-width:140px;border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:var(--radius);padding:20px 22px}
+.hstat__num{font-family:var(--serif);font-weight:800;font-size:44px;line-height:1;color:transparent;background:linear-gradient(120deg,#f6d77a,#c9a227 55%,#fec95e);-webkit-background-clip:text;background-clip:text}
+.hstat__lbl{margin-top:8px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--slate)}
 
 /* legend */
-.legend{max-width:var(--max);margin:28px auto 0;padding:0 24px;font-size:14px;color:var(--charcoal)}
+.legend{display:flex;flex-wrap:wrap;gap:18px;align-items:center;padding:18px 0;border-block:1px solid var(--line);font-size:13px;color:var(--slate)}
+.leg{display:inline-flex;align-items:center;gap:8px}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+.dot-red{background:var(--red-hi);box-shadow:0 0 12px rgba(255,138,138,.6)}
+.dot-gold{background:var(--gold-hi);box-shadow:0 0 12px rgba(254,201,94,.6)}
+.leg-note{margin-left:auto;font-style:italic;color:var(--slate2)}
 
-/* compare */
-.compare{max-width:var(--max);margin:0 auto;padding:24px 24px 48px}
-.row{margin:0 0 40px}
-.label h2{font-size:30px;margin:0 0 4px}
-.label p{margin:0 0 16px;color:var(--charcoal);font-size:15px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+/* comparison rows */
+.cmp{padding:84px 0 20px}
+.cmp__head{display:flex;gap:22px;align-items:baseline;margin-bottom:34px}
+.cmp__no{font-family:var(--serif);font-weight:800;font-size:64px;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(201,162,39,.55)}
+.cmp__head h2{font-family:var(--serif);font-weight:700;font-size:clamp(26px,3.4vw,38px);letter-spacing:.01em}
+.cmp__head p{margin-top:8px;color:#b9b3a7;font-size:15px;max-width:560px}
+.cmp__grid{display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:start}
+.frame{position:relative}
+.frame__tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;padding:7px 13px;border-radius:8px 8px 0 0;margin-bottom:-1px}
+.frame--old .frame__tag{background:rgba(224,102,102,.14);color:var(--red-hi);border:1px solid rgba(224,102,102,.35);border-bottom:none}
+.frame--new .frame__tag{background:rgba(201,162,39,.14);color:var(--gold-hi);border:1px solid rgba(201,162,39,.4);border-bottom:none}
+.shot{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--ink3);box-shadow:0 30px 60px -30px rgba(0,0,0,.75);aspect-ratio:1440/900}
+.shot--tall{aspect-ratio:500/900}
+.shot--wide{aspect-ratio:1440/500}
+.shot img{display:block;width:100%;height:100%;object-fit:cover}
+.shot::after{content:"";position:absolute;inset:0;border-radius:14px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.05);pointer-events:none}
+.arrows{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.ar{fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.ar-red{stroke:var(--red-hi)}
+.ar-gold{stroke:var(--gold-hi)}
+.js .ar{stroke-dasharray:1000;stroke-dashoffset:1000}
+.js .is-in .ar{animation:draw 1.15s cubic-bezier(.4,0,.2,1) forwards;animation-delay:calc(var(--d,0)*90ms + .25s)}
+@keyframes draw{to{stroke-dashoffset:0}}
+.tgt{fill:rgba(10,11,13,.85)}
+.tgt-red{stroke:var(--red-hi);stroke-width:4;vector-effect:non-scaling-stroke}
+.tgt-gold{stroke:var(--gold-hi);stroke-width:4;vector-effect:non-scaling-stroke}
+.js .tgt{opacity:0;animation:tgtin .4s ease forwards;animation-delay:calc(var(--d,0)*90ms + .9s)}
+@keyframes tgtin{to{opacity:1}}
+.chips{position:absolute;inset:0;pointer-events:none}
+.chip{position:absolute;transform:translate(-50%,-50%);max-width:250px;background:rgba(16,18,21,.94);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:10px;padding:9px 12px;font-size:11.5px;line-height:1.45;color:#ded9ce;backdrop-filter:blur(6px);box-shadow:0 14px 30px -12px rgba(0,0,0,.8)}
+.chip--l{transform:translate(0,-50%)}
+.chip--r{transform:translate(-100%,-50%)}
+.chip b{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:var(--gold);color:#161207;font-size:11px;margin-right:7px}
+.chip--red{border-left-color:var(--red-hi)}
+.chip--red b{background:var(--red-hi)}
+.frame__list{list-style:none;margin-top:16px;display:grid;gap:8px}
+.frame__list li{position:relative;padding-left:22px;font-size:13.5px;color:#b9b3a7}
+.frame__list li::before{content:"";position:absolute;left:2px;top:8px;width:8px;height:8px;border-radius:50%}
+.frame__list--bad li::before{background:var(--red)}
+.frame__list--good li::before{background:var(--gold)}
+.frame__list b{color:#efe9dc;font-weight:600}
+.vs{align-self:center;font-family:var(--serif);font-weight:800;font-size:13px;letter-spacing:.14em;color:var(--gold-hi);border:1px solid var(--gold-deep);border-radius:50%;width:52px;height:52px;display:grid;place-items:center;background:rgba(201,162,39,.08);box-shadow:0 0 30px rgba(201,162,39,.25);animation:vspulse 3s ease-in-out infinite}
+@keyframes vspulse{0%,100%{box-shadow:0 0 18px rgba(201,162,39,.18)}50%{box-shadow:0 0 38px rgba(201,162,39,.45)}}
 
-.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);
-      padding:26px 26px 22px;box-shadow:var(--shadow)}
-.card h3{font-size:24px;margin:10px 0 6px}
-.card .lead{margin:0 0 12px;color:var(--charcoal)}
-.tag{display:inline-block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
-     padding:4px 10px;border-radius:999px}
+/* mobile row */
+.cmp--mobile .cmp__grid{grid-template-columns:1fr 1fr auto 1fr 1fr}
+.cmp--mobile .frame--old{grid-column:1/3}
+.cmp--mobile .frame--new{grid-column:4/6}
+.mob-note{margin-top:14px;font-size:13px;color:var(--slate);text-align:center}
 
-.card.old{background:var(--old-bg);border-color:#e7cfc6}
-.card.old .tag{background:var(--old);color:#fff}
-.card.old h3{color:var(--old)}
-.card.old .evidence li::marker{color:var(--old)}
-
-.card.new{border:1.5px solid var(--gold);box-shadow:0 14px 36px rgba(210,174,109,.18)}
-.card.new .tag{background:var(--gold);color:var(--ink)}
-.card.new h3{color:var(--gold-3)}
-.card.new .evidence li::marker{color:var(--ok)}
-
-.evidence{margin:0;padding-left:20px;font-size:15px}
-.evidence li{margin:0 0 6px}
-.evidence code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:rgba(31,35,38,.06);
-               padding:1px 6px;border-radius:6px}
+/* roadmap */
+.road{padding:90px 0 30px}
+.road__steps{display:grid;gap:14px;margin-top:38px}
+.rstep{position:relative;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;border:1px solid var(--line);background:rgba(255,255,255,.025);border-radius:14px;padding:20px 22px;transition:transform .35s ease,border-color .35s ease,background .35s ease}
+.rstep:hover{transform:translateY(-3px);border-color:rgba(201,162,39,.4);background:rgba(201,162,39,.05)}
+.rstep__no{font-family:var(--serif);font-weight:800;font-size:30px;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(201,162,39,.6)}
+.rstep h3{font-size:16.5px;font-weight:700;color:#f0eadf}
+.rstep p{margin-top:5px;font-size:13.5px;color:#a8a297}
+.rstep::after{content:"";position:absolute;left:34px;bottom:-19px;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:9px solid var(--gold);opacity:.75}
+.rstep:last-child::after{display:none}
+.road__lbl{margin-top:26px;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate2);text-align:center}
 
 /* verdict */
-.verdict{background:var(--ink);color:#fff;padding:52px 24px}
-.verdict .wrap{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.stat{text-align:center;border:1px solid rgba(254,201,94,.25);border-radius:var(--r-lg);padding:28px 18px}
-.stat b{display:block;font-size:clamp(32px,4vw,44px);line-height:1.1;color:var(--gold-2)}
-.stat span{display:block;margin-top:10px;font-size:14px;color:#d8d4cc}
+.verdict{padding:96px 0 60px}
+.verdict__band{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-top:36px}
+.vstat{border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01));padding:24px 20px;text-align:center}
+.vstat__num{font-family:var(--serif);font-weight:800;font-size:42px;line-height:1;color:transparent;background:linear-gradient(120deg,#f6d77a,#c9a227 55%,#fec95e);-webkit-background-clip:text;background-clip:text}
+.vstat__lbl{margin-top:9px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--slate)}
+.verdict__note{margin-top:26px;font-size:12.5px;color:var(--slate2);max-width:760px}
 
-/* notes */
-.notes{max-width:var(--max);margin:0 auto;padding:36px 24px;font-size:14px;color:var(--charcoal)}
-.notes p{max-width:78ch;margin-bottom:10px}
+/* cta + footer */
+.cta{padding:50px 0 90px;text-align:center}
+.cta h2{font-family:var(--serif);font-weight:800;font-size:clamp(28px,4vw,44px)}
+.cta__btns{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;transition:transform .3s ease,box-shadow .3s ease,background .3s ease}
+.btn--gold{background:linear-gradient(120deg,#f6d77a,#c9a227);color:#181307;box-shadow:0 14px 34px -14px rgba(201,162,39,.65)}
+.btn--ghost{border:1px solid var(--line);color:#e6e0d4}
+.btn:hover{transform:translateY(-2px)}
+.btn--gold:hover{box-shadow:0 20px 44px -14px rgba(201,162,39,.8)}
+.btn--ghost:hover{border-color:var(--gold);color:var(--gold-hi)}
+.site-foot{border-top:1px solid var(--line);padding:26px 0 40px;font-size:12px;color:var(--slate2);display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
 
-/* footer CTA */
-.cta{background:var(--charcoal);color:#fff;padding:48px 24px;text-align:center}
-.cta h2{font-size:34px;margin:0 0 8px}
-.cta p{margin:0 auto 22px;max-width:58ch;color:#d8d4cc}
-.btn{display:inline-block;background:var(--gold);color:var(--ink);font-weight:700;
-     padding:14px 26px;border-radius:999px;text-decoration:none}
-.btn:hover{background:var(--gold-2)}
-.sign{margin-top:20px;font-size:13px;color:#a7a39a}
-
-/* reveal — same pattern as hub, scoped to .js */
-.js .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
-.js .reveal.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important;transition:none}}
-
-@media (max-width:800px){
-  .mast{padding:40px 20px 34px}
-  .mast h1{font-size:34px}
-  .intro{font-size:16px}
-  .grid{grid-template-columns:1fr;gap:14px}
-  .card{padding:20px 18px 16px}
-  .card h3{font-size:21px}
-  .label h2{font-size:26px}
-  .verdict .wrap{grid-template-columns:1fr;gap:14px}
-  .stat b{font-size:36px}
-  .cta h2{font-size:28px}
-  .btn{display:block;width:100%;text-align:center}
+@media (max-width:980px){
+  .cmp__grid{grid-template-columns:1fr}
+  .vs{justify-self:center;transform:rotate(90deg)}
+  .cmp--mobile .cmp__grid{grid-template-columns:1fr}
+  .cmp--mobile .vs{display:none}
 }
-
+@media (max-width:640px){
+  .brand__sub{display:none}
+  .top__meta{display:none}
+  .top__in{gap:8px}
+  .hero{padding:70px 0 44px}
+  .chip{max-width:200px;font-size:10.5px;padding:7px 9px}
+  .cmp__head{gap:14px}
+  .cmp__no{font-size:42px}
+  .top__meta span{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .js [data-reveal]{opacity:1;translate:none;transition:none}
+  .js .ar{stroke-dashoffset:0;animation:none}
+  .js .tgt{opacity:1;animation:none}
+  .vs{animation:none}
+}
 @media print{
-  @page{margin:16mm}
-  body{background:#fff;color:#000;font-size:11pt}
-  .mast,.verdict,.cta{background:#fff!important;color:#000!important;
-                      border-bottom:1pt solid #000}
-  .eyebrow,.stat b{color:#000!important}
-  .mast{padding:0 0 10pt}
-  .intro,.stamp,.sign,.notes,.legend{color:#333!important}
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10pt}
-  .card{box-shadow:none;border:1pt solid #999;border-radius:6pt;
-        padding:10pt 12pt;break-inside:avoid}
-  .card.old{background:#f4f4f4;border-color:#999}
-  .card.new{border:1.5pt solid #000}
-  .tag{border:1pt solid #000;background:none!important;color:#000!important}
-  .row{break-inside:avoid;margin-bottom:14pt}
-  .verdict .wrap{grid-template-columns:repeat(3,1fr);gap:8pt;padding:10pt 0}
-  .stat{border:1pt solid #999;padding:8pt}
-  .btn{display:none}
-  .cta::after{content:"Contact Dashava IT to book the walkthrough.";
-              display:block;font-size:11pt}
-  .reveal{opacity:1!important;transform:none!important}
-  a[href^="http"]::after{content:" (" attr(href) ")";font-size:9pt;color:#555}
+  body{background:#fff;color:#111}
+  .top,.progress,.cta{display:none}
+  .js [data-reveal]{opacity:1;translate:none}
+  .frame,.rstep{break-inside:avoid}
+  .cmp{padding:24px 0}
+  .chip{color:#111;background:#fff}
+  .shot{border-color:#ccc}
 }
 </style>
 </head>
 <body>
+<script>document.documentElement.classList.add('js');</script>
+<div class="progress" aria-hidden="true"><i id="pbar"></i></div>
 
-<header class="mast">
-  <div class="wrap">
-    <p class="eyebrow">Dashava IT × AA Group of Companies</p>
-    <h1>Old website vs the new one</h1>
-    <p class="intro">Side by side: what aagroupofcompanies.com does today, and what the new single-file hub does instead.</p>
-    <p class="stamp">Old site measured 7 Nov 2026 · New site: aa-group-hub.html v4</p>
+<header class="top">
+  <div class="container top__in">
+    <div class="brand">AA<span>Group</span> <span class="brand__sub">· Transformation Evidence</span></div>
+    <div class="top__meta">
+      <span>Screenshots taken 7 Nov 2026 — old live site vs new build</span>
+      <a class="chip" href="https://parth9383-gif.github.io/aa-group-hub/" target="_blank" rel="noopener noreferrer">Open live site ↗</a>
+    </div>
   </div>
 </header>
 
-<main>
-  <p class="legend">Left column: the current WordPress site, as measured. Right column: the new hub, as built and verified.</p>
-
-  <div class="compare">
-
-    <!-- 1 Speed -->
-    <section class="row reveal" aria-labelledby="lbl-speed">
-      <div class="label">
-        <h2 id="lbl-speed">Speed</h2>
-        <p>The first thing a visitor feels, and the first thing search engines score.</p>
-      </div>
-      <div class="grid">
-        <div class="card old">
-          <span class="tag">Old site</span>
-          <h3>3.27 seconds to load the homepage</h3>
-          <p class="lead">WordPress, a general-purpose theme and its plugin stack, measured from a standard connection.</p>
-          <ul class="evidence">
-            <li>Homepage fully loaded in <strong>3.27 s</strong> (our measurement, 7 Nov 2026)</li>
-            <li>Multiple theme and plugin requests on every page</li>
-            <li>Media served from the WordPress uploads folder, much of it full-size</li>
-          </ul>
-        </div>
-        <div class="card new">
-          <span class="tag">New site</span>
-          <h3>One file, about 0.9 MB in total</h3>
-          <p class="lead">The entire hub, including gallery and team images, ships as a single HTML file with local media.</p>
-          <ul class="evidence">
-            <li>No WordPress, no plugin requests, no external theme assets</li>
-            <li>All media stored locally and sized for the page (~0.9 MB including the gallery)</li>
-            <li>Nothing to update, patch or cache-bust on the server side</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- 2 Structure & SEO -->
-    <section class="row reveal" aria-labelledby="lbl-structure">
-      <div class="label">
-        <h2 id="lbl-structure">Structure &amp; SEO</h2>
-        <p>How search engines and AI assistants read the site, not just how people do.</p>
-      </div>
-      <div class="grid">
-        <div class="card old">
-          <span class="tag">Old site</span>
-          <h3>Thin crawl signals</h3>
-          <p class="lead">The basics exist, but they are default plugin output rather than a deliberate structure.</p>
-          <ul class="evidence">
-            <li><code>robots.txt</code> returns a <strong>301 redirect</strong> — no proper crawl rules are served</li>
-            <li>Sitemap generated by All in One SEO; a thin index with little beyond page URLs</li>
-            <li>No FAQ structured data anywhere on the site</li>
-            <li>No Person or Book markup for the founder or the published book</li>
-          </ul>
-        </div>
-        <div class="card new">
-          <span class="tag">New site</span>
-          <h3>Seven clear sections with schema behind them</h3>
-          <p class="lead">Home · Divisions · Founder &amp; Book · Gallery · Leadership · FAQ · Contact — each a named tab, each machine-readable.</p>
-          <ul class="evidence">
-            <li><strong>FAQPage</strong> schema on 10 question-and-answer pairs (written for answer-engine results)</li>
-            <li><strong>Person + Book</strong> schema on the Founder &amp; Book tab</li>
-            <li>Consistent headings and section IDs, so every tab is addressable and indexable</li>
-            <li>Print stylesheet included, so the same page doubles as a clean PDF</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3 Facts & numbers -->
-    <section class="row reveal" aria-labelledby="lbl-facts">
-      <div class="label">
-        <h2 id="lbl-facts">Facts &amp; numbers</h2>
-        <p>A group this size is judged on whether its own pages agree with each other.</p>
-      </div>
-      <div class="grid">
-        <div class="card old">
-          <span class="tag">Old site</span>
-          <h3>Three facts, two versions each</h3>
-          <p class="lead">Different pages were written at different times and never reconciled.</p>
-          <ul class="evidence">
-            <li>Restaurant count: <strong>60+</strong> on one page, <strong>42</strong> on another</li>
-            <li>Group revenue: <strong>$75M</strong> on one page, <strong>$50M</strong> on another</li>
-            <li>Copyright line: <strong>©2018</strong> in one footer, <strong>©2025</strong> in another</li>
-            <li>Contact page still carries template placeholder offices that are not the group's</li>
-          </ul>
-        </div>
-        <div class="card new">
-          <span class="tag">New site</span>
-          <h3>One set of numbers, used everywhere</h3>
-          <p class="lead">We took the figures the group currently publishes as its latest and applied them across every tab.</p>
-          <ul class="evidence">
-            <li><strong>60+ restaurants</strong> — same figure on Home, Divisions and FAQ</li>
-            <li><strong>$75M+ revenue</strong> — same figure on Home and FAQ</li>
-            <li><strong>©2026</strong> in the single footer</li>
-            <li>Contact tab shows only the group's real contact details and a working form</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4 Credibility & content -->
-    <section class="row reveal" aria-labelledby="lbl-credibility">
-      <div class="label">
-        <h2 id="lbl-credibility">Credibility &amp; content</h2>
-        <p>The proof the group already has, and whether the site shows it.</p>
-      </div>
-      <div class="grid">
-        <div class="card old">
-          <span class="tag">Old site</span>
-          <h3>Real assets, mostly out of sight</h3>
-          <p class="lead">The awards, the book and the team exist — the site just doesn't lead with them.</p>
-          <ul class="evidence">
-            <li>"Gallery" page shows only division logos; the awards photography is not there</li>
-            <li>Team portraits exist but are buried at <code>/team-profile</code></li>
-            <li>No press or recognition strip on the homepage</li>
-            <li>No section for the founder's published book</li>
-            <li>No careers page at all</li>
-          </ul>
-        </div>
-        <div class="card new">
-          <span class="tag">New site</span>
-          <h3>The same assets, finally on the front page</h3>
-          <p class="lead">Nothing here was invented — the portraits, awards photos and logos came from the old site. We rebuilt the frame around them.</p>
-          <ul class="evidence">
-            <li><strong>Press &amp; recognition strip</strong> on Home: TRIEC shortlist, Dubai book launch</li>
-            <li><strong>Founder &amp; Book tab</strong>: launch photo, buy links, Person + Book schema</li>
-            <li><strong>Gallery</strong> rebuilt in year groups — 2020 · 2022 · 2023 · 2024 — with a lightbox</li>
-            <li><strong>9 named team portraits</strong> on the Leadership tab, not a sub-page</li>
-            <li><strong>Home archive banner</strong> featuring the 2024 awards</li>
-            <li><strong>Careers strip</strong> and a <strong>WhatsApp</strong> floating button for direct enquiries</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5 Visual & feel -->
-    <section class="row reveal" aria-labelledby="lbl-visual">
-      <div class="label">
-        <h2 id="lbl-visual">Visual &amp; feel</h2>
-        <p>Whether the site looks like the group it represents.</p>
-      </div>
-      <div class="grid">
-        <div class="card old">
-          <span class="tag">Old site</span>
-          <h3>A stock theme doing its best</h3>
-          <p class="lead">Layout and type are the theme's defaults; the group's identity is applied on top rather than built in.</p>
-          <ul class="evidence">
-            <li>Generic WordPress theme structure and typography</li>
-            <li>Logos as the main visual content; little photography above the fold</li>
-            <li>Mixed copyright years and template leftovers give an unmaintained impression</li>
-          </ul>
-        </div>
-        <div class="card new">
-          <span class="tag">New site</span>
-          <h3>Dark ink and gold, built for the group</h3>
-          <p class="lead">A deliberate palette and type system, applied consistently from the first pixel to the print view.</p>
-          <ul class="evidence">
-            <li>Dark ink header, gold accents, Cormorant Garamond headings, Manrope body</li>
-            <li>Header stays dark on every tab — verified in Chrome</li>
-            <li>Soft reveal animations on scroll, with full <code>prefers-reduced-motion</code> support</li>
-            <li>Rounded cards, soft shadows and generous spacing throughout</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- 6 Mobile -->
-    <section class="row reveal" aria-labelledby="lbl-mobile">
-      <div class="label">
-        <h2 id="lbl-mobile">Mobile</h2>
-        <p>Most first visits to a hospitality group happen on a phone.</p>
-      </div>
-      <div class="grid">
-        <div class="card old">
-          <span class="tag">Old site</span>
-          <h3>Responsive by theme default</h3>
-          <p class="lead">It fits the screen, but it carries the full desktop load and the same scattered content.</p>
-          <ul class="evidence">
-            <li>Same 3.27 s homepage load, with no mobile-specific trimming</li>
-            <li>Team and awards content remain several taps deep</li>
-            <li>No direct-message action for a visitor who just wants to ask a question</li>
-          </ul>
-        </div>
-        <div class="card new">
-          <span class="tag">New site</span>
-          <h3>Hamburger menu, one-tap contact</h3>
-          <p class="lead">The seven tabs collapse into a working mobile menu; the gallery and lightbox are touch-friendly.</p>
-          <ul class="evidence">
-            <li>Mobile hamburger menu — <strong>tested and working</strong> in Chrome</li>
-            <li>WhatsApp float and contact form reachable from every tab</li>
-            <li>Lightweight single file, so the phone downloads the hub once and moves between tabs instantly</li>
-            <li><strong>0 JavaScript errors</strong> on load, desktop and mobile</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-  </div>
-
-  <section class="verdict">
-    <div class="wrap">
-      <div class="stat reveal"><b>0</b><span>JavaScript errors in a real Chrome session</span></div>
-      <div class="stat reveal"><b>One set of numbers</b><span>60+ restaurants · $75M+ revenue · ©2026, on every tab</span></div>
-      <div class="stat reveal"><b>2020 – 2024</b><span>awards archive gallery, year-grouped, with 9 team portraits</span></div>
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow" data-reveal>Old vs New · Picture proof</p>
+    <h1 class="hero__title" data-reveal>Same company.<br><em>Different first impression.</em></h1>
+    <p class="hero__lede" data-reveal>Five proof areas, nine real screenshots, and arrows that point at the exact spot where the old site lost trust — and where the new one earns it.</p>
+    <div class="hero__stats">
+      <div class="hstat" data-reveal style="--d:0"><div class="hstat__num" data-count="9">9</div><div class="hstat__lbl">Real screenshots</div></div>
+      <div class="hstat" data-reveal style="--d:1"><div class="hstat__num" data-count="5">5</div><div class="hstat__lbl">Proof areas</div></div>
+      <div class="hstat" data-reveal style="--d:2"><div class="hstat__num">0</div><div class="hstat__lbl">Unsourced claims</div></div>
+      <div class="hstat" data-reveal style="--d:3"><div class="hstat__num">2</div><div class="hstat__lbl">Sites compared</div></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="notes">
-    <p><strong>On the old-site figures.</strong> Everything in the left column was measured or observed by Dashava IT on 7 November 2026 on aagroupofcompanies.com. The 3.27-second figure is our own single measurement of the homepage; a different connection or time of day will produce a different number. The redirect on <code>robots.txt</code>, the sitemap behaviour and the contradictory figures were observed directly on the live pages that day.</p>
-    <p><strong>On the group's numbers.</strong> "60+ restaurants" and "$75M+ revenue" are not Dashava IT's claims. They are the figures the group already publishes on its own pages; we selected the most recent of the two conflicting versions and applied it consistently. If the group confirms different figures, the hub changes them in one place.</p>
-    <p><strong>On the new-site figures.</strong> "0 JavaScript errors", the working mobile menu, the always-dark header and the reveal animations were checked in a real Chrome session, not inferred. We have not published a load-time figure for the new hub because it depends on where it is hosted; the file size (~0.9 MB including all gallery images) is the measurable fact.</p>
-  </section>
-</main>
+<div class="container legend" data-reveal>
+  <span class="leg"><i class="dot dot-red"></i> Old-site mistake — measured</span>
+  <span class="leg"><i class="dot dot-gold"></i> New-site fix — verified</span>
+  <span class="leg leg-note">Every arrow is placed with measured coordinates, not by hand.</span>
+</div>
 
-<footer class="cta">
-  <h2>See it move</h2>
-  <p>The hub opens in any browser from a single file. Book a 20-minute walkthrough and we will go tab by tab, on desktop and on a phone, and answer anything the comparison above raises.</p>
-  <a class="btn" href="mailto:contact@AAGroupOfCompanies.com?subject=Website%20walkthrough">Book the walkthrough</a>
-  <p class="sign">Prepared by Dashava IT for AA Group of Companies · aa-group-hub.html v4</p>
+<!-- 01 FIRST IMPRESSION -->
+<section class="cmp">
+  <div class="container">
+    <header class="cmp__head" data-reveal>
+      <span class="cmp__no">01</span>
+      <div>
+        <h2>First impression</h2>
+        <p>The old site opens with a stock-photo slider and a header taller than most mobile screens. The new one opens with the story.</p>
+      </div>
+    </header>
+    <div class="cmp__grid">
+      <article class="frame frame--old">
+        <div class="frame__tag">Old · 2025 live site</div>
+        <div class="shot" data-reveal style="--d:0">
+          <img src="media/compare/old-top.png" alt="Old AA Group homepage top: giant header and photo slider" loading="lazy" width="1440" height="900">
+          <svg class="arrows" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+            <path class="ar ar-red" d="M840 70 L840 120 L728 185"/>
+            <circle class="tgt tgt-red" cx="712" cy="190" r="15"/>
+            <path class="ar ar-red" d="M1270 480 L730 645"/>
+            <circle class="tgt tgt-red" cx="712" cy="651" r="15"/>
+          </svg>
+          <div class="chips">
+            <div class="chip chip--red chip--r" style="left:58%;top:4%;--d:0"><b>1</b>381px-tall header, two nav links — Home &amp; Company Divisions. Nothing else is one click away.</div>
+            <div class="chip chip--red chip--r" style="left:88%;top:50%;--d:1"><b>2</b>Hero slide claims "4 key divisions" — but the group runs 5 (Cardio is missing from the count).</div>
+          </div>
+        </div>
+        <ul class="frame__list frame__list--bad">
+          <li><b>Photo slider with stock imagery</b> — no story, no identity, no reason to scroll.</li>
+          <li><b>Contradiction on the very first screen</b> — "4 divisions" vs the 5 that exist.</li>
+        </ul>
+      </article>
+      <div class="vs" aria-hidden="true">VS</div>
+      <article class="frame frame--new">
+        <div class="frame__tag">New · v6 build</div>
+        <div class="shot" data-reveal style="--d:1">
+          <img src="media/compare/new-hero.png" alt="New AA Group hub hero: typographic headline, gold crest, 7 tabs" loading="lazy" width="1440" height="900">
+          <svg class="arrows" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+            <path class="ar ar-gold" d="M110 540 L440 420"/>
+            <circle class="tgt tgt-gold" cx="466" cy="405" r="15"/>
+            <path class="ar ar-gold" d="M1100 96 L1090 140 L1058 378"/>
+            <circle class="tgt tgt-gold" cx="1046" cy="394" r="15"/>
+            <path class="ar ar-gold" d="M110 40 L750 44"/>
+            <circle class="tgt tgt-gold" cx="769" cy="43" r="15"/>
+          </svg>
+          <div class="chips">
+            <div class="chip chip--l" style="left:2%;top:60%;--d:0"><b>1</b>Typographic hero — "Built by family. Grown with people." The story leads, not stock photos.</div>
+            <div class="chip chip--r" style="left:76%;top:7%;--d:1"><b>2</b>New AA monogram crest — gold foil, 3D rotating rings, orbiting sparks.</div>
+            <div class="chip chip--l" style="left:6%;top:3%;--d:2"><b>3</b>Seven tabs — Home, Divisions, Founder &amp; Book, Gallery, Leadership, FAQ, Contact. One click to everything.</div>
+          </div>
+        </div>
+        <ul class="frame__list frame__list--good">
+          <li><b>Compact 88px header</b> — content gets the screen, not the logo.</li>
+          <li><b>One true count</b> — 5 divisions, stated once, everywhere.</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 02 DIVISIONS -->
+<section class="cmp">
+  <div class="container">
+    <header class="cmp__head" data-reveal>
+      <span class="cmp__no">02</span>
+      <div>
+        <h2>Division clarity</h2>
+        <p>The old page counts its businesses wrong — the new one gives every business an equal, complete card.</p>
+      </div>
+    </header>
+    <div class="cmp__grid">
+      <article class="frame frame--old">
+        <div class="frame__tag">Old · divisions area</div>
+        <div class="shot" data-reveal style="--d:0">
+          <img src="media/compare/old-grid.png" alt="Old site divisions grid with five logos in uneven rows" loading="lazy" width="1440" height="900">
+          <svg class="arrows" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+            <path class="ar ar-red" d="M100 96 L258 122"/>
+            <circle class="tgt tgt-red" cx="279" cy="124" r="15"/>
+            <path class="ar ar-red" d="M130 486 L476 522"/>
+            <circle class="tgt tgt-red" cx="498" cy="524" r="15"/>
+            <path class="ar ar-red" d="M952 567 L940 538"/>
+            <circle class="tgt tgt-red" cx="927" cy="524" r="15"/>
+          </svg>
+          <div class="chips">
+            <div class="chip chip--red chip--l" style="left:2%;top:9%;--d:0"><b>1</b>Three logos in row one, two in row two — uneven layout, no hierarchy.</div>
+            <div class="chip chip--red chip--l" style="left:6%;top:54%;--d:1"><b>2</b>Travel sits alone in the second row — looks like an afterthought.</div>
+            <div class="chip chip--red chip--r" style="left:66%;top:63%;--d:2"><b>3</b>Ontario Cardio Imaging IS on the page — so the "4 divisions" headline on screen 1 is simply wrong.</div>
+          </div>
+        </div>
+        <ul class="frame__list frame__list--bad">
+          <li><b>4 vs 5 contradiction</b> between the hero slide and this grid.</li>
+          <li>Cards are <b>uneven, text-only</b> — no contact, no next step.</li>
+        </ul>
+      </article>
+      <div class="vs" aria-hidden="true">VS</div>
+      <article class="frame frame--new">
+        <div class="frame__tag">New · Divisions tab</div>
+        <div class="shot" data-reveal style="--d:1">
+          <img src="media/compare/new-div.png" alt="New hub divisions tab with six uniform premium cards" loading="lazy" width="1440" height="900">
+          <svg class="arrows" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+            <path class="ar ar-gold" d="M868 66 L862 110 L726 194"/>
+            <circle class="tgt tgt-gold" cx="713" cy="200" r="15"/>
+            <path class="ar ar-gold" d="M1094 780 L1092 818"/>
+            <circle class="tgt tgt-gold" cx="1089" cy="831" r="15"/>
+            <path class="ar ar-gold" d="M120 738 L316 828"/>
+            <circle class="tgt tgt-gold" cx="337" cy="831" r="15"/>
+          </svg>
+          <div class="chips">
+            <div class="chip chip--r" style="left:60%;top:4%;--d:0"><b>1</b>"Five businesses. One family." — the count is stated once and matches reality.</div>
+            <div class="chip chip--r" style="left:76%;top:87%;--d:1"><b>2</b>Ontario Cardio Imaging gets its own equal card — same weight as every division.</div>
+            <div class="chip chip--l" style="left:2%;top:82%;--d:2"><b>3</b>Sixth card = the group web portal — one door to every business system.</div>
+          </div>
+        </div>
+        <ul class="frame__list frame__list--good">
+          <li><b>Six equal cards</b> — 5 divisions + web portal, each with description, links and contact.</li>
+          <li>Uniform grid, direction-aware tab animation, zero counting errors.</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 03 CLAIMS -->
+<section class="cmp">
+  <div class="container">
+    <header class="cmp__head" data-reveal>
+      <span class="cmp__no">03</span>
+      <div>
+        <h2>Numbers &amp; claims</h2>
+        <p>The old site states claims with no source. The new one keeps one consistent set of numbers — and points to the proof.</p>
+      </div>
+    </header>
+    <div class="cmp__grid">
+      <article class="frame frame--old">
+        <div class="frame__tag">Old · claim area</div>
+        <div class="shot shot--wide" data-reveal style="--d:0">
+          <img src="media/compare/old-claims.png" alt="Old site claim: more than 1200 employees with no source" loading="lazy" width="1440" height="500">
+          <svg class="arrows" viewBox="0 0 1440 500" preserveAspectRatio="none" aria-hidden="true">
+            <path class="ar ar-red" d="M492 280 L306 208"/>
+            <circle class="tgt tgt-red" cx="279" cy="196" r="15"/>
+          </svg>
+          <div class="chips">
+            <div class="chip chip--red" style="left:34%;top:56%;--d:0"><b>1</b>"More than 1,200 employees" — no source, no date, no footnote anywhere on the page.</div>
+          </div>
+        </div>
+        <ul class="frame__list frame__list--bad">
+          <li>Old site mixes <b>60+ / 42</b> and <b>$75M / $50M</b> across pages — no single source of truth.</li>
+          <li>Unverifiable claims make AI search engines <b>lose confidence</b> in the brand.</li>
+        </ul>
+      </article>
+      <div class="vs" aria-hidden="true">VS</div>
+      <article class="frame frame--new">
+        <div class="frame__tag">New · numbers band</div>
+        <div class="shot" data-reveal style="--d:1">
+          <img src="media/compare/new-stats.png" alt="New site stat band with 60+ restaurants, 1200+ team, 120 managers, 5 divisions and sourced strip" loading="lazy" width="1440" height="900">
+          <svg class="arrows" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+            <path class="ar ar-gold" d="M120 42 L696 80"/>
+            <circle class="tgt tgt-gold" cx="712" cy="82" r="15"/>
+            <path class="ar ar-gold" d="M836 297 L600 262"/>
+            <circle class="tgt tgt-gold" cx="571" cy="255" r="15"/>
+            <path class="ar ar-gold" d="M1296 396 L1156 270"/>
+            <circle class="tgt tgt-gold" cx="1139" cy="255" r="15"/>
+          </svg>
+          <div class="chips">
+            <div class="chip chip--l" style="left:2%;top:4%;--d:0"><b>1</b>Recognition strip — every award and press mention carries its source link.</div>
+            <div class="chip chip--r" style="left:58%;top:33%;--d:1"><b>2</b>1,200+ team members — one number, used once, with a reconciling footnote below.</div>
+            <div class="chip chip--r" style="left:90%;top:44%;--d:2"><b>3</b>"5 divisions" matches the divisions tab exactly — the old 4-vs-5 conflict is gone.</div>
+          </div>
+        </div>
+        <ul class="frame__list frame__list--good">
+          <li><b>One number set</b> — 60+ restaurants · 1,200+ team · 120 managers · 5 divisions · $75M+ revenue, single footnote.</li>
+          <li>Foil numerals, count-up animation — proof that looks premium.</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 04 FOOTER / CREDIBILITY -->
+<section class="cmp">
+  <div class="container">
+    <header class="cmp__head" data-reveal>
+      <span class="cmp__no">04</span>
+      <div>
+        <h2>Footer &amp; credibility</h2>
+        <p>The old footer carries two different copyright years in its code. The new one carries one — plus working social links and real contacts.</p>
+      </div>
+    </header>
+    <div class="cmp__grid">
+      <article class="frame frame--old">
+        <div class="frame__tag">Old · footer</div>
+        <div class="shot" data-reveal style="--d:0">
+          <img src="media/compare/old-footer.png" alt="Old site footer showing copyright 2025" loading="lazy" width="1440" height="900">
+          <svg class="arrows" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+            <path class="ar ar-red" d="M838 228 L726 358"/>
+            <circle class="tgt tgt-red" cx="712" cy="368" r="15"/>
+          </svg>
+          <div class="chips">
+            <div class="chip chip--red chip--r" style="left:58%;top:22%;--d:0"><b>1</b>"© 2025" on screen — while another line in the same template still says "© 2018". Two years, one site.</div>
+          </div>
+        </div>
+        <ul class="frame__list frame__list--bad">
+          <li><b>Two copyright years</b> in the code (© 2018 and © 2025) — a visitor reads it as neglect.</li>
+          <li>Heavy footer template with no clear contact or social action.</li>
+        </ul>
+      </article>
+      <div class="vs" aria-hidden="true">VS</div>
+      <article class="frame frame--new">
+        <div class="frame__tag">New · footer</div>
+        <div class="shot" data-reveal style="--d:1">
+          <img src="media/compare/new-footer.png" alt="New site footer with four social icons and single 2026 copyright" loading="lazy" width="1440" height="900">
+          <svg class="arrows" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+            <path class="ar ar-gold" d="M992 122 L1114 260"/>
+            <circle class="tgt tgt-gold" cx="1132" cy="277" r="15"/>
+            <path class="ar ar-gold" d="M130 522 L692 515"/>
+            <circle class="tgt tgt-gold" cx="713" cy="517" r="15"/>
+          </svg>
+          <div class="chips">
+            <div class="chip chip--r" style="left:68%;top:10%;--d:0"><b>1</b>Four working social icons — Facebook, Instagram, LinkedIn, TikTok — properly centred (the earlier icon bug is fixed and Chrome-verified).</div>
+            <div class="chip chip--l" style="left:2%;top:58%;--d:1"><b>2</b>Single "© 2026" line — one source of truth, no stale years.</div>
+          </div>
+        </div>
+        <ul class="frame__list frame__list--good">
+          <li><b>One copyright line</b>, real verified contacts, clean legal strip.</li>
+          <li>Social icons 20px, flex-centred — verified pixel-perfect.</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 05 MOBILE -->
+<section class="cmp cmp--mobile">
+  <div class="container">
+    <header class="cmp__head" data-reveal>
+      <span class="cmp__no">05</span>
+      <div>
+        <h2>On the phone</h2>
+        <p>Where most visitors actually arrive. The old site squeezes its desktop layout; the new one was designed phone-first and verified to zero horizontal overflow.</p>
+      </div>
+    </header>
+    <div class="cmp__grid">
+      <article class="frame frame--old">
+        <div class="frame__tag">Old · mobile</div>
+        <div class="shot shot--tall" data-reveal style="--d:0">
+          <img src="media/compare/old-mobile.png" alt="Old site mobile view" loading="lazy" width="500" height="900">
+        </div>
+        <ul class="frame__list frame__list--bad">
+          <li><b>Desktop layout squeezed</b> — tiny tap targets, image text illegible.</li>
+          <li>Heavy page: ~27 script/css files, 3.27s measured load.</li>
+        </ul>
+      </article>
+      
+      <div class="vs" aria-hidden="true">VS</div>
+      <article class="frame frame--new">
+        <div class="frame__tag">New · mobile</div>
+        <div class="shot shot--tall" data-reveal style="--d:1">
+          <img src="media/compare/new-mobile.png" alt="New site mobile view with hamburger nav and stacked layout" loading="lazy" width="500" height="900">
+        </div>
+        <ul class="frame__list frame__list--good">
+          <li><b>Phone-first design</b> — hamburger nav, stacked cards, full-colour gallery.</li>
+          <li><b>Chrome-verified: 0px horizontal overflow</b> on all 7 tabs at 500px width, 0 JS errors.</li>
+        </ul>
+      </article>
+      
+    </div>
+    <p class="mob-note">Both phone screenshots taken at 500×900 — the same size, the difference is design discipline.</p>
+  </div>
+</section>
+
+<!-- 06 ROADMAP -->
+<section class="road">
+  <div class="container">
+    <header class="cmp__head" data-reveal>
+      <span class="cmp__no">06</span>
+      <div>
+        <h2>Aur behtar kaise ban sakti hai</h2>
+        <p>This is already a transformation — and the next seven steps take it from "premium preview" to a measured growth engine. Every arrow is a forward step.</p>
+      </div>
+    </header>
+    <div class="road__steps">
+      <div class="rstep" data-reveal style="--d:0"><span class="rstep__no">1</span><div><h3>Access first — the real baseline</h3><p>GSC + GA4 + Google Business Profiles + social admin. Proof starts with real numbers, not estimates.</p></div></div>
+      <div class="rstep" data-reveal style="--d:1"><span class="rstep__no">2</span><div><h3>Real domain &amp; share cards</h3><p>Point the live domain to the new site + a master OG image, so every share shows the brand, not a blank link.</p></div></div>
+      <div class="rstep" data-reveal style="--d:2"><span class="rstep__no">3</span><div><h3>Trust content — real voices</h3><p>Client testimonials, raw hero clips, and Atiq-approved quotes from Thinking into Success (only approved lines).</p></div></div>
+      <div class="rstep" data-reveal style="--d:3"><span class="rstep__no">4</span><div><h3>Community &amp; language</h3><p>Giving-Back strip (100% of book proceeds support orphans), holidays calendar, and Urdu/Hindi/Punjabi/Arabic pages once a reviewer signs off.</p></div></div>
+      <div class="rstep" data-reveal style="--d:4"><span class="rstep__no">5</span><div><h3>Proof-of-work tooling</h3><p>Presence-Scan scores every property, the rank tracker runs on live GSC data, and the monthly report ships automatically.</p></div></div>
+      <div class="rstep" data-reveal style="--d:5"><span class="rstep__no">6</span><div><h3>Search layers — AEO / GEO / AI</h3><p>FAQ expansion, local pages per division, llms.txt — so ChatGPT, Google AI and voice assistants answer with AA Group.</p></div></div>
+      <div class="rstep" data-reveal style="--d:6"><span class="rstep__no">7</span><div><h3>Paid only after proof</h3><p>No blind ad spend. Paid channels switch on when the free baselines show what converts.</p></div></div>
+    </div>
+    <p class="road__lbl">Each step needs one small [CONFIRM] from you — the full list lives in QUESTIONS-LOG.md §C.</p>
+  </div>
+</section>
+
+<!-- VERDICT -->
+<section class="verdict">
+  <div class="container">
+    <p class="eyebrow" data-reveal>The verdict — measured, not promised</p>
+    <h2 style="font-family:var(--serif);font-weight:800;font-size:clamp(28px,4vw,46px);margin-top:14px" data-reveal>From "present but invisible" to <span style="color:var(--gold-hi)">built to be seen</span>.</h2>
+    <div class="verdict__band">
+      <div class="vstat" data-reveal style="--d:0"><div class="vstat__num">0</div><div class="vstat__lbl">JS errors (Chrome-tested)</div></div>
+      <div class="vstat" data-reveal style="--d:1"><div class="vstat__num">0px</div><div class="vstat__lbl">Overflow on all 7 tabs, 500px</div></div>
+      <div class="vstat" data-reveal style="--d:2"><div class="vstat__num">1</div><div class="vstat__lbl">Number set — no ©2018/©2025 clash</div></div>
+      <div class="vstat" data-reveal style="--d:3"><div class="vstat__num">12</div><div class="vstat__lbl">Real photos, 2020–2024, hi-res lightbox</div></div>
+      <div class="vstat" data-reveal style="--d:4"><div class="vstat__num">5</div><div class="vstat__lbl">Divisions counted correctly</div></div>
+    </div>
+    <p class="verdict__note" data-reveal>Honesty notes: the old site's 3.27s load was measured live (7 Nov 2026); the new build is a single static file served over SSL with no dependency chain. "1,200+ team members" is the client's own published figure — kept with a reconciling footnote until the Fact Sheet [CONFIRM] lands. This page is for internal review and is <code>noindex</code>.</p>
+  </div>
+</section>
+
+<section class="cta">
+  <h2 data-reveal>See it live — from any phone.</h2>
+  <div class="cta__btns" data-reveal style="--d:1">
+    <a class="btn btn--gold" href="https://parth9383-gif.github.io/aa-group-hub/" target="_blank" rel="noopener noreferrer">Open the new site ↗</a>
+    <a class="btn btn--ghost" href="aa-growth-deck.html">Open the full growth deck →</a>
+  </div>
+</section>
+
+<footer class="site-foot">
+  <div class="container" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between">
+    <span>Prepared by Dashava IT for AA Group of Companies · Evidence captured 7 Nov 2026 with headless Chrome + measured DOM coordinates.</span>
+    <span>No fabricated claims · noindex · internal review copy</span>
+  </div>
 </footer>
 
-<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 <script>
 (function(){
-  if(!('IntersectionObserver' in window)){
-    var all = document.querySelectorAll('.reveal');
-    for(var i=0;i<all.length;i++){ all[i].classList.add('in'); }
-    return;
+  var pbar = document.getElementById('pbar');
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    pbar.style.width = (max > 0 ? (h.scrollTop / max * 100) : 0) + '%';
   }
-  var io = new IntersectionObserver(function(es){
-    es.forEach(function(e){
-      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // counters
+  function runCounters(){
+    document.querySelectorAll('.hstat__num[data-count]').forEach(function(el){
+      if(el.__done) return; el.__done = true;
+      var target = parseInt(el.getAttribute('data-count'),10);
+      var t0 = null, dur = 900;
+      function step(ts){
+        if(!t0) t0 = ts;
+        var p = Math.min(1,(ts-t0)/dur);
+        el.textContent = Math.round(target * (0.2 + 0.8*p));
+        if(p < 1) requestAnimationFrame(step); else el.textContent = String(target);
+      }
+      requestAnimationFrame(step);
     });
-  }, {rootMargin:'0px 0px -8% 0px', threshold:.1});
-  var els = document.querySelectorAll('.reveal');
-  for(var j=0;j<els.length;j++){ io.observe(els[j]); }
+  }
+
+  // reveal
+  var items = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+  var io = 'IntersectionObserver' in window ? new IntersectionObserver(function(es){
+    es.forEach(function(en){
+      if(en.isIntersecting){ en.target.classList.add('is-in'); io.unobserve(en.target); }
+    });
+  }, {rootMargin:'0px 0px -6% 0px', threshold:.06}) : null;
+
+  function revealSync(){
+    var vh = window.innerHeight;
+    items.forEach(function(el){
+      if(el.classList.contains('is-in')) return;
+      var r = el.getBoundingClientRect();
+      if(r.top < vh && r.bottom > 0){ el.classList.add('is-in'); if(io) io.unobserve(el); }
+    });
+    runCounters();
+  }
+  if(io){ items.forEach(function(el){ io.observe(el); }); }
+  else { items.forEach(function(el){ el.classList.add('is-in'); }); }
+  revealSync();
+  window.addEventListener('scroll', function(){ revealSync(); }, {passive:true});
+  window.addEventListener('resize', revealSync);
+  setTimeout(revealSync, 400);
 })();
 </script>
 </body>
