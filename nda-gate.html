@@ -3,154 +3,559 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashava IT — NDA + IP Agreement</title>
-<meta name="robots" content="noindex">
+<title>Private Preview — Non-Disclosure &amp; Intellectual Property Agreement</title>
+<meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#0e0f12">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0e0f12;--panel:#141619;--panel-2:#17191d;--ink:#faf7f2;--muted:rgba(250,247,242,.68);--dim:rgba(250,247,242,.45);
-  --gold:#d2ae6d;--gold-hi:#fec95e;--gold-deep:#a9873f;--line:rgba(255,255,255,.12);--line-gold:rgba(210,174,109,.3);
-  --serif:"Cormorant Garamond",Georgia,serif;--sans:"Manrope","Segoe UI",sans-serif}
+:root{--bg:#0e0f12;--panel:#141619;--panel-2:#17191d;--ink:#faf7f2;--muted:rgba(250,247,242,.72);--dim:rgba(250,247,242,.48);
+  --gold:#d2ae6d;--gold-hi:#fec95e;--gold-deep:#a9873f;--line:rgba(255,255,255,.12);--line-gold:rgba(210,174,109,.34);
+  --serif:"Cormorant Garamond",Georgia,serif;--sans:"Manrope","Segoe UI",sans-serif;--ok:#4fae8a}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased;min-height:100vh;
-  display:grid;place-items:center;padding:24px;
-  background-image:radial-gradient(80% 60% at 80% 0%,rgba(210,174,109,.1),transparent 60%),radial-gradient(60% 50% at 10% 100%,rgba(47,93,90,.16),transparent 60%)}
-.wrap{width:min(720px,100%)}
-.brand{text-align:center;margin-bottom:28px}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased;min-height:100vh;
+  display:grid;place-items:start center;padding:clamp(20px,4vw,56px) 18px;
+  background-image:radial-gradient(85% 55% at 82% 0%,rgba(210,174,109,.12),transparent 60%),radial-gradient(60% 50% at 8% 100%,rgba(47,93,90,.18),transparent 60%)}
+.wrap{width:min(760px,100%)}
+.brand{display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:26px;text-align:center}
 .brand .logo{font-family:var(--serif);font-weight:700;font-size:26px;letter-spacing:.03em}
 .brand .logo span{color:var(--gold-hi)}
-.brand p{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-top:4px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:34px 34px 30px;box-shadow:0 40px 90px -40px rgba(0,0,0,.8)}
-.eyebrow{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-hi)}
-.card h1{font-family:var(--serif);font-weight:700;font-size:clamp(26px,4vw,38px);line-height:1.15;margin-top:10px}
-.card h1 em{font-style:italic;color:var(--gold-hi)}
-.lede{color:var(--muted);font-size:14.5px;margin-top:12px}
-.terms{margin-top:22px;background:var(--panel-2);border:1px solid var(--line);border-radius:14px;padding:20px;max-height:240px;overflow:auto}
-.terms h3{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-hi);margin-bottom:12px}
-.terms ol{padding-left:20px;display:grid;gap:10px}
-.terms li{font-size:13.5px;color:var(--muted);line-height:1.55}
-.terms li b{color:var(--ink)}
-.terms li.no{color:#ff8a6a}
+.brand .sub{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:clamp(24px,4vw,40px);box-shadow:0 44px 100px -44px rgba(0,0,0,.85)}
+.eyebrow{font-size:11px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-hi)}
+h1{font-family:var(--serif);font-weight:700;font-size:clamp(27px,4.6vw,40px);line-height:1.12;margin-top:12px}
+h1 em{font-style:italic;color:var(--gold-hi)}
+.lede{color:var(--muted);font-size:15px;margin-top:14px;max-width:58ch}
+.lede b{color:var(--ink)}
+
+/* status banner */
+.banner{display:flex;align-items:center;gap:10px;margin-top:20px;padding:12px 16px;border-radius:12px;border:1px solid var(--line-gold);
+  background:rgba(210,174,109,.06);font-size:13px;color:var(--muted)}
+.banner .dot{width:8px;height:8px;border-radius:50%;background:var(--gold-hi);box-shadow:0 0 0 4px rgba(210,174,109,.15);flex:none}
+.banner.warn{border-color:rgba(255,138,106,.4);background:rgba(255,138,106,.06)}
+.banner.warn .dot{background:#ff8a6a;box-shadow:0 0 0 4px rgba(255,138,106,.15)}
+.banner b{color:var(--ink)}
+
+/* access gate */
+.gate{margin-top:24px}
 .field{margin-top:16px}
-.field label{display:block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
-.field input{width:100%;background:var(--panel-2);border:1px solid var(--line);border-radius:10px;color:var(--ink);font-family:var(--sans);font-size:15px;padding:12px 14px;transition:border-color .2s}
-.field input:focus{border-color:var(--gold);outline:none}
-.agree{display:flex;gap:12px;align-items:flex-start;margin-top:20px;padding:16px;border:1px solid var(--line-gold);border-radius:12px;background:rgba(210,174,109,.05)}
-.agree input{width:18px;height:18px;flex:none;margin-top:2px;accent-color:var(--gold-hi)}
-.agree span{font-size:13px;color:var(--muted);line-height:1.5}
+.field label{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:7px}
+.field input{width:100%;background:var(--panel-2);border:1px solid var(--line);border-radius:11px;color:var(--ink);font-family:var(--sans);font-size:15.5px;padding:13px 15px;transition:border-color .2s,box-shadow .2s}
+.field input:focus{border-color:var(--gold);outline:none;box-shadow:0 0 0 3px rgba(210,174,109,.14)}
+.err{display:none;font-size:12.5px;color:#ff8a6a;margin-top:8px}
+
+/* agreement document */
+.doc{margin-top:22px;background:var(--panel-2);border:1px solid var(--line);border-radius:15px;overflow:hidden}
+.doc-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;cursor:pointer;user-select:none}
+.doc-head h3{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-hi)}
+.doc-head .chev{color:var(--gold-hi);font-size:12px;transition:transform .25s;flex:none}
+.doc.open .chev{transform:rotate(180deg)}
+.doc-body{display:none;padding:0 20px 22px;border-top:1px solid var(--line)}
+.doc.open .doc-body{display:block}
+.doc-body h4{font-family:var(--serif);font-weight:700;font-size:19px;color:var(--ink);margin-top:20px;letter-spacing:.01em}
+.doc-body p,.doc-body li{font-size:14px;color:var(--muted);line-height:1.7}
+.doc-body ol,.doc-body ul{padding-left:22px;display:grid;gap:8px;margin-top:10px}
+.doc-body li b{color:var(--ink)}
+.doc-body .sec{margin-top:2px}
+.doc-body .clause{margin-top:12px}
+.sig-sec{font-size:11px;color:var(--dim);letter-spacing:.06em}
+
+/* sign form */
+.agree{display:flex;gap:12px;align-items:flex-start;margin-top:16px;padding:15px 16px;border:1px solid var(--line-gold);border-radius:13px;background:rgba(210,174,109,.05)}
+.agree input{width:18px;height:18px;flex:none;margin-top:3px;accent-color:var(--gold-hi);cursor:pointer}
+.agree span{font-size:13.5px;color:var(--muted);line-height:1.55}
 .agree span b{color:var(--gold-hi)}
-.btn{display:inline-flex;align-items:center;gap:10px;justify-content:center;width:100%;margin-top:22px;font-weight:800;font-size:15px;padding:15px;border-radius:999px;border:1px solid transparent;cursor:pointer;
-  background:linear-gradient(120deg,var(--gold-deep),var(--gold) 45%,var(--gold-hi));color:#1b1406;box-shadow:0 12px 30px -10px rgba(210,174,109,.5);transition:transform .15s,box-shadow .15s,opacity .15s}
-.btn:hover{transform:translateY(-2px);box-shadow:0 16px 36px -10px rgba(210,174,109,.7)}
-.btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
-.foot{text-align:center;font-size:11.5px;color:var(--dim);margin-top:18px}
+.btn{display:inline-flex;align-items:center;gap:10px;justify-content:center;width:100%;margin-top:22px;font-weight:800;font-size:15.5px;padding:15px 18px;border-radius:999px;border:1px solid transparent;cursor:pointer;text-decoration:none;
+  background:linear-gradient(120deg,var(--gold-deep),var(--gold) 45%,var(--gold-hi));color:#1b1406;box-shadow:0 14px 34px -12px rgba(210,174,109,.55);transition:transform .16s,box-shadow .16s,opacity .16s;position:relative;overflow:hidden}
+.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.55) 50%,transparent 80%);transform:translateX(-120%);transition:transform .7s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 18px 42px -12px rgba(210,174,109,.75)}
+.btn:hover::after{transform:translateX(120%)}
+.btn:disabled{opacity:.42;cursor:not-allowed;transform:none;box-shadow:none}
+.btn.ghost{background:transparent;border:1px solid var(--line-gold);color:var(--gold-hi);box-shadow:none}
+.btn.ghost:hover{background:rgba(210,174,109,.08)}
+.btn.ghost::after{display:none}
+.btn-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.btn-row .btn{margin-top:16px}
+
+.hint{font-size:11.5px;color:var(--dim);margin-top:12px;text-align:center;line-height:1.6}
+.foot{text-align:center;font-size:11.5px;color:var(--dim);margin-top:20px;line-height:1.7}
 .foot a{color:var(--gold-hi);text-decoration:underline;text-underline-offset:3px}
-.done{display:none;text-align:center;padding:10px 0}
-.done .chk{width:64px;height:64px;margin:0 auto 16px;border-radius:50%;background:rgba(47,93,90,.2);border:1px solid var(--gold);display:grid;place-items:center;color:var(--gold-hi);font-size:30px}
-.done h2{font-family:var(--serif);font-weight:700;font-size:28px}
-.done p{color:var(--muted);font-size:14px;margin-top:10px}
-.done .rec{display:inline-block;margin-top:16px;background:var(--panel-2);border:1px solid var(--line);border-radius:10px;padding:10px 16px;font-size:12.5px;color:var(--muted);font-family:monospace}
-.hint{font-size:11px;color:var(--dim);margin-top:8px;text-align:center}
+
+/* done */
+.done{display:none;text-align:center;padding:8px 0}
+.done .chk{width:66px;height:66px;margin:0 auto 18px;border-radius:50%;background:rgba(47,93,90,.22);border:1px solid var(--gold);display:grid;place-items:center;color:var(--gold-hi);font-size:32px}
+.done h2{font-family:var(--serif);font-weight:700;font-size:29px}
+.done p{color:var(--muted);font-size:14.5px;margin-top:12px}
+.rec{display:inline-block;margin-top:16px;background:var(--panel-2);border:1px solid var(--line);border-radius:11px;padding:11px 16px;font-size:12.5px;color:var(--muted);font-family:"SF Mono",Menlo,Consolas,monospace;text-align:left;word-break:break-all}
+.rec b{color:var(--gold-hi)}
+.spin{display:inline-block;width:14px;height:14px;border:2px solid rgba(27,20,6,.3);border-top-color:#1b1406;border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.fade-in{animation:rise .5s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* countdown */
+.cd{font-variant-numeric:tabular-nums}
+@media(max-width:520px){.btn-row{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 <div class="wrap">
+
   <div class="brand">
     <div class="logo">Dasha<span>va</span> IT</div>
-    <p>Premium web · real results</p>
+    <div class="sub">Private preview · Confidential</div>
   </div>
 
-  <div class="card" id="card">
-    <div id="form-view">
-      <p class="eyebrow">One quick step</p>
-      <h1>Before we show you, <em>sign here.</em></h1>
-      <p class="lede">Neeche terms padh kar agree karo. Agreement ke baad hi demo khulega.</p>
+  <div class="card fade-in">
 
-      <div class="terms">
-        <h3>NDA + IP terms</h3>
-        <ol>
-          <li><b>Confidential.</b> Jo kuch bhi demo mein dikhega — design, code, screenshots, pricing — wo Dashava IT ki confidential property hai.</li>
-          <li class="no"><b>Copy nahi.</b> Screen record, screenshot, "View Source", ya kisi bhi tarike se design/code <b>copy karna mana hai</b>.</li>
-          <li><b>Sirf evaluate.</b> Info sirf decide karne ke liye — use, launch, recreate, ya share <b>nahi</b>.</li>
-          <li><b>IP ownership.</b> Saara design + code Dashava IT ki property hai jab tak <b>full payment</b> clear nahi hota.</li>
-          <li><b>Transfer on payment.</b> Full payment ke baad hi agreed deliverables client ko transfer honge.</li>
-        </ol>
+    <!-- ============ ACCESS GATE ============ -->
+    <div id="gate-view">
+      <p class="eyebrow">Private link</p>
+      <h1>This preview is <em>protected.</em></h1>
+      <p class="lede" id="gate-lede">This link is confidential and subject to a Non-Disclosure and Intellectual Property Agreement. Please verify your access below.</p>
+
+      <div class="banner" id="expiry-banner" style="display:none">
+        <span class="dot"></span>
+        <span>This private link <b>expires <span class="cd" id="expiry-count"></span></b>.</span>
+      </div>
+      <div class="banner warn" id="dead-banner" style="display:none">
+        <span class="dot"></span>
+        <span><b>This link has expired.</b> Please request a fresh link from Dashava IT.</span>
+      </div>
+
+      <div class="gate" id="pw-gate" style="display:none">
+        <div class="field">
+          <label for="f-pass">Access code</label>
+          <input id="f-pass" type="password" placeholder="Enter the code you received" autocomplete="one-time-code" inputmode="text">
+          <p class="err" id="pw-err">Incorrect code. Please try again.</p>
+        </div>
+      </div>
+
+      <button class="btn" id="gate-btn" type="button">Continue →</button>
+      <p class="hint">By continuing you agree to the terms below. A timestamped, legally-binding record is created when you sign.</p>
+    </div>
+
+    <!-- ============ AGREEMENT + SIGN ============ -->
+    <div id="form-view" style="display:none">
+      <p class="eyebrow">Non-Disclosure &amp; Intellectual Property Agreement</p>
+      <h1>Before we show you, <em>please sign.</em></h1>
+      <p class="lede">The preview you are about to see contains <b>confidential and proprietary work</b> belonging to Dashava IT. To protect it, we ask you to review and sign the agreement below. It takes less than a minute.</p>
+
+      <div class="doc" id="doc">
+        <div class="doc-head" id="doc-toggle">
+          <h3>Read the full agreement</h3>
+          <span class="chev">▼</span>
+        </div>
+        <div class="doc-body" id="doc-body">
+
+          <h4>Non-Disclosure and Intellectual Property Agreement</h4>
+          <p class="clause">This Agreement is between <b>Dashava IT</b> (the “Discloser”) and the individual/company identified below (the “Recipient”). By signing, the Recipient acknowledges and agrees to the following terms.</p>
+
+          <div class="sec">
+            <h4>1. Confidential Information</h4>
+            <p>“Confidential Information” means all work disclosed in this preview, including but not limited to: website designs, user interfaces, code, layouts, visual assets, screenshots, videos, specifications, pricing, processes, and any related materials, whether shown verbally, in writing, or in digital form.</p>
+          </div>
+
+          <div class="sec">
+            <h4>2. Obligations of the Recipient</h4>
+            <ol>
+              <li>Use Confidential Information <b>solely to evaluate</b> a potential engagement with Dashava IT.</li>
+              <li><b>Not copy, reproduce, or recreate</b> any design, code, or concept — in whole or in part — by any means.</li>
+              <li><b>Not capture</b> the work via screen recording, screenshots, downloading, or “View Source”.</li>
+              <li><b>Not reverse-engineer, decompile, or derive</b> any portion of the work.</li>
+              <li><b>Not share</b> the work or the link with any third party, and limit internal access to a strict need-to-know basis.</li>
+            </ol>
+          </div>
+
+          <div class="sec">
+            <h4>3. Exclusions</h4>
+            <p>Confidential Information does not include information that: (a) is or becomes publicly available through no fault of the Recipient; (b) the Recipient independently developed without reference to the work (with written proof); or (c) is required to be disclosed by law or a valid court order.</p>
+          </div>
+
+          <div class="sec">
+            <h4>4. Term</h4>
+            <p>These confidentiality obligations remain in effect for <b>two (2) years</b> from the date of signing, or for the duration of any subsequent engagement, whichever is longer.</p>
+          </div>
+
+          <div class="sec">
+            <h4>5. Intellectual Property Ownership</h4>
+            <p>All designs, code, assets, and creative work shown in this preview are and remain the <b>sole property of Dashava IT</b> until full and final payment for the agreed deliverables has been received.</p>
+          </div>
+
+          <div class="sec">
+            <h4>6. Transfer on Payment</h4>
+            <p>Upon receipt of full payment, ownership of the <b>agreed deliverables</b> transfers to the client. Until that time, no rights, title, or interest are granted.</p>
+          </div>
+
+          <div class="sec">
+            <h4>7. Limited License Before Payment</h4>
+            <p>Before full payment, the Recipient holds only a <b>revocable, non-transferable right to review</b> the work. Use, copying, launch, modification, or redistribution is expressly prohibited.</p>
+          </div>
+
+          <div class="sec">
+            <h4>8. Reserved Rights</h4>
+            <p>Dashava IT retains the right to display the work in its portfolio (unless otherwise agreed in writing) and retains ownership of all reusable components, techniques, and underlying methodologies.</p>
+          </div>
+
+          <div class="sec">
+            <h4>9. Electronic Signature &amp; Consent</h4>
+            <p>By entering your name, selecting the consent checkboxes, and selecting “Sign &amp; continue”, you provide an <b>electronic signature</b> that is legally binding and equivalent to a handwritten signature. The date, time, and your IP-lessonymised identity are recorded as evidence of your agreement.</p>
+          </div>
+
+          <div class="sec">
+            <h4>10. Governing Law</h4>
+            <p>This Agreement is governed by the laws of the Province of Ontario, Canada.</p>
+          </div>
+
+          <p class="sig-sec">A signed copy (PDF) is provided on completion. For a fully witnessed, lawyer-reviewed execution, DocuSign is available on request.</p>
+        </div>
       </div>
 
       <form id="nda-form" novalidate>
-        <div class="field"><label for="f-name">Aapka naam</label><input id="f-name" type="text" placeholder="Full name" required></div>
-        <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" placeholder="you@company.com" required></div>
-        <div class="field"><label for="f-co">Company</label><input id="f-co" type="text" placeholder="Company name"></div>
+        <div class="field"><label for="f-name">Full legal name</label><input id="f-name" type="text" placeholder="e.g. Alex Morgan" autocomplete="name" required></div>
+        <div class="field"><label for="f-email">Business email</label><input id="f-email" type="email" placeholder="you@company.com" autocomplete="email" required></div>
+        <div class="field"><label for="f-co">Company</label><input id="f-co" type="text" placeholder="Company name" autocomplete="organization"></div>
+        <div class="field"><label for="f-title">Title / role</label><input id="f-title" type="text" placeholder="e.g. Founder, Director" autocomplete="organization-title"></div>
+
         <label class="agree">
-          <input type="checkbox" id="f-agree" required>
-          <span>Main <b>NDA + IP terms</b> padh chuka/chi hoon aur <b>agree</b> karta/karti hoon. Mera naam + email + timestamp is agreement ka <b>record</b> hai.</span>
+          <input type="checkbox" id="f-nda">
+          <span>I have read and <b>agree to the Non-Disclosure terms</b> (Sections 1–4 and 9).</span>
         </label>
-        <button class="btn" id="f-submit" type="submit" disabled>Agree &amp; view the demo →</button>
+        <label class="agree">
+          <input type="checkbox" id="f-ip">
+          <span>I understand and <b>agree to the Intellectual Property terms</b> (Sections 5–8 and 9).</span>
+        </label>
+
+        <button class="btn" id="f-submit" type="submit" disabled>Sign &amp; continue →</button>
+        <p class="hint">Signing creates a timestamped legal record and unlocks the preview.</p>
       </form>
-      <p class="hint">Signing = legally-recognized clickwrap agreement (name + email + timestamp).</p>
     </div>
 
+    <!-- ============ DONE ============ -->
     <div class="done" id="done-view">
       <div class="chk">✓</div>
       <h2>Signed. <em>Thank you.</em></h2>
-      <p>Agreement record ban gaya. Demo khol rahe hain…</p>
+      <p>Your agreement has been recorded and a signed copy is ready. Opening your private preview…</p>
       <div class="rec" id="rec"></div>
-      <p class="hint" style="margin-top:12px">Agar demo nahi khula, neeche button dabao.</p>
-      <a class="btn" id="go-link" href="#" style="text-decoration:none">Open the demo →</a>
+      <div class="btn-row">
+        <button class="btn ghost" id="pdf-btn" type="button">Download signed copy (PDF)</button>
+        <button class="btn ghost" id="print-btn" type="button">Print</button>
+      </div>
+      <a class="btn" id="go-link" href="#">Open the preview →</a>
+      <p class="hint" id="done-hint">If the preview does not open automatically, use the button above.</p>
     </div>
+
   </div>
 
-  <p class="foot">Protected by <a href="NDA-IP-TEMPLATE.md" target="_blank">Dashava IT NDA + IP terms</a> · Full legal: DocuSign available</p>
+  <p class="foot">Protected under a Non-Disclosure &amp; Intellectual Property Agreement · Dashava IT<br>
+  Questions? Contact your Dashava IT representative. Full legal execution via DocuSign available on request.</p>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
 <script>
 (function(){
-  var form = document.getElementById('nda-form');
-  var nameEl = document.getElementById('f-name');
-  var emailEl = document.getElementById('f-email');
-  var coEl = document.getElementById('f-co');
-  var agreeEl = document.getElementById('f-agree');
-  var submit = document.getElementById('f-submit');
-  var formView = document.getElementById('form-view');
-  var doneView = document.getElementById('done-view');
-  var rec = document.getElementById('rec');
-  var goLink = document.getElementById('go-link');
+"use strict";
 
-  // demo URL — query param ?next=<url>, warna default (AA Group demo)
-  var params = new URLSearchParams(location.search);
-  var next = params.get('next') || 'https://parth9383-gif.github.io/aa-group-hub/';
+/* ================= CONFIG (edit here) ================= */
+var NDA_CONFIG = {
+  owner: "Dashava IT",
+  // Paste your Google Apps Script Web App URL here (see data/nda-backend/README.md).
+  // When set, every signed record is POSTed here and auto-saved to your Google Sheet
+  // and emailed to you — so a signing in Toronto lands on your laptop via Google Drive.
+  // Leave empty to run in local-only mode (record stays on the signer's device only).
+  BACKEND_URL: "",
+  // Optional: your email shown to the signer for support.
+  contactEmail: ""
+};
+/* ======================================================= */
 
-  function validate(){
-    var ok = nameEl.value.trim().length > 1 && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(emailEl.value.trim()) && agreeEl.checked;
-    submit.disabled = !ok;
+var params = new URLSearchParams(location.search);
+var NEXT = params.get('next') || '';
+var K = params.get('k') || '';        // sha256 hex of the password
+var EXP = params.get('exp') || '';    // expiry (unix seconds)
+var TOKEN = params.get('t') || '';    // one-time token
+
+var $ = function(id){ return document.getElementById(id); };
+
+var gateView = $('gate-view'), formView = $('form-view'), doneView = $('done-view');
+var gateBtn = $('gate-btn'), gateLede = $('gate-lede');
+var pwGate = $('pw-gate'), pwInput = $('f-pass'), pwErr = $('pw-err');
+var doc = $('doc'), docToggle = $('doc-toggle');
+var form = $('nda-form');
+var nameEl = $('f-name'), emailEl = $('f-email'), coEl = $('f-co'), titleEl = $('f-title');
+var ndaEl = $('f-nda'), ipEl = $('f-ip'), submit = $('f-submit');
+var rec = $('rec'), goLink = $('go-link');
+
+var requirePass = !!K;
+var expired = false;
+var tokenUsed = false;
+
+/* ---------- utilities ---------- */
+function sha256hex(str){
+  if (window.crypto && crypto.subtle){
+    return crypto.subtle.digest('SHA-256', new TextEncoder().encode(str))
+      .then(function(buf){ return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0');}).join(''); });
   }
-  [nameEl, emailEl, agreeEl].forEach(function(el){ el.addEventListener('input', validate); el.addEventListener('change', validate); });
+  // fallback (non-secure contexts only) — not cryptographically strong
+  var h1 = 0xdeadbeef ^ str.length, h2 = 0x41c6ce57 ^ str.length, i, ch;
+  for (i = 0; i < str.length; i++){ ch = str.charCodeAt(i); h1 = Math.imul(h1 ^ ch, 2654435761); h2 = Math.imul(h2 ^ ch, 1597334677); }
+  h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507); h2 = Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+  return Promise.resolve((h2 >>> 0).toString(16).padStart(8,'0') + (h1 >>> 0).toString(16).padStart(8,'0'));
+}
 
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    if(submit.disabled) return;
-    var ts = new Date().toISOString();
-    var record = {
-      name: nameEl.value.trim(),
-      email: emailEl.value.trim(),
-      company: coEl.value.trim() || '(not given)',
-      agreed: true,
-      timestamp: ts,
-      terms: 'Dashava IT NDA + IP (see NDA-IP-TEMPLATE.md)'
-    };
-    // store locally (client-side record)
-    try { localStorage.setItem('dashava-nda', JSON.stringify(record)); } catch(err){}
-    // show signed record
-    rec.textContent = record.name + ' · ' + record.email + ' · ' + ts;
-    formView.style.display = 'none';
-    doneView.style.display = 'block';
-    goLink.href = next;
-    // send a copy of the agreement to Dashava (mailto — optional, user confirms)
-    // auto-redirect after short pause
-    setTimeout(function(){ if(next) window.location.href = next; }, 2200);
-  });
+function pad2(n){ return n < 10 ? '0'+n : ''+n; }
+
+function fmtDate(ts){
+  var d = new Date(ts);
+  return d.getUTCFullYear()+'-'+pad2(d.getUTCMonth()+1)+'-'+pad2(d.getUTCDate())+' '+pad2(d.getUTCHours())+':'+pad2(d.getUTCMinutes())+' UTC';
+}
+
+/* ---------- expiry ---------- */
+if (EXP){
+  var expMs = parseInt(EXP,10) * 1000;
+  if (!isNaN(expMs) && Date.now() > expMs){ expired = true; }
+  if (!expired){
+    $('expiry-banner').style.display = 'flex';
+    var cd = $('expiry-count');
+    function tick(){
+      var left = Math.max(0, expMs - Date.now());
+      var s = Math.floor(left/1000);
+      var h = Math.floor(s/3600), m = Math.floor((s%3600)/60), sec = s%60;
+      cd.textContent = h + 'h ' + pad2(m) + 'm ' + pad2(sec) + 's';
+      if (left <= 0){ expired = true; renderGate(); }
+      else { setTimeout(tick, 1000); }
+    }
+    tick();
+  }
+}
+
+/* ---------- one-time token (backend check, JSONP GET — token only, no PII) ---------- */
+var __cbCount = 0;
+function backendCheck(){
+  if (!TOKEN || !NDA_CONFIG.BACKEND_URL) return;
+  var cb = '__ndaCb' + (++__cbCount);
+  window[cb] = function(d){ if (d && d.used){ tokenUsed = true; renderGate(); } try{ delete window[cb]; }catch(e){} };
+  var s = document.createElement('script');
+  s.src = NDA_CONFIG.BACKEND_URL + '?action=check&token=' + encodeURIComponent(TOKEN) + '&cb=' + cb;
+  s.onerror = function(){ try{ delete window[cb]; }catch(e){} };
+  document.head.appendChild(s);
+}
+
+/* ---------- render access gate ---------- */
+function renderGate(){
+  if (expired){
+    $('dead-banner').style.display = 'flex';
+    $('expiry-banner').style.display = 'none';
+    pwGate.style.display = 'none';
+    gateBtn.style.display = 'none';
+    return;
+  }
+  if (tokenUsed){
+    gateLede.innerHTML = 'This private link has <b>already been used</b> and is no longer valid.';
+    pwGate.style.display = 'none';
+    gateBtn.style.display = 'none';
+    var b = $('dead-banner'); b.style.display='flex';
+    b.innerHTML = '<span class="dot"></span><span><b>This one-time link has already been opened.</b> Please request a fresh link from Dashava IT.</span>';
+    return;
+  }
+  if (requirePass){ pwGate.style.display = 'block'; }
+  if (!EXP){ $('expiry-banner').style.display='none'; }
+}
+
+gateBtn.addEventListener('click', function(){
+  if (requirePass){
+    sha256hex(pwInput.value.trim()).then(function(hash){
+      if (hash === K.toLowerCase()){ enterAgreement(); }
+      else { pwErr.style.display = 'block'; pwInput.value=''; pwInput.focus(); }
+    });
+  } else {
+    enterAgreement();
+  }
+});
+pwInput.addEventListener('keydown', function(e){ if (e.key === 'Enter'){ gateBtn.click(); } });
+
+function enterAgreement(){
+  pwErr.style.display = 'none';
+  gateView.style.display = 'none';
+  formView.style.display = 'block';
+  formView.classList.add('fade-in');
+  if (NEXT){ gateLede.textContent = ''; }
+}
+
+/* ---------- document toggle ---------- */
+docToggle.addEventListener('click', function(){ doc.classList.toggle('open'); });
+
+/* ---------- validation ---------- */
+function validEmail(v){ return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v); }
+function validate(){
+  var ok = nameEl.value.trim().length > 1 && validEmail(emailEl.value.trim()) && ndaEl.checked && ipEl.checked;
+  submit.disabled = !ok;
+}
+[nameEl, emailEl, ndaEl, ipEl].forEach(function(el){
+  el.addEventListener('input', validate); el.addEventListener('change', validate);
+});
+
+/* ---------- record ---------- */
+function buildRecord(){
+  var ts = Date.now();
+  var iso = new Date(ts).toISOString();
+  return {
+    id: 'DV-'+iso.replace(/[-:.TZ]/g,'').slice(0,14)+'-'+Math.random().toString(36).slice(2,7).toUpperCase(),
+    name: nameEl.value.trim(),
+    email: emailEl.value.trim(),
+    company: coEl.value.trim() || '(not provided)',
+    title: titleEl.value.trim() || '(not provided)',
+    nda_agreed: ndaEl.checked,
+    ip_agreed: ipEl.checked,
+    timestamp: iso,
+    human_date: fmtDate(ts),
+    token: TOKEN || null,
+    next: NEXT || null,
+    terms_version: 'NDA-IP v1.0'
+  };
+}
+
+/* ---------- backend save (fire-and-forget; Google Sheet + email are the owner's confirmation) ---------- */
+function saveToBackend(record){
+  if (!NDA_CONFIG.BACKEND_URL) return Promise.resolve({ ok: false, reason: 'no-backend' });
+  return fetch(NDA_CONFIG.BACKEND_URL, {
+    method: 'POST', mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ action: 'sign', record: record })
+  }).then(function(){ return { ok: true }; })
+    .catch(function(){ return { ok: false, reason: 'network' }; });
+}
+
+/* ---------- PDF ---------- */
+function agreementTextForPdf(record){
+  var L = [];
+  L.push('NON-DISCLOSURE AND INTELLECTUAL PROPERTY AGREEMENT');
+  L.push('Dashava IT  ·  Private Preview');
+  L.push('');
+  L.push('Between Dashava IT ("Discloser") and the Recipient identified below.');
+  L.push('');
+  L.push('RECIPIENT');
+  L.push('Name: ' + record.name);
+  L.push('Email: ' + record.email);
+  L.push('Company: ' + record.company);
+  L.push('Title: ' + record.title);
+  L.push('Signed: ' + record.human_date);
+  L.push('Record ID: ' + record.id);
+  L.push('');
+  L.push('1. CONFIDENTIAL INFORMATION — all work disclosed in this preview, including designs, code, layouts, assets, screenshots, videos, specifications, pricing and processes.');
+  L.push('2. OBLIGATIONS — use solely to evaluate; not copy, reproduce, recreate, capture, reverse-engineer or share the work; internal access limited to a need-to-know basis.');
+  L.push('3. EXCLUSIONS — publicly available information, independently developed work (with proof), or disclosure required by law.');
+  L.push('4. TERM — two (2) years from signing, or the duration of any subsequent engagement, whichever is longer.');
+  L.push('5. IP OWNERSHIP — all designs, code, assets and creative work remain the sole property of Dashava IT until full payment is received.');
+  L.push('6. TRANSFER ON PAYMENT — upon full payment, ownership of the agreed deliverables transfers to the client.');
+  L.push('7. LIMITED LICENSE BEFORE PAYMENT — revocable, non-transferable right to review only; use, copying, launch, modification or redistribution prohibited.');
+  L.push('8. RESERVED RIGHTS — Dashava IT may display the work in its portfolio and retains reusable components and methodologies.');
+  L.push('9. ELECTRONIC SIGNATURE — entering a name and selecting consent constitutes a legally-binding electronic signature, equivalent to a handwritten signature.');
+  L.push('10. GOVERNING LAW — Province of Ontario, Canada.');
+  L.push('');
+  L.push('RECIPIENT DECLARATION');
+  L.push('I have read and agree to the Non-Disclosure terms (1–4, 9) and the Intellectual Property terms (5–8, 9).');
+  L.push('');
+  L.push('Electronic signature: ' + record.name);
+  L.push('Date: ' + record.human_date);
+  return L;
+}
+
+function makePdf(record){
+  try {
+    var jsPDF = (window.jspdf && window.jspdf.jsPDF) || window.jsPDF;
+    if (!jsPDF) return false;
+    var doc = new jsPDF({ unit: 'pt', format: 'a4' });
+    var pageW = doc.internal.pageSize.getWidth();
+    var pageH = doc.internal.pageSize.getHeight();
+    var m = 56, y = 72;
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(16); doc.setTextColor(20,20,20);
+    doc.text('NON-DISCLOSURE AND INTELLECTUAL PROPERTY AGREEMENT', m, y);
+    y += 18;
+    doc.setFont('helvetica','normal'); doc.setFontSize(9); doc.setTextColor(120,110,80);
+    doc.text('Dashava IT · Private Preview · Record ' + record.id, m, y);
+    y += 26;
+    var lines = agreementTextForPdf(record);
+    doc.setFontSize(9.5);
+    for (var i = 0; i < lines.length; i++){
+      var t = lines[i];
+      var isHead = /^\d+\.\s[A-Z]/.test(t) || t === 'RECIPIENT' || t === 'RECIPIENT DECLARATION';
+      if (isHead){ doc.setFont('helvetica','bold'); doc.setTextColor(20,20,20); }
+      else { doc.setFont('helvetica','normal'); doc.setTextColor(60,60,60); }
+      var wrapped = doc.splitTextToSize(t, pageW - m*2);
+      for (var w = 0; w < wrapped.length; w++){
+        if (y > pageH - 56){ doc.addPage(); y = 72; }
+        doc.text(wrapped[w], m, y); y += 13;
+      }
+      y += (t === '' ? 2 : 1);
+    }
+    doc.save('Dashava-IT-NDA-IP-' + record.id + '.pdf');
+    return true;
+  } catch(e){ return false; }
+}
+
+/* ---------- print ---------- */
+function printRecord(record){
+  var w = window.open('', '_blank');
+  var body = '<div style="font-family:Georgia,serif;max-width:640px;margin:40px auto;color:#1a1a1a;line-height:1.6">';
+  body += '<h2 style="margin:0 0 2px">Non-Disclosure and Intellectual Property Agreement</h2>';
+  body += '<p style="color:#777;font-size:12px;margin:0 0 20px">Dashava IT · Private Preview · ' + record.id + '</p>';
+  body += agreementTextForPdf(record).map(function(l){
+    var tag = /^\d+\.\s[A-Z]/.test(l) || l === 'RECIPIENT' || l === 'RECIPIENT DECLARATION' ? 'strong' : 'span';
+    return '<div style="white-space:pre-wrap;margin:4px 0">' + (tag==='strong'?'<strong>':'') + l.replace(/</g,'&lt;') + (tag==='strong'?'</strong>':'') + '</div>';
+  }).join('');
+  body += '</div>';
+  w.document.write('<html><head><title>Signed Agreement — Dashava IT</title></head><body>' + body + '</body></html>');
+  w.document.close();
+  setTimeout(function(){ w.focus(); w.print(); }, 300);
+}
+
+/* ---------- submit ---------- */
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  if (submit.disabled) return;
+  submit.disabled = true;
+  submit.innerHTML = '<span class="spin"></span> Signing…';
+
+  var record = buildRecord();
+
+  // 1. local record (signer's device)
+  try { localStorage.setItem('dashava-nda', JSON.stringify(record)); } catch(err){}
+  try {
+    var all = JSON.parse(localStorage.getItem('dashava-nda-log') || '[]');
+    all.push(record); localStorage.setItem('dashava-nda-log', JSON.stringify(all));
+  } catch(err){}
+
+  // 2. send to owner backend (auto-save to Parth's sheet/email)
+  saveToBackend(record);
+
+  rec.innerHTML = '<b>Record:</b> ' + record.id + '<br><b>Signed by:</b> ' + record.name + '<br><b>Email:</b> ' + record.email + '<br><b>When:</b> ' + record.human_date + '<br><span style="color:#4fae8a">✓ Signed copy saved</span>';
+  formView.style.display = 'none';
+  doneView.style.display = 'block';
+  doneView.classList.add('fade-in');
+  goLink.href = NEXT || '#';
+  if (!NEXT){ goLink.style.display = 'none'; }
+
+  $('pdf-btn').addEventListener('click', function(){ makePdf(record); });
+  $('print-btn').addEventListener('click', function(){ printRecord(record); });
+
+  // auto-download the signed copy for the signer
+  setTimeout(function(){ makePdf(record); }, 400);
+
+  if (NEXT){ setTimeout(function(){ window.location.href = NEXT; }, 2600); }
+});
+
+/* ---------- init ---------- */
+renderGate();
+backendCheck();
+
+/* Open agreement straight away when there is no access gate */
+if (!requirePass && !expired){
+  enterAgreement();
+}
 })();
 </script>
 </body>
