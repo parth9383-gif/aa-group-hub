@@ -105,17 +105,7 @@
   /* ================= WOW effects (desktop-first, reduced-motion aware) ================= */
   var finePointer = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var canFx = finePointer && !reducedMotion;
-
-  /* scroll progress bar */
-  var prog = document.createElement('div');
-  prog.className = 'progress';
-  document.body.appendChild(prog);
-  window.addEventListener('scroll', function(){
-    var h = document.documentElement;
-    var max = h.scrollHeight - h.clientHeight;
-    prog.style.width = (max > 0 ? (h.scrollTop / max * 100) : 0) + '%';
-  }, {passive:true});
+  var canFx = false; /* de-AI: no cursor glow / magnetic / tilt / particles */
 
   /* cursor glow */
   if (canFx){
@@ -162,38 +152,9 @@
     });
   }
 
-  /* hero + page-hero headline word-by-word stagger */
-  function splitHeading(h){
-    var label = h.textContent.trim();
-    var src = Array.from(h.childNodes);
-    var idx = 0;
-    var frag = document.createDocumentFragment();
-    src.forEach(function(node){
-      if (node.nodeType === 3){
-        node.textContent.split(/\s+/).filter(Boolean).forEach(function(w){
-          var s = document.createElement('span');
-          s.className = 'w';
-          s.style.transitionDelay = (idx++ * 85) + 'ms';
-          s.textContent = w;
-          frag.appendChild(s);
-          frag.appendChild(document.createTextNode(' '));
-        });
-      } else if (node.nodeType === 1){
-        var s = document.createElement('span');
-        s.className = 'w';
-        s.style.transitionDelay = (idx++ * 85) + 'ms';
-        s.appendChild(node);
-        frag.appendChild(s);
-        frag.appendChild(document.createTextNode(' '));
-      }
-    });
-    h.textContent = '';
-    h.appendChild(frag);
-    h.setAttribute('aria-label', label);
-    requestAnimationFrame(function(){ requestAnimationFrame(function(){ h.classList.add('in'); }); });
-  }
+  /* hero + page-hero headline: no per-word stagger (de-AI — editorial, static display) */
   if (!reducedMotion){
-    document.querySelectorAll('.hero h1, .page-hero h1').forEach(splitHeading);
+    document.querySelectorAll('.hero h1, .page-hero h1').forEach(function(h){ h.classList.add('in'); });
   }
 
   /* floating gold particles */

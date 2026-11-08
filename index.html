@@ -15,10 +15,7 @@
 <style>
 /* ===== home-specific sections ===== */
 .portrait-stage{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:560px;overflow:hidden}
-.portrait-stage__halo{position:absolute;inset:8% 4%;z-index:0;pointer-events:none;
-  background:radial-gradient(50% 50% at 50% 42%,rgba(254,201,94,.22),rgba(210,174,109,.08) 48%,transparent 72%);
-  animation:glowPulse 6s ease-in-out infinite}
-@keyframes glowPulse{0%,100%{opacity:.5;scale:.96}50%{opacity:1;scale:1.05}}
+.portrait-stage__halo{display:none}
 .portrait-wrap{position:relative;display:grid;place-items:center;z-index:1}
 .mono-panel{position:absolute;left:50%;top:0;translate:-50% -24%;z-index:0;pointer-events:none;opacity:.4;
   display:flex;flex-direction:column;align-items:center;line-height:.72}
@@ -40,9 +37,7 @@
   padding:6px 12px;border:1px solid var(--line-gold);border-radius:var(--radius-pill);background:rgba(210,174,109,.06);
   transition:background var(--t-fast),border-color var(--t-fast),transform var(--t-fast)}
 .chip:hover{background:rgba(210,174,109,.14);border-color:var(--gold);transform:translateY(-2px)}
-.scrollcue{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(var(--txt-rgb),.55);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
-.scrollcue i{display:block;width:1px;height:42px;background:var(--gold-hi);transform-origin:top;animation:cue 1.9s ease-in-out infinite}
-@keyframes cue{0%{scale:1 0}55%{scale:1 1}100%{scale:1 1;opacity:0}}
+.scrollcue{display:none}
 .hero__credit{position:absolute;right:24px;bottom:16px;z-index:2;font-size:11px;color:rgba(var(--txt-rgb),.4)}
 
 /* standard (4 pillars) */
@@ -103,7 +98,7 @@
 }
 </style>
 </head>
-<body class="grain">
+<body>
 
 <header class="header" id="top">
   <span class="progress" aria-hidden="true"></span>
