@@ -86,7 +86,8 @@
   /* ================= WOW effects (desktop-first, reduced-motion aware) ================= */
   var finePointer = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var canFx = false; /* de-AI: no cursor glow / magnetic / tilt / particles */
+  var canFx = false; /* de-AI: no cursor glow / magnetic / particles */
+  var canTilt = finePointer && !reducedMotion; /* premium: subtle 3D tilt on cards only */
 
   /* cursor glow */
   if (canFx){
@@ -116,8 +117,8 @@
     });
   }
 
-  /* 3D tilt on cards/pillars */
-  if (canFx){
+  /* 3D tilt on cards/pillars (premium, subtle — the "3D motion" story) */
+  if (canTilt){
     document.querySelectorAll('.card, .pillar').forEach(function(card){
       card.addEventListener('mousemove', function(e){
         var r = card.getBoundingClientRect();
