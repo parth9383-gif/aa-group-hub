@@ -749,6 +749,13 @@ html,body{overflow-x:clip}
 @media print{.thread,.tnode{display:none}}
 
 .img-missing{display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:44px;color:var(--gold-hi);background:#1f2326}
+/* ===== v9.1: book page link + hero founder strip ===== */
+.nav a.nav__book{margin-left:4px;padding:7px 14px;color:var(--gold-hi);border:1px solid rgba(210,174,109,.45);border-radius:999px}
+.nav a.nav__book::after{display:none}
+.hero__founder{display:flex;align-items:center;gap:14px;margin-top:28px;max-width:460px;padding:10px 18px 10px 10px;background:rgba(255,255,255,.06);border:1px solid var(--line-dark);border-radius:var(--radius-pill);backdrop-filter:blur(4px)}
+.hero__founder .hf-img{width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:50% 10%;flex:none;border:2px solid var(--gold-hi);box-shadow:0 8px 18px -8px rgba(0,0,0,.7)}
+.hero__founder b{display:block;color:#fff;font-size:14px;letter-spacing:.02em}
+.hero__founder span{display:block;color:rgba(246,242,233,.72);font-size:12px;line-height:1.45}
 </style>
 </head>
 <body class="grain">
@@ -786,6 +793,7 @@ html,body{overflow-x:clip}
       <a href="#divisions" role="tab" id="tab-divisions" aria-controls="divisions" aria-selected="false" tabindex="-1">Company divisions</a>
       <a href="#leadership" role="tab" id="tab-leadership" aria-controls="leadership" aria-selected="false" tabindex="-1">Team profile</a>
       <a href="#contact" role="tab" id="tab-contact" aria-controls="contact" aria-selected="false" tabindex="-1">Contact</a>
+      <a href="aa-book.html" class="nav__book">The book</a>
     </nav>
     <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav"><span class="bars"><span></span><span></span><span></span></span></button>
     <a class="header__cta" href="#contact">Contact us <svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
@@ -802,7 +810,7 @@ html,body{overflow-x:clip}
   </svg>
   <div class="hero on-dark">
     <div class="hero__bg" aria-hidden="true"><img src="media/hero-2024.jpg" alt="" width="2400" height="1423" fetchpriority="high" decoding="async" onerror="this.parentElement.style.display='none'"></div>
-    <span class="tnode" style="top:44%" aria-hidden="true">2004</span>
+    <span class="tnode" style="top:58%" aria-hidden="true">2004</span>
     <video class="hero__video" id="hero-video" muted loop playsinline preload="none" aria-hidden="true" hidden></video>
 
     <div class="container">
@@ -813,6 +821,10 @@ html,body{overflow-x:clip}
           <span class="mask"><span class="mask__in" style="--d:.2s"><em>Five</em> businesses today.</span></span>
         </h1>
         <p>Built by Atiq Ahmad and still family-led: 60+ restaurants, 1,200+ people, 120 managers, one way of working.</p>
+        <div class="hero__founder">
+          <img class="hf-img" src="media/book/atiq-head.png" alt="Atiq Ahmad — Founder and President of AA Group of Companies" width="750" height="563" decoding="async">
+          <div class="hf-txt"><b>Atiq Ahmad</b><span>Founder &amp; President — author of <em>Thinking into Success</em></span></div>
+        </div>
         <div class="hero__rule" aria-hidden="true"></div>
         <div class="hero__actions">
           <a class="btn btn--gold" href="#journey" data-open-tab="about">Our story <svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
@@ -820,7 +832,7 @@ html,body{overflow-x:clip}
         </div>
         <figure class="book-hero">
           <div class="book-cover" aria-hidden="true"><span class="bc-t">Thinking into Success</span><span class="bc-a">Atiq Ahmad</span></div>
-          <figcaption><b>By Atiq Ahmad.</b> 100% of proceeds go to orphans. <a href="#founder" data-open-tab="about">About the book →</a></figcaption>
+          <figcaption><b>By Atiq Ahmad.</b> 100% of proceeds go to orphans. <a href="aa-book.html">The full book page →</a></figcaption>
         </figure>
       </div>
 
@@ -1161,6 +1173,16 @@ html,body{overflow-x:clip}
       <h2 class="section__title" data-reveal>The story, written down.</h2>
       <p class="section__lede" data-reveal>Atiq Ahmad arrived in Canada in 2004 and opened his first Popeyes restaurant within a year. The lessons from building five businesses are now a book.</p>
 
+      <div class="card founder" data-reveal style="margin-top:44px">
+        <div class="portrait lg"><img src="media/book/atiq-portrait.webp" alt="Atiq Ahmad — Founder and President of AA Group of Companies" width="750" height="1024" loading="lazy" decoding="async" style="filter:none;object-position:50% 12%"></div>
+        <div>
+          <h3>Atiq Ahmad</h3>
+          <div class="role">Founder &amp; President · Author, <em>Thinking into Success</em></div>
+          <p>Arrived in Canada in 2004, opened his first Popeyes restaurant within a year, and built five businesses. His book carries those lessons forward — for aspiring entrepreneurs, and for the communities AA Group serves.</p>
+          <a class="btn btn--gold btn--sm" href="aa-book.html" style="margin-top:18px">The book page <svg class="ico ico--sm" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+
       <div class="book-grid">
         <figure class="book-photo" data-reveal>
           <img src="https://photo-cdn.urdupoint.com/media/2025/02/_2/740x404/pic_1740590036.jpg" alt="Book launch of Thinking into Success in Dubai, 22 February 2025" loading="lazy" onerror="this.parentElement.classList.add('img-missing')">
@@ -1177,7 +1199,8 @@ html,body{overflow-x:clip}
               <li>All proceeds from sales support orphans.</li>
             </ul>
             <div class="buy-links">
-              <a class="btn btn--gold btn--sm" href="https://www.amazon.com/s?k=Thinking+into+Success+Atiq+Ahmad" target="_blank" rel="noopener noreferrer">Amazon <svg class="ico ico--sm" aria-hidden="true" focusable="false"><use href="#i-ext"/></svg></a>
+              <a class="btn btn--gold btn--sm" href="https://www.thinkingintosuccess.ca/#price" target="_blank" rel="noopener noreferrer">Order — book site <svg class="ico ico--sm" aria-hidden="true" focusable="false"><use href="#i-ext"/></svg></a>
+              <a class="btn btn--gold btn--sm" href="https://www.amazon.ae/Thinking-Into-SUCCESS-Blueprint-Enterpreneurial/dp/1069004405" target="_blank" rel="noopener noreferrer">Amazon.ae <svg class="ico ico--sm" aria-hidden="true" focusable="false"><use href="#i-ext"/></svg></a>
               <a class="btn btn--outline btn--sm" href="https://store.gulfnews.com/" target="_blank" rel="noopener noreferrer">Gulf News store <svg class="ico ico--sm" aria-hidden="true" focusable="false"><use href="#i-ext"/></svg></a>
               <a class="btn btn--outline btn--sm" href="https://uae.kinokuniya.com/" target="_blank" rel="noopener noreferrer">Kinokuniya <svg class="ico ico--sm" aria-hidden="true" focusable="false"><use href="#i-ext"/></svg></a>
             </div>
@@ -1527,6 +1550,7 @@ html,body{overflow-x:clip}
         <a href="#divisions">Company divisions</a>
         <a href="#leadership">Team profile</a>
         <a href="#contact">Contact</a>
+        <a href="aa-book.html">The book</a>
       </div>
       <div class="footer-col">
         <b>Connect</b>
