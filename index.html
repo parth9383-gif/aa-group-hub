@@ -629,8 +629,8 @@ html.js .mask__in{translate:0 112%}
 }
 @keyframes mq{to{translate:-50% 0}}
 
-/* division cards: 3D tilt + cursor-follow light */
-.div-card{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--lift,0px));
+/* division cards: steady hover lift + cursor-follow light (no 3D tilt) */
+.div-card{transform:translateY(var(--lift,0px));
   transition:transform var(--t-med) var(--ease-out),box-shadow var(--t-med) var(--ease-out),border-color var(--t-med)}
 .div-card:hover{--lift:-6px;box-shadow:var(--sh-3);border-color:var(--gold-tint)}
 .div-card::after,.person::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity var(--t-med);
@@ -656,9 +656,9 @@ html.js .mask__in{translate:0 112%}
 @keyframes lbIn{from{opacity:0;scale:.96}to{opacity:1;scale:1}}
 @keyframes lbBd{from{opacity:0}}
 
-/* magnetic buttons (desktop) */
-.btn{transform:translate(var(--mx,0),var(--my,0));
-  transition:transform .45s var(--ease-out),background var(--t-fast),color var(--t-fast),border-color var(--t-fast),box-shadow var(--t-base)}
+/* steady buttons (no magnetic pull) */
+.btn{transition:transform var(--t-fast),background var(--t-fast),color var(--t-fast),border-color var(--t-fast),box-shadow var(--t-base)}
+.btn:hover{transform:translateY(-2px)}
 .btn--gold:hover{box-shadow:0 10px 24px -8px rgba(210,174,109,.8)}
 
 /* link underline sweeps */
@@ -672,15 +672,8 @@ html.js .mask__in{translate:0 112%}
 .tabpanel.is-enter{animation:tabIn var(--t-base) var(--ease-out) both}
 @keyframes tabIn{from{opacity:0;translate:calc(var(--dir,1)*32px) 8px}to{opacity:1;translate:0 0}}
 
-/* custom cursor dot (desktop mouse only; native cursor never hidden) */
-.cur{display:none}
-@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
-  body[data-cur] .cur{display:block;position:fixed;left:0;top:0;width:8px;height:8px;border-radius:50%;background:var(--gold-500);
-    translate:var(--x,-100px) var(--y,-100px);margin:-4px 0 0 -4px;pointer-events:none;user-select:none;z-index:2147483000;opacity:.9;will-change:translate;
-    transition:opacity .18s var(--ease-out),width .18s var(--ease-out),height .18s var(--ease-out),margin .18s var(--ease-out)}
-  body[data-cur="off"] .cur,body:has(dialog[open]) .cur{opacity:0}
-}
-@media print{.cur{display:none!important}}
+/* cursor-dot effect removed (v9): .cur stays display:none for legacy markup */
+.cur{display:none!important}
 
 /* v7 fixes: grid children may shrink, long emails/handles wrap, never widen the page */
 .contact-grid>*,.division-contacts>*,.loc-grid>*{min-width:0}
@@ -1876,56 +1869,16 @@ html,body{overflow-x:clip}
     });
   }
 
-  /* magnetic buttons + 3D tilt + cursor light (fine pointers, motion allowed) */
+  /* cursor-follow card light only — no magnetic pull, no 3D tilt (v9) */
   var FINE = window.matchMedia('(pointer:fine)').matches;
   if(FINE && !rm){
-    Array.prototype.slice.call(document.querySelectorAll('.btn')).forEach(function(b){
-      b.addEventListener('pointermove', function(e){
-        var r = b.getBoundingClientRect();
-        b.style.setProperty('--mx', ((e.clientX - r.left - r.width / 2) * .22).toFixed(1) + 'px');
-        b.style.setProperty('--my', ((e.clientY - r.top - r.height / 2) * .22).toFixed(1) + 'px');
-      });
-      b.addEventListener('pointerleave', function(){ b.style.setProperty('--mx','0px'); b.style.setProperty('--my','0px'); });
-    });
     Array.prototype.slice.call(document.querySelectorAll('.div-card, .person')).forEach(function(c){
       c.addEventListener('pointermove', function(e){
         var r = c.getBoundingClientRect();
-        var x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
-        c.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
-        c.style.setProperty('--my', (y * 100).toFixed(1) + '%');
-        if(c.classList.contains('div-card')){
-          c.style.setProperty('--ry', ((x - .5) * 8).toFixed(2) + 'deg');
-          c.style.setProperty('--rx', ((.5 - y) * 6).toFixed(2) + 'deg');
-        }
-      });
-      c.addEventListener('pointerleave', function(){
-        c.style.removeProperty('--rx'); c.style.removeProperty('--ry');
+        c.style.setProperty('--mx', (((e.clientX - r.left) / r.width) * 100).toFixed(1) + '%');
+        c.style.setProperty('--my', (((e.clientY - r.top) / r.height) * 100).toFixed(1) + '%');
       });
     });
-  }
-
-  /* custom cursor dot (mouse-only, trails the native cursor) */
-  var cmq = window.matchMedia('(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)');
-  var cur = document.querySelector('.cur');
-  if(cmq.matches && cur){
-    var INTER = 'a,button,input,select,textarea,summary,label,[role="button"],[role="tab"],[contenteditable]';
-    var tx=-100, ty=-100, cx=-100, cy=-100, craf=0, con=false;
-    function tick(){
-      cx += (tx - cx) * .22; cy += (ty - cy) * .22;
-      cur.style.setProperty('--x', cx.toFixed(1) + 'px');
-      cur.style.setProperty('--y', cy.toFixed(1) + 'px');
-      craf = (Math.abs(tx - cx) + Math.abs(ty - cy) > .3) ? requestAnimationFrame(tick) : 0;
-    }
-    window.addEventListener('pointermove', function(e){
-      if(e.pointerType !== 'mouse') return;
-      if(!con){ con = true; cur.hidden = false; document.body.dataset.cur = 'on'; cx = e.clientX; cy = e.clientY; }
-      tx = e.clientX; ty = e.clientY;
-      var t = (e.target && e.target.closest) ? e.target.closest(INTER) : null;
-      document.body.dataset.cur = t ? 'off' : 'on';
-      if(!craf){ craf = requestAnimationFrame(tick); }
-    }, {passive:true});
-    document.addEventListener('mouseleave', function(){ document.body.dataset.cur = 'off'; });
-    document.addEventListener('mouseenter', function(){ if(con){ document.body.dataset.cur = 'on'; } });
   }
 
   activate(currentId(), false);
