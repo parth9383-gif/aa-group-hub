@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Options Preview — AA Group (2 + 5 Merge)</title>
+<meta name="robots" content="noindex">
+<style>
+:root{--gold:#d2ae6d;--gold-hi:#fec95e;--ink:#1f2326;--ivory:#faf7f2;--evergreen:#2f5d5a;--line:rgba(210,174,109,.28)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#141619;color:var(--ivory);font-family:"Manrope","Segoe UI",Helvetica,Arial,sans-serif;line-height:1.6}
+.wrap{max-width:1180px;margin:0 auto;padding:64px 24px 96px}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-hi);margin-bottom:14px}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--gold)}
+h1{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;font-size:clamp(36px,5vw,58px);line-height:1.08;letter-spacing:-.01em}
+h1 em{font-style:italic;color:var(--gold)}
+.lede{color:rgba(250,247,242,.72);max-width:62ch;margin-top:14px;font-size:16px}
+.palette{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0 8px}
+.swatch{display:flex;align-items:center;gap:10px;padding:8px 16px;border:1px solid var(--line);border-radius:999px;font-size:12px;letter-spacing:.05em;color:rgba(250,247,242,.85)}
+.swatch i{width:18px;height:18px;border-radius:50%;border:1px solid rgba(255,255,255,.25);flex:none}
+.note{font-size:12px;color:rgba(250,247,242,.55);margin-top:8px}
+.group{margin-top:72px}
+.group h2{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;font-size:32px;color:var(--gold-hi);margin-bottom:6px}
+.group .sub{font-size:13px;color:rgba(250,247,242,.6);margin-bottom:28px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.grid.one{grid-template-columns:1fr;max-width:860px}
+.opt{background:#1b1e21;border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:transform .2s ease,border-color .2s ease}
+.opt:hover{transform:translateY(-3px);border-color:var(--gold)}
+.opt img{width:100%;display:block}
+.opt .cap{padding:18px 22px 22px}
+.opt .cap b{display:block;font-family:"Cormorant Garamond",Georgia,serif;font-size:22px;font-weight:600;color:var(--ivory)}
+.opt .cap span{font-size:13px;color:rgba(250,247,242,.65);display:block;margin-top:6px}
+.opt .cap .tag{display:inline-block;margin-top:10px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:var(--gold-hi);border-radius:999px;padding:5px 12px}
+@media(max-width:820px){.grid{grid-template-columns:1fr}}
+.foot{margin-top:80px;padding-top:28px;border-top:1px solid var(--line);font-size:12px;color:rgba(250,247,242,.5)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow">AA Group · Design options</p>
+  <h1>2 + 5 Merge — <em>same colors,</em> naya presentation</h1>
+  <p class="lede">Jo colors abhi LIVE website + book page par hain, wahi use kiye hain (charcoal, champagne gold, ivory, evergreen). Concept 2 (editorial ivory) + Concept 5 (book &amp; founder dark-gold) ka merge — alag-alag page options. ChatGPT (gpt-image-2.6) se banayi gayi images — koi bhi abhi implement nahi hui.</p>
+
+  <div class="palette">
+    <span class="swatch"><i style="background:#1f2326"></i>Charcoal #1f2326</span>
+    <span class="swatch"><i style="background:#d2ae6d"></i>Gold #d2ae6d</span>
+    <span class="swatch"><i style="background:#fec95e"></i>Bright gold #fec95e</span>
+    <span class="swatch"><i style="background:#faf7f2"></i>Ivory #faf7f2</span>
+    <span class="swatch"><i style="background:#2f5d5a"></i>Evergreen #2f5d5a</span>
+  </div>
+  <p class="note">Real founder photo + real book photo reference ke saath generate kiya gaya hai.</p>
+
+  <div class="group">
+    <h2>HOME — first page (3 options)</h2>
+    <p class="sub">Top bar hata kar sirf logo pill + menu button · founder photo badi · same colors</p>
+    <div class="grid">
+      <div class="opt"><img src="media/concepts-pages/home-a-dark-portrait-display.jpg" alt="Home A — Dark Portrait"><div class="cap"><b>A · Dark Portrait (5-heavy)</b><span>Dark charcoal + gold glow, real founder photo, AA monogram panel peeche, chips neeche. Book-page jaisa premium.</span><span class="tag">Option A</span></div></div>
+      <div class="opt"><img src="media/concepts-pages/home-b-ivory-editorial-display.jpg" alt="Home B — Ivory Editorial"><div class="cap"><b>B · Ivory Editorial (2-heavy)</b><span>Ivory magazine style, B&amp;W founder portrait gold frame mein, dark AA monogram panel.</span><span class="tag">Option B</span></div></div>
+      <div class="opt"><img src="media/concepts-pages/home-c-split-display.jpg" alt="Home C — Split"><div class="cap"><b>C · Split (dono mix)</b><span>Upar dark + neeche ivory, founder photo boundary par, tags ivory strip par.</span><span class="tag">Option C</span></div></div>
+      <div class="opt" style="border-style:dashed"><img src="media/concepts-pages/menu-overlay-display.jpg" alt="Menu overlay"><div class="cap"><b>+ Menu overlay (fullscreen)</b><span>Upar wali text bar ki jagah: bada premium menu — logo pill + circular button se khulega.</span><span class="tag">Menu</span></div></div>
+    </div>
+  </div>
+
+  <div class="group">
+    <h2>BOOK page (2 options)</h2>
+    <p class="sub">"Thinking into Success" — same colors, presentation options</p>
+    <div class="grid">
+      <div class="opt"><img src="media/concepts-pages/book-a-dark-display.jpg" alt="Book A — Dark"><div class="cap"><b>A · Dark (current refined)</b><span>Jo abhi live hai usi ka polish — founder photo + book box + gold glow.</span><span class="tag">Option A</span></div></div>
+      <div class="opt"><img src="media/concepts-pages/book-b-ivory-display.jpg" alt="Book B — Ivory"><div class="cap"><b>B · Ivory editorial</b><span>Ivory magazine look — book gold frame mein, founder photo circular B&amp;W.</span><span class="tag">Option B</span></div></div>
+    </div>
+  </div>
+
+  <div class="group">
+    <h2>Content sections + footer (reference)</h2>
+    <p class="sub">Andar ke sections kaise lagenge — editorial ivory + dark footer</p>
+    <div class="grid one">
+      <div class="opt"><img src="media/concepts-pages/sections-editorial-display.jpg" alt="Sections editorial"><div class="cap"><b>Sections — ivory editorial</b><span>Mission/Vision/Values jaisi cards, gold hairlines, magazine whitespace.</span><span class="tag">Sections</span></div></div>
+      <div class="opt"><img src="media/concepts-pages/footer-dark-display.jpg" alt="Footer dark"><div class="cap"><b>Footer — dark band</b><span>Charcoal + gold hairline + monogram circle.</span><span class="tag">Footer</span></div></div>
+    </div>
+  </div>
+
+  <div class="foot">Design options preview · 2026-11-08 · koi bhi option abhi implement nahi hua — choose karne ke baad design + motion karenge · AA Group of Companies</div>
+</div>
+</body>
+</html>
