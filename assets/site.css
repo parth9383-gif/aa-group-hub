@@ -5,7 +5,7 @@
 
 :root{
   --txt-rgb:250,247,242;
-  --gold:#d2ae6d; --gold-hi:#fec95e; --gold-deep:#a9873f; --gold-tint:#f3e7cf;
+  --gold:#d2ae6d; --gold-hi:#d6b86a; --gold-deep:#a9873f; --gold-tint:#f3e7cf;
   --gold-100:#f3e2a8; --gold-300:#e2c278; --gold-500:#c9a24a; --gold-700:#9c7a2e;
   --ink:#1f2326; --charcoal:#32373c; --ivory:#faf7f2;
   --bg:#0e0f12; --panel:#141619; --panel-2:#17191d; --panel-3:#1b1e21;
@@ -89,6 +89,10 @@ body::before{content:"";position:fixed;inset:0;z-index:9000;pointer-events:none;
 [data-theme="light"] .header .aa-mark__a{background:linear-gradient(130deg,#5f4710,#a07e33 38%,#c9a24b 56%,#836418);-webkit-background-clip:text;background-clip:text;color:transparent}
 .aa-word{display:inline-flex;flex-direction:column;line-height:1.05;font-family:var(--serif);font-weight:600;font-size:21px;letter-spacing:.02em;color:var(--ivory)}
 .aa-word small{font-family:var(--sans);font-weight:700;font-size:8.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-hi);margin-top:3px}
+/* Inline "AA" word treatment — small A then big A (The AA Standard) */
+.aa-inline{font-family:var(--serif);font-weight:700;letter-spacing:-.02em}
+.aa-inline__sm{font-size:.68em}
+.aa-inline__lg{font-size:1.28em;margin-left:.04em}
 .nav{display:flex;align-items:center;gap:6px}
 .nav a{position:relative;color:rgba(var(--txt-rgb),.78);font-size:13.5px;font-weight:600;letter-spacing:.01em;padding:9px 14px;border-radius:var(--radius-pill);transition:color var(--t-fast),background var(--t-fast)}
 .nav a:hover{color:var(--ivory)}
@@ -373,3 +377,15 @@ html.js .hero h1.replay .mask__in{translate:0 112%;animation:maskIn 1s var(--eas
 .theme-toggle:hover{background:rgba(210,174,109,.14);transform:translateY(-1px)}
 [data-theme="light"] .theme-toggle{background:#FCF9F2;border-color:var(--line-dark);color:var(--gold-deep)}
 [data-theme="light"] .theme-toggle:hover{background:rgba(131,100,24,.08)}
+
+/* ===== turn-79: ambient aurora + 3D motion ===== */
+.ambient{position:fixed;inset:-12%;z-index:0;pointer-events:none;filter:blur(26px);opacity:.5;background:radial-gradient(42% 38% at 20% 16%,rgba(214,184,106,.14),transparent 70%),radial-gradient(36% 32% at 82% 12%,rgba(140,168,190,.10),transparent 70%),radial-gradient(46% 42% at 50% 104%,rgba(201,162,74,.11),transparent 72%);animation:aa-aurora 26s ease-in-out infinite alternate}
+@keyframes aa-aurora{0%{transform:translate3d(-2%,-1%,0) scale(1)}50%{transform:translate3d(2%,1.5%,0) scale(1.05)}100%{transform:translate3d(-1%,2%,0) scale(1.02)}}
+main{position:relative;z-index:1}
+.site-footer,.site-foot{position:relative;z-index:1}
+.tilt-3d{transform-style:preserve-3d;will-change:transform}
+@media(prefers-reduced-motion:reduce){.ambient{animation:none}}
+
+.cursor-glow{position:fixed;top:0;left:0;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;pointer-events:none;z-index:78;background:radial-gradient(circle,rgba(214,184,106,.12),rgba(214,184,106,.04) 42%,transparent 72%);mix-blend-mode:screen;opacity:0;transition:opacity .5s}
+[data-theme="light"] .cursor-glow{mix-blend-mode:multiply;background:radial-gradient(circle,rgba(122,90,28,.10),rgba(122,90,28,.04) 42%,transparent 72%)}
+body.glow-on .cursor-glow{opacity:1}

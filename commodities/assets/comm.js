@@ -184,3 +184,30 @@
     })();
   }
 })();
+
+/* ==== turn-79: ambient aurora + cursor glow + 3D tilt ==== */
+(function(){
+  function go(){
+    var amb=document.createElement('div'); amb.className='ambient'; amb.setAttribute('aria-hidden','true');
+    document.body.insertBefore(amb, document.body.firstChild);
+    var glow=document.createElement('div'); glow.className='cursor-glow'; glow.setAttribute('aria-hidden','true');
+    document.body.appendChild(glow);
+    var fine=window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+    var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(fine && !reduced){
+      var mx=innerWidth/2,my=innerHeight/3,tx=mx,ty=my;
+      document.addEventListener('mousemove', function(e){ mx=e.clientX; my=e.clientY; document.body.classList.add('glow-on'); }, {passive:true});
+      (function loop(){ tx+=(mx-tx)*.12; ty+=(my-ty)*.12; glow.style.transform='translate3d('+(tx-260)+'px,'+(ty-260)+'px,0)'; requestAnimationFrame(loop); })();
+      var tilts=document.querySelectorAll('.card, .div-card, .person, .gitem, .pillar, .step, .split .media');
+      Array.prototype.forEach.call(tilts, function(el){
+        el.classList.add('tilt-3d');
+        el.addEventListener('mousemove', function(e){
+          var r=el.getBoundingClientRect(); var x=(e.clientX-r.left)/r.width-.5; var y=(e.clientY-r.top)/r.height-.5;
+          el.style.transform='perspective(900px) rotateX('+(y*-4).toFixed(2)+'deg) rotateY('+(x*4).toFixed(2)+'deg) translateY(-3px)';
+        });
+        el.addEventListener('mouseleave', function(){ el.style.transform=''; });
+      });
+    }
+  }
+  if(document.readyState!=='loading') go(); else document.addEventListener('DOMContentLoaded', go);
+})();

@@ -166,3 +166,21 @@
     })();
   }
 })();
+
+/* ==== turn-79: ambient aurora + cursor glow ==== */
+(function(){
+  function go(){
+    var amb=document.createElement('div'); amb.className='ambient'; amb.setAttribute('aria-hidden','true');
+    document.body.insertBefore(amb, document.body.firstChild);
+    var fine=window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+    var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(fine && !reduced && !document.querySelector('.cursor-glow')){
+      var glow=document.createElement('div'); glow.className='cursor-glow'; glow.setAttribute('aria-hidden','true');
+      document.body.appendChild(glow);
+      var mx=innerWidth/2,my=innerHeight/3,tx=mx,ty=my;
+      document.addEventListener('mousemove', function(e){ mx=e.clientX; my=e.clientY; document.body.classList.add('glow-on'); }, {passive:true});
+      (function loop(){ tx+=(mx-tx)*.12; ty+=(my-ty)*.12; glow.style.transform='translate3d('+(tx-260)+'px,'+(ty-260)+'px,0)'; requestAnimationFrame(loop); })();
+    }
+  }
+  if(document.readyState!=='loading') go(); else document.addEventListener('DOMContentLoaded', go);
+})();
