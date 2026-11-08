@@ -22,6 +22,26 @@
     host.innerHTML = SPRITE;
     document.body.insertBefore(host.firstChild, document.body.firstChild);
 
+    /* dark/light theme toggle */
+    var themeBtn = document.createElement('button');
+    themeBtn.className = 'theme-toggle';
+    themeBtn.type = 'button';
+    themeBtn.setAttribute('aria-label', 'Toggle light or dark mode');
+    function applyTheme(t){
+      document.documentElement.setAttribute('data-theme', t);
+      themeBtn.textContent = (t === 'dark') ? '☀' : '☾';
+      try { localStorage.setItem('aa-theme', t); } catch(e){}
+    }
+    var savedTheme = null;
+    try { savedTheme = localStorage.getItem('aa-theme'); } catch(e){}
+    applyTheme(savedTheme || 'dark');
+    themeBtn.addEventListener('click', function(){
+      var cur = document.documentElement.getAttribute('data-theme');
+      applyTheme(cur === 'light' ? 'dark' : 'light');
+    });
+    var headerCta = document.querySelector('.header__cta');
+    if (headerCta && headerCta.parentNode){ headerCta.parentNode.insertBefore(themeBtn, headerCta); }
+
     var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     /* scroll progress + header state */
