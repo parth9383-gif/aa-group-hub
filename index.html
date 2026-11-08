@@ -9,7 +9,10 @@
 <link rel="icon" type="image/webp" href="media/site/AA-Group-Fav.webp">
 <meta property="og:title" content="AA Group of Companies — Woodbridge, Ontario">
 <meta property="og:description" content="Five businesses. One family. We build what lasts, and we build it with people first.">
-<meta property="og:image" content="https://aagroupofcompanies.com/wp-content/uploads/2023/10/AA-Group-Logo.gif">
+<meta property="og:image" content="https://parth9383-gif.github.io/aa-group-hub/media/og-journey.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://parth9383-gif.github.io/aa-group-hub/media/og-journey.png">
 <meta property="og:image:alt" content="AA Group of Companies — five businesses, one family. Woodbridge, Ontario.">
 <meta property="og:url" content="https://www.aagroupofcompanies.com/">
 <meta name="twitter:card" content="summary_large_image">
@@ -683,6 +686,76 @@ html.js .mask__in{translate:0 112%}
 .contact-grid>*,.division-contacts>*,.loc-grid>*{min-width:0}
 .contact-row>a,.contact-row>span:not(.lbl){min-width:0;overflow-wrap:anywhere}
 html,body{overflow-x:clip}
+/* ================= v7: the moment (turn 37: gold thread + 1-5-100) ================= */
+#home{position:relative}
+.hero__bg{position:absolute;inset:0;z-index:0;overflow:hidden}
+.hero__bg img{width:100%;height:100%;object-fit:cover;object-position:68% 26%;opacity:0;animation:heroPhoto 2.4s cubic-bezier(.16,.84,.26,1) forwards}
+@keyframes heroPhoto{0%{opacity:0;scale:1.06}100%{opacity:.62;scale:1}}
+.hero__bg::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(90deg,#0e0f12 0%,#0e0f12 30%,rgba(14,15,18,.78) 56%,rgba(14,15,18,.30) 100%),
+  linear-gradient(180deg,rgba(14,15,18,.6) 0%,rgba(14,15,18,0) 28%,rgba(14,15,18,0) 60%,#0e0f12 100%)}
+.hero .container{position:relative;z-index:2}
+.hero__credit{position:absolute;right:26px;bottom:16px;z-index:2;font-size:11px;color:rgba(246,242,233,.45)}
+.scrollcue{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(246,242,233,.6);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+.scrollcue i{display:block;width:1px;height:40px;background:var(--gold-hi);transform-origin:top;animation:cue 1.8s ease-in-out infinite}
+@keyframes cue{0%{scale:1 0}55%{scale:1 1}100%{scale:1 1;opacity:0}}
+@media(max-width:900px){
+  .hero__bg img{object-position:center 20%}
+  .hero__bg::after{background:linear-gradient(180deg,#0e0f12 0%,rgba(14,15,18,.8) 32%,rgba(14,15,18,.5) 62%,#0e0f12 100%)}
+  .hero__credit{display:none}
+}
+.book-hero{display:flex;gap:22px;align-items:flex-end;margin-top:42px}
+.book-cover{flex:none;width:150px;height:218px;border-radius:4px 12px 12px 4px;background:linear-gradient(160deg,#17191d,#0e0f12);border:1px solid var(--line-dark);position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:18px;box-shadow:0 24px 44px -18px rgba(0,0,0,.8);rotate:8deg}
+.book-cover::before{content:"";position:absolute;left:10px;top:0;bottom:0;width:1px;background:rgba(254,201,94,.35)}
+.book-cover .bc-t{font-family:var(--serif);font-size:17px;font-weight:700;line-height:1.25;color:var(--gold-hi)}
+.book-cover .bc-a{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(246,242,233,.6);margin-top:12px}
+.book-hero figcaption{font-size:12.5px;color:rgba(246,242,233,.72);max-width:250px;line-height:1.5}
+.book-hero figcaption b{color:var(--gold-hi);font-weight:700}
+.book-hero figcaption a{color:var(--gold-hi)}
+.thread{position:absolute;left:96px;top:0;bottom:0;width:120px;z-index:1;pointer-events:none}
+.thread path{fill:none;stroke:url(#threadG);stroke-width:2;stroke-dasharray:1;stroke-dashoffset:1;vector-effect:non-scaling-stroke}
+.tnode{position:absolute;left:151px;z-index:2;display:inline-flex;align-items:center;gap:9px;font-family:var(--serif);font-weight:700;color:var(--gold-hi);font-size:14px;letter-spacing:.05em}
+.tnode::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 13px rgba(254,201,94,.8)}
+@media(max-width:900px){.thread{left:16px;width:36px}.tnode{left:28px;font-size:11px}}
+@media(prefers-reduced-motion:reduce){.hero__bg img{animation:none;opacity:.62;scale:1}.scrollcue i{animation:none;scale:1 1}}
+.std{position:relative;background:#17191d;border-bottom:1px solid var(--line-dark)}
+.std__grid{display:grid;grid-template-columns:5fr 7fr;gap:56px;padding-block:96px 72px}
+.std__intro{position:sticky;top:112px;align-self:start}
+.std__hair{width:48px;height:1px;background:var(--gold-deep);margin:24px 0}
+.std__lede{color:rgba(246,242,233,.72);font-size:15px;max-width:340px;line-height:1.6}
+.std__rail{display:grid;grid-template-columns:repeat(4,1fr)}
+.std__pillar{padding:0 26px;border-left:1px solid var(--line-dark)}
+.std__pillar:first-child{border-left:none;padding-left:0}
+.std__num{font-family:var(--serif);font-weight:800;font-size:clamp(60px,6.4vw,102px);line-height:.95;color:transparent;background:linear-gradient(115deg,var(--gold-deep),var(--gold) 45%,var(--gold-hi));-webkit-background-clip:text;background-clip:text}
+.std__pillar h3{font-family:var(--serif);font-size:22px;font-weight:600;color:#fff;margin:12px 0 8px}
+.std__pillar p{font-size:13px;color:rgba(246,242,233,.68);line-height:1.55}
+.std__proof{margin-top:13px;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-hi);line-height:1.5}
+.std__strip{margin-top:56px;padding-top:18px;border-top:1px solid var(--line-dark);display:flex;flex-wrap:wrap;gap:16px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(246,242,233,.5);grid-column:1/-1}
+.std__strip span{display:inline-flex;align-items:center;gap:16px}
+.std__strip span::after{content:"";width:4px;height:4px;border-radius:50%;background:var(--gold)}
+.std__strip span:last-child::after{display:none}
+@media(max-width:900px){
+  .std__grid{grid-template-columns:1fr;gap:40px;padding-block:64px 56px}
+  .std__intro{position:static}
+  .std__rail{grid-template-columns:1fr}
+  .std__pillar{border-left:none;border-top:1px solid var(--line-dark);padding:26px 0 6px}
+  .std__pillar:first-child{border-top:none;padding-top:0}
+  .std__num{font-size:54px}
+}
+.give{position:relative;background:#0e0f12;border-top:1px solid var(--line-dark)}
+.give__grid{display:grid;grid-template-columns:6fr 6fr;gap:72px;padding-block:110px;align-items:center}
+.give__plate{justify-self:center;position:relative;max-width:470px;margin:0}
+.give__plate img{display:block;width:100%;border:1px solid var(--line-dark);padding:13px;background:#0a0b0d;box-shadow:0 40px 80px -40px rgba(0,0,0,.9)}
+.give__plate figcaption{font-size:12px;color:rgba(246,242,233,.55);margin-top:12px;text-align:center}
+.give__num{font-family:var(--serif);font-weight:800;font-size:clamp(84px,9vw,140px);line-height:.92;color:transparent;background:linear-gradient(115deg,var(--gold-deep),var(--gold) 45%,var(--gold-hi));-webkit-background-clip:text;background-clip:text}
+.give__hair{width:48px;height:1px;background:var(--gold-deep);margin:28px 0 18px}
+.give__body{color:rgba(246,242,233,.72);font-size:15px;line-height:1.65}
+.give__body p + p{margin-top:12px}
+.give__cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+@media(max-width:900px){.give__grid{grid-template-columns:1fr;gap:48px;padding-block:72px}}
+@media print{.thread,.tnode{display:none}}
+
+.img-missing{display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:44px;color:var(--gold-hi);background:#1f2326}
 </style>
 </head>
 <body class="grain">
@@ -732,22 +805,34 @@ html,body{overflow-x:clip}
 
 <!-- ================= HOME ================= -->
 <section class="tabpanel is-active" id="home" role="tabpanel" tabindex="-1" aria-labelledby="tab-home">
+  <svg class="thread" viewBox="0 0 100 4000" preserveAspectRatio="none" aria-hidden="true">
+    <defs><linearGradient id="threadG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8a6d17"/><stop offset="100%" stop-color="#fec95e"/></linearGradient></defs>
+    <path id="threadPath" pathLength="1" d="M50 0 C 44 700, 58 1400, 50 2100 C 42 2800, 58 3400, 50 4000"/>
+  </svg>
   <div class="hero on-dark">
+    <div class="hero__bg" aria-hidden="true"><img src="media/hero-2024.jpg" alt="" width="1600" height="900" fetchpriority="high" decoding="async" onerror="this.parentElement.style.display='none'"></div>
+    <span class="tnode" style="top:44%" aria-hidden="true">2004</span>
     <video class="hero__video" id="hero-video" muted loop playsinline preload="none" aria-hidden="true" hidden></video>
+
     <div class="container">
       <div>
-        <p class="hero__eyebrow">AA Group of Companies · Woodbridge, Ontario</p>
-        <h1 class="replay" aria-label="Built by family. Grown with people.">
-          <span class="mask"><span class="mask__in" style="--d:.08s">Built by family.</span></span>
-          <span class="mask"><span class="mask__in" style="--d:.2s"><em>Grown with people.</em></span></span>
+        <p class="hero__eyebrow">AA Group of Companies · Family-led since 2004</p>
+        <h1 class="replay" aria-label="One restaurant, 2004. Five businesses today.">
+          <span class="mask"><span class="mask__in" style="--d:.08s"><em>One</em> restaurant, <em>2004.</em></span></span>
+          <span class="mask"><span class="mask__in" style="--d:.2s"><em>Five</em> businesses today.</span></span>
         </h1>
-        <p>From Woodbridge, Ontario, we lead five businesses that feed, move, invest, guide and care — with the same hands-on commitment we started with.</p>
+        <p>Built by Atiq Ahmad and still family-led: 60+ restaurants, 1,200+ people, 120 managers, one way of working.</p>
         <div class="hero__rule" aria-hidden="true"></div>
         <div class="hero__actions">
-          <a class="btn btn--gold" href="#divisions">Explore our divisions <svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
-          <a class="btn btn--outline" href="#contact">Get in touch</a>
+          <a class="btn btn--gold" href="#journey">Our story <svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn--outline" href="#divisions">Explore the group</a>
         </div>
+        <figure class="book-hero">
+          <div class="book-cover" aria-hidden="true"><span class="bc-t">Thinking into Success</span><span class="bc-a">Atiq Ahmad</span></div>
+          <figcaption><b>By Atiq Ahmad.</b> 100% of proceeds go to orphans. <a href="#founder">About the book →</a></figcaption>
+        </figure>
       </div>
+
       <div class="hero__crest">
         <div class="crest">
           <div class="crest__ring" aria-hidden="true"></div>
@@ -779,6 +864,8 @@ html,body{overflow-x:clip}
         </div>
       </div>
     </div>
+  <div class="scrollcue" aria-hidden="true">Scroll<i></i></div>
+  <p class="hero__credit">AA Group Annual Awards 2024 · Company archive photo</p>
   </div>
 
   <div class="strip on-dark" aria-label="Recognition and news">
@@ -816,6 +903,47 @@ html,body{overflow-x:clip}
     </div>
   </div>
 
+  <div class="std">
+    <span class="tnode" style="top:42%" aria-hidden="true">2018</span>
+    <div class="container std__grid">
+      <div class="std__intro" data-reveal>
+        <p class="eyebrow">The AA Standard</p>
+        <h2 class="section__title">What did not change between one restaurant and five.</h2>
+        <div class="std__hair" aria-hidden="true"></div>
+        <p class="std__lede">Scale is the easy part to see. These four carried it from the first restaurant to 1,200 people.</p>
+      </div>
+      <div class="std__rail">
+        <div class="std__pillar" data-reveal style="--d:0">
+          <div class="std__num" aria-hidden="true">01</div>
+          <h3>Family-led</h3>
+          <p>One family founded the group and still leads it. Decisions are made close to the work, not far from it.</p>
+          <div class="std__proof">Founded 2018 · Still family-led</div>
+        </div>
+        <div class="std__pillar" data-reveal style="--d:1">
+          <div class="std__num" aria-hidden="true">02</div>
+          <h3>Discipline</h3>
+          <p>The same standard in the sixtieth restaurant as in the first. Systems, not shortcuts.</p>
+          <div class="std__proof">60+ restaurants · One way of working</div>
+        </div>
+        <div class="std__pillar" data-reveal style="--d:2">
+          <div class="std__num" aria-hidden="true">03</div>
+          <h3>Leadership</h3>
+          <p>Managers are the business. The group grows the people who run the floor.</p>
+          <div class="std__proof">120 managers · 1,200+ people</div>
+        </div>
+        <div class="std__pillar" data-reveal style="--d:3">
+          <div class="std__num" aria-hidden="true">04</div>
+          <h3>Giving back</h3>
+          <p>Success is measured by what it returns. Every dollar the founder's book earns goes to orphans.</p>
+          <div class="std__proof">100% of proceeds to orphans</div>
+        </div>
+      </div>
+      <div class="std__strip" data-reveal>
+        <span>Shortlisted — TRIEC IS Awards</span><span>Book launch covered by APP / UrduPoint, Dubai</span>
+      </div>
+    </div>
+  </div>
+
   <a class="archive-banner" href="#gallery-2024" data-open-tab="gallery" aria-label="Open the AA Group event gallery">
     <img src="media/gallery/2024-DSC02445-1-min-scaled.webp" alt="AA Group Annual Awards 2024 — awards night" width="768" height="455" loading="lazy" decoding="async">
     <div class="archive-banner__text">
@@ -826,7 +954,7 @@ html,body{overflow-x:clip}
     </div>
   </a>
 
-  <div class="section">
+  <div class="section" id="journey">
     <div class="container">
       <p class="eyebrow" data-reveal>Who we are</p>
       <h2 class="section__title" data-reveal>A family-led holding company, built to last.</h2>
@@ -879,7 +1007,32 @@ html,body{overflow-x:clip}
       </div>
     </div>
   </div>
+
+  <div class="give">
+    <span class="tnode" style="top:46%" aria-hidden="true">2025</span>
+    <div class="container give__grid">
+      <figure class="give__plate" data-reveal>
+        <img src="https://photo-cdn.urdupoint.com/media/2025/02/_2/740x404/pic_1740590036.jpg" alt="Atiq Ahmad at the Dubai launch of Thinking into Success" width="740" height="404" loading="lazy" decoding="async" onerror="this.parentElement.style.display='none'">
+        <figcaption>Book launch, Dubai · 22 Feb 2025 · Photo: APP via UrduPoint</figcaption>
+      </figure>
+      <div data-reveal style="--d:1">
+        <p class="eyebrow">Giving back</p>
+        <div class="give__num" aria-label="One hundred percent">100%</div>
+        <h2 class="section__title" style="margin-top:8px">Every copy of <em>Thinking into Success</em> goes to orphans.</h2>
+        <div class="give__hair" aria-hidden="true"></div>
+        <div class="give__body">
+          <p>Atiq Ahmad wrote <em>Thinking into Success</em> to set down what carried one restaurant in 2004 to five businesses today. He donates all of it.</p>
+          <p>Launched in Dubai on 22 February 2025, every dollar the book earns is donated to support orphans — the part of the group's story the family cares about most.</p>
+        </div>
+        <div class="give__cta">
+          <a class="btn btn--gold" href="https://www.amazon.com/s?k=Thinking+into+Success+Atiq+Ahmad" target="_blank" rel="noopener noreferrer">Get the book</a>
+          <a class="btn btn--outline" href="https://www.urdupoint.com/en/pakistan/pakistani-entrepreneur-atiq-ahmads-book-1933269.html" target="_blank" rel="noopener noreferrer">Read the launch coverage</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
 
 <!-- ================= DIVISIONS ================= -->
 <section class="tabpanel" id="divisions" role="tabpanel" tabindex="-1" aria-labelledby="tab-divisions">
@@ -1200,7 +1353,7 @@ html,body{overflow-x:clip}
       <p class="section__lede" data-reveal>Led by a founder who built this group restaurant by restaurant, and a team with decades of experience across food, finance, aviation, commodities, and travel.</p>
 
       <div class="card founder" data-reveal>
-        <div class="portrait lg"><img src="media/site/WhatsApp-Image-2024-02-01-at-08.28.22-1-1021x1024.jpeg" alt="Atiq Ahmad" loading="lazy" onerror="this.parentElement.style.background='#1f2326';this.parentElement.textContent='AA';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';this.parentElement.style.fontFamily='var(--serif)';this.parentElement.style.fontSize='52px';this.parentElement.style.color='var(--gold-hi)'"></div>
+        <div class="portrait lg"><img src="media/site/WhatsApp-Image-2024-02-01-at-08.28.22-1-1021x1024.jpeg" alt="Atiq Ahmad" loading="lazy" onerror="var _p=this.parentElement;if(_p){this.remove();_p.textContent='AA';_p.classList.add('img-missing');}"></div>
         <div>
           <h3>Atiq Ahmad</h3>
           <div class="role">President</div>
@@ -1711,15 +1864,20 @@ html,body{overflow-x:clip}
   /* scroll progress bar */
   var prog = document.querySelector('.progress');
   if(prog){
-    var pt = false;
     function updP(){
       var d = document.documentElement;
-      document.body.style.setProperty('--p', (d.scrollTop / Math.max(1, d.scrollHeight - d.clientHeight)).toFixed(4));
+      var frac = d.scrollTop / Math.max(1, d.scrollHeight - d.clientHeight);
+      document.body.style.setProperty('--p', frac.toFixed(4));
+      var tp = document.getElementById('threadPath');
+      var hp = document.getElementById('home');
+      if(tp && hp){
+        var r = hp.getBoundingClientRect();
+        var total = r.height - window.innerHeight;
+        var done = Math.max(0, Math.min(1, -r.top / Math.max(1, total)));
+        tp.style.strokeDashoffset = (1 - done).toFixed(4);
+      }
     }
-    window.addEventListener('scroll', function(){
-      if(pt) return; pt = true;
-      requestAnimationFrame(function(){ updP(); pt = false; });
-    }, {passive:true});
+    window.addEventListener('scroll', function(){ updP(); }, {passive:true});
     updP();
     window.addEventListener('resize', function(){ updP(); }, {passive:true});
   }
