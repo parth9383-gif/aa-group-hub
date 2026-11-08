@@ -34,9 +34,10 @@ img{max-width:100%;display:block}
 :focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px;border-radius:4px}
 
 /* grain */
-body.grain::before{content:"";position:fixed;inset:0;z-index:9000;pointer-events:none;opacity:.045;mix-blend-mode:overlay;
+body::before{content:"";position:fixed;inset:0;z-index:9000;pointer-events:none;opacity:.04;mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   background-size:180px 180px}
+[data-theme="light"] body::before{opacity:.022}
 
 .ico{width:1.1em;height:1.1em;flex:none;vertical-align:-.18em}
 .ico--sm{width:15px;height:15px}
@@ -77,9 +78,17 @@ body.grain::before{content:"";position:fixed;inset:0;z-index:9000;pointer-events
 .progress{position:absolute;left:0;bottom:-1px;height:2px;width:100%;transform-origin:0 50%;scale:var(--p,0) 1;
   background:linear-gradient(90deg,var(--gold-700),var(--gold-100),var(--gold-500));pointer-events:none}
 .header__inner{height:var(--header-h);display:flex;align-items:center;justify-content:space-between;gap:24px}
-.header__logo{display:inline-flex;align-items:center}
+.header__logo{display:inline-flex;align-items:center;gap:12px}
 .header__logo img{height:44px;width:auto;filter:brightness(0) invert(1) sepia(.3) saturate(2.2) hue-rotate(5deg) brightness(1.05)}
 .logo-fallback{font-family:var(--serif);font-weight:600;font-size:22px;color:var(--ivory)}
+/* AA brand monogram — small A over big A */
+.aa-mark{display:inline-flex;flex-direction:column;align-items:center;line-height:.72;font-family:var(--serif);font-weight:700;letter-spacing:-.04em;flex:none;user-select:none}
+.aa-mark__a{background:linear-gradient(130deg,#9c7a2e,#e2c278 38%,#f3e2a8 56%,#c9a24a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.aa-mark__a--sm{font-size:16px}
+.aa-mark__a--lg{font-size:32px;margin-top:-4px}
+[data-theme="light"] .header .aa-mark__a{background:linear-gradient(130deg,#5f4710,#a07e33 38%,#c9a24b 56%,#836418);-webkit-background-clip:text;background-clip:text;color:transparent}
+.aa-word{display:inline-flex;flex-direction:column;line-height:1.05;font-family:var(--serif);font-weight:600;font-size:21px;letter-spacing:.02em;color:var(--ivory)}
+.aa-word small{font-family:var(--sans);font-weight:700;font-size:8.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-hi);margin-top:3px}
 .nav{display:flex;align-items:center;gap:6px}
 .nav a{position:relative;color:rgba(var(--txt-rgb),.78);font-size:13.5px;font-weight:600;letter-spacing:.01em;padding:9px 14px;border-radius:var(--radius-pill);transition:color var(--t-fast),background var(--t-fast)}
 .nav a:hover{color:var(--ivory)}
@@ -259,6 +268,8 @@ html.js .hero h1.replay .mask__in{translate:0 112%;animation:maskIn 1s var(--eas
 .site-footer{background:var(--panel-2);border-top:1px solid var(--line-dark)}
 .footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;padding-block:72px 48px}
 .footer-brand img{height:40px;width:auto;filter:brightness(0) invert(1) sepia(.3) saturate(2.2) hue-rotate(5deg) brightness(1.05);margin-bottom:18px}
+.footer-brand .aa-mark{margin-bottom:14px}
+.footer-brand .aa-word{display:flex;margin-bottom:16px}
 .footer-brand p{color:rgba(var(--txt-rgb),.62);font-size:14px;max-width:34ch;line-height:1.6}
 .footer-col b{display:block;font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-hi);margin-bottom:18px}
 .footer-col{display:flex;flex-direction:column;gap:11px}
