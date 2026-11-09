@@ -400,29 +400,81 @@ body.glow-on .cursor-glow{opacity:1}
 [data-theme="dark"] .ambient{mix-blend-mode:screen}
 
 :root{--alive-spot:rgba(212,175,86,.15)}
-/* ============ turn-84 ALIVE2 — premium cursor · scroll-as-dial · clip-reveal ============ */
-/* v2 of the turn-82 "alive" layer — Locomotive "buttery + precise + calm" bar.
-   --alive-spot accent is injected per-site by apply_alive2.py (kept OUT of :root here
-   so the per-site override actually wins — v1 had this silently broken). */
+/* ============ turn-85 ALIVE2.1 — distinct per-element animation · 3D tilt/depth/hero · gold-dust particles ============ */
+/* v2.1 of the "alive" layer. Fixes the turn-84 mistake: every reveal was forced onto ONE
+   calm easing (so everything felt "switched off"). Now each element family gets its OWN
+   animation + easing, still tasteful (a little life, not a circus).
+   --alive-spot accent is injected per-site by apply_alive2.py (kept OUT of :root here). */
 
 :root{
-  --ease-quint: cubic-bezier(.23,1,.32,1);
-  --ease-cubic: cubic-bezier(.215,.61,.355,1);
-  --cur-rgb: 210,174,109;                /* gold cursor (dark theme) */
+  --ease-quint: cubic-bezier(.23,1,.32,1);   /* calm decel (text blocks)   */
+  --ease-cubic: cubic-bezier(.215,.61,.355,1); /* calm decel (soft moves)  */
+  --ease-expo:  cubic-bezier(.16,1,.3,1);    /* dramatic decel (headlines) */
+  --ease-back:  cubic-bezier(.34,1.56,.64,1);/* gentle overshoot = "alive" */
+  --cur-rgb: 210,174,109;                    /* gold cursor (dark theme)   */
   --cur-ring: .6;
-  --cur-halo: 255,255,255;               /* contrasting hairline behind the ring */
+  --cur-halo: 255,255,255;
 }
-[data-theme="light"]{ --cur-rgb: 169,135,63; --cur-ring: 1; --cur-halo: 0,0,0; }   /* deep gold (#a9873f) + dark hairline on ivory */
+[data-theme="light"]{ --cur-rgb: 169,135,63; --cur-ring: 1; --cur-halo: 0,0,0; }
 
-/* ---- calm, zero-overshoot reveals (replace v1 spring overshoot) ---- */
-[data-reveal].in,
-[data-reveal].is-in{ transition-timing-function: var(--ease-quint) !important; }
+/* ============================================================
+   1 · DISTINCT REVEAL FLAVOURS  (each element family animates differently)
+   JS assigns one .rv-* class per [data-reveal] element. Hidden states
+   use INDIVIDUAL properties (translate/rotate/scale/filter) so they never
+   collide with the hover-tilt's `transform`.
+   ============================================================ */
+.js [data-reveal]{ opacity:0; }
+.js [data-reveal].rv-fade{  translate:0 0;      scale:.98; }
+.js [data-reveal].rv-up{    translate:0 26px;   filter:blur(5px); }
+.js [data-reveal].rv-left{  translate:-34px 0; }
+.js [data-reveal].rv-right{ translate:34px 0; }
+.js [data-reveal].rv-zoom{  translate:0 14px;   scale:.92; }
+.js [data-reveal].rv-flip{  translate:0 22px;   rotate:x 16deg; }
+.js [data-reveal].rv-rotate{translate:0 20px;   rotate:-2.6deg; }
+.js [data-reveal].rv-blur{  translate:0 16px;   filter:blur(12px); }
 
-/* ---- clip-path image unmask (JS adds .aa-clip, reveals .is-in) ---- */
+.js [data-reveal].is-in{ opacity:1; translate:0 0; scale:1; rotate:0deg; filter:blur(0); }
+
+/* per-flavour transitions — DIFFERENT distance + easing each (the "alag-alag" ask) */
+.js [data-reveal].rv-fade.is-in{
+  transition:opacity .7s var(--ease-cubic), translate .7s var(--ease-cubic), scale .7s var(--ease-cubic);
+  transition-delay:var(--d,0ms);
+}
+.js [data-reveal].rv-up.is-in{
+  transition:opacity .85s var(--ease-quint), translate .85s var(--ease-quint), filter .85s var(--ease-quint);
+  transition-delay:var(--d,0ms);
+}
+.js [data-reveal].rv-left.is-in,
+.js [data-reveal].rv-right.is-in{
+  transition:opacity .8s var(--ease-cubic), translate 1s var(--ease-cubic);
+  transition-delay:var(--d,0ms);
+}
+.js [data-reveal].rv-zoom.is-in{
+  transition:opacity .9s var(--ease-quint), translate 1s var(--ease-quint), scale 1.1s var(--ease-quint);
+  transition-delay:var(--d,0ms);
+}
+.js [data-reveal].rv-flip.is-in{
+  transition:opacity .7s var(--ease-out), translate .9s var(--ease-back), rotate 1.05s var(--ease-back);
+  transition-delay:var(--d,0ms);
+}
+.js [data-reveal].rv-rotate.is-in{
+  transition:opacity .7s var(--ease-out), translate .9s var(--ease-back), rotate 1s var(--ease-back);
+  transition-delay:var(--d,0ms);
+}
+.js [data-reveal].rv-blur.is-in{
+  transition:opacity .95s var(--ease-expo), translate .95s var(--ease-expo), filter 1.05s var(--ease-expo);
+  transition-delay:var(--d,0ms);
+}
+
+/* ============================================================
+   2 · CLIP-PATH IMAGE UNMASK  (JS adds .aa-clip, reveals .is-in)
+   ============================================================ */
 .js .aa-clip{ clip-path: inset(0 0 100% 0); transition: clip-path 1.15s var(--ease-quint); }
 .js .aa-clip.is-in{ clip-path: inset(0 0 0 0); }
 
-/* ---- premium cursor: dot + trailing ring (lerp-follow, no jitter) ---- */
+/* ============================================================
+   3 · PREMIUM CURSOR — gold dot + trailing ring (lerp, no jitter)
+   ============================================================ */
 .aa-cursor, .aa-cursor-ring{
   position: fixed; top: 0; left: 0; pointer-events: none; z-index: 999999;
   border-radius: 50%; opacity: 0; will-change: transform;
@@ -440,12 +492,8 @@ body.glow-on .cursor-glow{opacity:1}
   transition: width .34s var(--ease-quint), height .34s var(--ease-quint), margin .34s var(--ease-quint),
               border-color .34s var(--ease-quint), background-color .34s var(--ease-quint), opacity .2s ease;
 }
-/* hover states animate size via width/height/margin (NOT scale) so the cursor never
-   drifts off the pointer point */
 .aa-cursor-ring.is-link{ width: 58px; height: 58px; margin: -29px 0 0 -29px; border-color: rgb(var(--cur-rgb)); }
 .aa-cursor-ring.is-media{ width: 70px; height: 70px; margin: -35px 0 0 -35px; border-color: rgb(var(--cur-rgb)); }
-/* dot stays a constant 8px so it is always visible even over busy media */
-/* light theme: 2px gold ring + subtle dark hairline; gold dot (no heavy outline = no bullseye) */
 [data-theme="light"] .aa-cursor-ring{ border-width: 2px; box-shadow: 0 0 0 1px rgba(0,0,0,.38); }
 [data-theme="light"] .aa-cursor{ box-shadow: 0 0 0 1px rgba(0,0,0,.28), 0 0 10px 0 rgba(var(--cur-rgb), .4); }
 @media (hover:hover) and (pointer:fine){
@@ -454,7 +502,9 @@ body.glow-on .cursor-glow{opacity:1}
   html.aa-cur [contenteditable="true"]{ cursor: auto !important; }
 }
 
-/* ---- pointer-reactive spotlight on cards (uses injected --alive-spot) ---- */
+/* ============================================================
+   4 · POINTER SPOTLIGHT on cards (uses injected --alive-spot)
+   ============================================================ */
 .alive{ position: relative; }
 .alive-spot{
   position: absolute; inset: 0; pointer-events: none; z-index: 1; border-radius: inherit;
@@ -466,31 +516,69 @@ body.glow-on .cursor-glow{opacity:1}
   background: radial-gradient(340px circle at var(--x,50%) var(--y,50%), rgba(0,0,0,.07), transparent 62%);
 }
 
-/* ---- tactile buttons (magnetic + press) ---- */
+/* ============================================================
+   5 · TACTILE BUTTONS (magnetic + press) — kept from v2
+   ============================================================ */
 .alive-btn{ will-change: transform; }
 @media (hover:hover) and (pointer:fine){
   .alive-btn{ transition: transform .4s var(--ease-cubic); }
   .alive-btn.pressed{ transform: scale(.95); }
 }
 
-/* ---- ambient aurora drifts toward cursor (individual translate/rotate = composes
-        with the base aa-aurora transform animation instead of being overridden) ---- */
+/* ============================================================
+   6 · AMBIENT AURORA follows cursor (individual translate/rotate
+       compose with the base aa-aurora transform animation)
+   ============================================================ */
 .ambient{
   translate: var(--ax,0) var(--ay,0);
   rotate: var(--ar,0deg);
   transition: translate 1.6s var(--ease-cubic), rotate 1.6s var(--ease-cubic);
 }
 
-/* ---- idle float for cardio hero card (individual translate = no reveal conflict) ---- */
+/* ============================================================
+   7 · 3D HOVER TILT + pointer-tracking glare  (replaces the flat
+       turn-79 tilt; transform is set inline by alive2.js)
+   ============================================================ */
+.tilt-3d{ position:relative; transform-style:preserve-3d; will-change:transform; }
+@media (hover:hover) and (pointer:fine){
+  .tilt-3d{ transition: transform .22s var(--ease-out); }
+}
+.tilt-3d .tilt-glare{
+  position:absolute; inset:0; z-index:2; pointer-events:none; border-radius:inherit;
+  background:radial-gradient(360px circle at var(--gx,50%) var(--gy,50%), rgba(255,240,200,.16), transparent 56%);
+  opacity:0; transition:opacity .3s ease;
+}
+.tilt-3d:hover .tilt-glare{ opacity:1; }
+[data-theme="light"] .tilt-3d .tilt-glare{
+  background:radial-gradient(360px circle at var(--gx,50%) var(--gy,50%), rgba(131,100,24,.12), transparent 56%);
+}
+
+/* ============================================================
+   8 · HERO / TEXT 3D — subtle pointer parallax on headlines
+       (JS drives perspective rotateX/rotateY inline)
+   ============================================================ */
+.hero h1, .page-hero h1{ transform-style:preserve-3d; will-change:transform; }
+
+/* ============================================================
+   9 · GOLD-DUST PARTICLES (Three.js fixed canvas, injected by JS)
+   ============================================================ */
+.aa-particles{ position:fixed; inset:0; z-index:1; pointer-events:none; }
+.aa-particles canvas{ position:absolute; inset:0; display:block; }
+
+/* ============================================================
+   10 · idle float (cardio hero) + live ECG — kept
+   ============================================================ */
 @keyframes aa-float{ 0%,100%{ translate: 0 0 } 50%{ translate: 0 -10px } }
 .hero-visual{ animation: aa-float 8s var(--ease-cubic) infinite; }
-
-/* ---- live ECG (cardio) ---- */
 @keyframes ecglive{ 0%{ stroke-dashoffset: 1200 } 55%{ stroke-dashoffset: 0 } 100%{ stroke-dashoffset: -1200 } }
 
-/* ---- reduced motion: everything off ---- */
+/* ============================================================
+   11 · REDUCED MOTION — everything off
+   ============================================================ */
 @media (prefers-reduced-motion: reduce){
   .aa-cursor, .aa-cursor-ring, .alive, .alive-spot, .alive-btn,
-  .aa-clip, .hero-visual, .ambient{ animation: none !important; transition: none !important; }
+  .aa-clip, .hero-visual, .ambient, .tilt-3d, .tilt-glare, .aa-particles{ animation: none !important; transition: none !important; }
   .js .aa-clip{ clip-path: none; }
+  .js [data-reveal]{ opacity:1; translate:0 0; scale:1; rotate:0deg; filter:none; }
+  .aa-particles{ display:none; }
 }

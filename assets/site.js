@@ -142,21 +142,12 @@
       var mx=innerWidth/2,my=innerHeight/3,tx=mx,ty=my;
       document.addEventListener('mousemove', function(e){ mx=e.clientX; my=e.clientY; document.body.classList.add('glow-on'); }, {passive:true});
       (function loop(){ tx+=(mx-tx)*.12; ty+=(my-ty)*.12; glow.style.transform='translate3d('+(tx-260)+'px,'+(ty-260)+'px,0)'; requestAnimationFrame(loop); })();
-      var tilts=document.querySelectorAll('.card, .div-card, .person, .gitem, .pillar, .step, .split .media');
-      Array.prototype.forEach.call(tilts, function(el){
-        el.classList.add('tilt-3d');
-        el.addEventListener('mousemove', function(e){
-          var r=el.getBoundingClientRect(); var x=(e.clientX-r.left)/r.width-.5; var y=(e.clientY-r.top)/r.height-.5;
-          el.style.transform='perspective(900px) rotateX('+(y*-4).toFixed(2)+'deg) rotateY('+(x*4).toFixed(2)+'deg) translateY(-3px)';
-        });
-        el.addEventListener('mouseleave', function(){ el.style.transform=''; });
-      });
     }
   }
   if(document.readyState!=='loading') go(); else document.addEventListener('DOMContentLoaded', go);
 })();
 
-/* ============ turn-84 ALIVE2 — premium cursor · scroll-as-dial · clip-reveal ============ */
+/* ============ turn-85 ALIVE2.1 — distinct per-element animation · 3D tilt/depth/hero · gold-dust particles ============ */
 (function(){
   function ready(fn){ if(document.readyState !== 'loading') fn(); else document.addEventListener('DOMContentLoaded', fn); }
   ready(function(){
@@ -164,7 +155,35 @@
     var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var root = document.documentElement;
 
-    /* 1. pointer-reactive spotlight on cards */
+    /* ============================================================
+       1 · DISTINCT REVEAL FLAVOURS — every animated element gets its own
+           move (fade / up / left / right / zoom / flip / rotate / blur)
+       ============================================================ */
+    var flipToggle = false;
+    var reveals = document.querySelectorAll('[data-reveal]');
+    for (var ri = 0; ri < reveals.length; ri++){
+      (function(el){
+        if (el.classList.contains('aa-rv')) return;
+        el.classList.add('aa-rv');
+        var dr = el.getAttribute('data-reveal');
+        var f;
+        if (dr === 'left') f = 'rv-left';
+        else if (dr === 'right') f = 'rv-right';
+        else if (dr === 'scale') f = 'rv-zoom';
+        else if (el.matches('.eyebrow')) f = 'rv-fade';
+        else if (el.matches('h1,h2,h3,.section__title')) f = 'rv-blur';
+        else if (el.matches('.founder__portrait,.portrait-stage,.book-hero,.split .media,.hero-visual,.hero-media,.gitem,.person__img,.div-card img')) f = 'rv-zoom';
+        else if (el.closest('.stat-grid')) f = 'rv-zoom';
+        else if (el.matches('.card,.div-card,.person,.pillar,.step,.rel-card,.tile,.std__pillar,.vg-card')) { f = flipToggle ? 'rv-rotate' : 'rv-flip'; flipToggle = !flipToggle; }
+        else if (el.matches('.std__intro')) f = 'rv-left';
+        else f = 'rv-up';
+        el.classList.add(f);
+      })(reveals[ri]);
+    }
+
+    /* ============================================================
+       2 · POINTER SPOTLIGHT on cards (uses injected --alive-spot)
+       ============================================================ */
     var cards = document.querySelectorAll('.card, .div-card, .pillar, .person, .gitem, .step, .split .media, .rel-card, .tile');
     for (var i = 0; i < cards.length; i++){
       (function(c){
@@ -184,7 +203,9 @@
       })(cards[i]);
     }
 
-    /* 2. premium cursor — dot + trailing ring, lerp-follow (no jitter) */
+    /* ============================================================
+       3 · PREMIUM CURSOR — gold dot + trailing ring (lerp, no jitter)
+       ============================================================ */
     var cur = null, ring = null, tx = -100, ty = -100, cx = -100, cy = -100, rx = -100, ry = -100, shown = false;
     function curShow(){ if (cur && shown){ cur.style.opacity = '1'; ring.style.opacity = '1'; } }
     function curHide(){ if (cur){ cur.style.opacity = '0'; ring.style.opacity = '0'; } }
@@ -213,7 +234,7 @@
       });
       document.addEventListener('pointerout', function(e){
         var from = e.target, to = e.relatedTarget;
-        if (to && from && from.contains(to)) return; /* still inside same element */
+        if (to && from && from.contains(to)) return;
         ring.classList.remove('is-media'); cur.classList.remove('is-media');
         ring.classList.remove('is-link');   cur.classList.remove('is-link');
         curShow();
@@ -230,20 +251,24 @@
       })();
     }
 
-    /* 3. ambient aurora drifts toward cursor (individual translate/rotate) */
+    /* ============================================================
+       4 · AMBIENT AURORA drifts toward cursor (individual translate/rotate)
+       ============================================================ */
     var amb = document.querySelector('.ambient');
     if (fine && !reduced && amb){
-      var mx = innerWidth / 2, my = innerHeight / 3;
-      window.addEventListener('pointermove', function(e){ mx = e.clientX; my = e.clientY; }, {passive:true});
+      var amx = innerWidth / 2, amy = innerHeight / 3;
+      window.addEventListener('pointermove', function(e){ amx = e.clientX; amy = e.clientY; }, {passive:true});
       (function ambLoop(){
-        amb.style.setProperty('--ax', ((mx - innerWidth / 2) * 0.05).toFixed(1) + 'px');
-        amb.style.setProperty('--ay', ((my - innerHeight / 2) * 0.05).toFixed(1) + 'px');
-        amb.style.setProperty('--ar', ((mx - innerWidth / 2) * 0.008).toFixed(2) + 'deg');
+        amb.style.setProperty('--ax', ((amx - innerWidth / 2) * 0.05).toFixed(1) + 'px');
+        amb.style.setProperty('--ay', ((amy - innerHeight / 2) * 0.05).toFixed(1) + 'px');
+        amb.style.setProperty('--ar', ((amx - innerWidth / 2) * 0.008).toFixed(2) + 'deg');
         requestAnimationFrame(ambLoop);
       })();
     }
 
-    /* 4. tactile (magnetic + press) buttons */
+    /* ============================================================
+       5 · TACTILE BUTTONS (magnetic + press)
+       ============================================================ */
     if (fine && !reduced){
       var btns = document.querySelectorAll('.btn, .nav-cta, .chip, .phone-btn');
       for (var b = 0; b < btns.length; b++){
@@ -263,15 +288,67 @@
       }
     }
 
-    /* 5. scroll-as-dial: multi-layer parallax + subtle rotation.
-          Uses individual `translate`/`rotate` so it composes with reveal/heroPhoto
-          instead of being overridden. Honors [data-speed] / [data-rotate]. */
+    /* ============================================================
+       6 · 3D HOVER TILT + pointer-tracking glare  (replaces flat turn-79 tilt)
+       ============================================================ */
+    if (fine && !reduced){
+      var tiltSel = '.card, .div-card, .person, .gitem, .pillar, .step, .split .media, .tile, .rel-card, .portrait-wrap, .founder__portrait';
+      var tilts = document.querySelectorAll(tiltSel);
+      for (var t = 0; t < tilts.length; t++){
+        (function(el){
+          if (el.classList.contains('tilt-3d')) return;
+          el.classList.add('tilt-3d');
+          var glare = document.createElement('span');
+          glare.className = 'tilt-glare';
+          glare.setAttribute('aria-hidden', 'true');
+          el.appendChild(glare);
+          el.addEventListener('pointermove', function(e){
+            var r = el.getBoundingClientRect();
+            var x = (e.clientX - r.left) / r.width - .5;
+            var y = (e.clientY - r.top) / r.height - .5;
+            el.style.setProperty('--gx', (e.clientX - r.left) + 'px');
+            el.style.setProperty('--gy', (e.clientY - r.top) + 'px');
+            el.style.transform = 'perspective(1000px) rotateX(' + (y * -10).toFixed(2) + 'deg) rotateY(' + (x * 10).toFixed(2) + 'deg) translateY(-3px) scale(1.01)';
+          }, {passive:true});
+          el.addEventListener('pointerleave', function(){ el.style.transform = ''; });
+        })(tilts[t]);
+      }
+    }
+
+    /* ============================================================
+       7 · HERO / TEXT 3D — subtle pointer parallax on headlines
+       ============================================================ */
+    if (fine && !reduced){
+      var titles = document.querySelectorAll('.hero h1, .page-hero h1');
+      for (var h = 0; h < titles.length; h++){
+        (function(title){
+          var hx = 0, hy = 0, cx2 = 0, cy2 = 0;
+          window.addEventListener('pointermove', function(e){
+            cx2 = (e.clientX / innerWidth - .5);
+            cy2 = (e.clientY / innerHeight - .5);
+          }, {passive:true});
+          (function titleLoop(){
+            hx += (cy2 * -3.5 - hx) * 0.06;
+            hy += (cx2 * 3.5 - hy) * 0.06;
+            title.style.transform = 'perspective(900px) rotateX(' + hx.toFixed(3) + 'deg) rotateY(' + hy.toFixed(3) + 'deg)';
+            requestAnimationFrame(titleLoop);
+          })();
+        })(titles[h]);
+      }
+    }
+
+    /* ============================================================
+       8 · SCROLL-AS-DIAL — multi-layer parallax + subtle rotation
+           (individual translate/rotate = composes with reveal)
+       ============================================================ */
     if (!reduced){
       var layers = [];
       var defs = [
-        ['.hero__bg img', 0.22, 0],
-        ['.hero-visual img', 0.14, -0.004],
-        ['.hero-media img', 0.14, -0.003],
+        ['.portrait-wrap', 0.06, 0.0012],   /* hub portrait */
+        ['.mono-panel', 0.14, 0],           /* hub ghost "A" */
+        ['.book-hero', 0.05, 0],            /* hub book cover */
+        ['.hero-visual img', 0.14, -0.004], /* cardio hero */
+        ['.hero-media img', 0.14, -0.003],  /* investment/commodities */
         ['.split .media img', 0.14, -0.003]
       ];
       for (var d = 0; d < defs.length; d++){
@@ -288,11 +365,7 @@
         var seen = false;
         for (var s = 0; s < layers.length; s++){ if (layers[s].el === extra[x]){ seen = true; break; } }
         if (seen) continue;
-        layers.push({
-          el: extra[x],
-          speed: parseFloat(extra[x].getAttribute('data-speed') || '0'),
-          rot: parseFloat(extra[x].getAttribute('data-rotate') || '0')
-        });
+        layers.push({ el: extra[x], speed: parseFloat(extra[x].getAttribute('data-speed') || '0'), rot: parseFloat(extra[x].getAttribute('data-rotate') || '0') });
       }
       var tick = false;
       function onScroll(){
@@ -311,7 +384,9 @@
       onScroll();
     }
 
-    /* 6. clip-path image unmask (reveals when scrolled into view) */
+    /* ============================================================
+       9 · CLIP-PATH IMAGE UNMASK (reveals when scrolled into view)
+       ============================================================ */
     if (!reduced){
       var clipEls = document.querySelectorAll('.hero-visual img, .hero-media img, .split .media img, .card .ph img, .gitem img, .person__img img, .div-card img');
       var added = [];
@@ -328,7 +403,6 @@
           }
         }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
         for (var c3 = 0; c3 < added.length; c3++){ io.observe(added[c3]); }
-        /* fail-safe: never leave an in-viewport image masked */
         setTimeout(function(){
           for (var c4 = 0; c4 < added.length; c4++){
             var el = added[c4];
@@ -342,11 +416,119 @@
       }
     }
 
-    /* 7. live ECG sweep (cardio) */
+    /* ============================================================
+       10 · LIVE ECG SWEEP (cardio)
+       ============================================================ */
     var ecg = document.querySelector('.ecg path');
     if (ecg && !reduced){
       ecg.style.animation = 'ecglive 4s linear infinite';
       ecg.style.strokeDasharray = '1200';
+    }
+
+    /* ============================================================
+       11 · GOLD-DUST PARTICLES (Three.js — loaded lazily, no HTML edit)
+       ============================================================ */
+    if (!reduced){
+      var myScript = null;
+      var allScripts = document.getElementsByTagName('script');
+      for (var si = 0; si < allScripts.length; si++){
+        var src = allScripts[si].getAttribute('src') || '';
+        if (/(site|inv|comm|cardio)\.js(\?|$)/.test(src)){ myScript = allScripts[si]; break; }
+      }
+      function webglSupported(){
+        try {
+          var cv = document.createElement('canvas');
+          return !!(window.WebGLRenderingContext && (cv.getContext('webgl') || cv.getContext('experimental-webgl')));
+        } catch (e) { return false; }
+      }
+      function buildDust(){
+        try {
+          if (!window.THREE || !webglSupported()) return;
+          var holder = document.createElement('div');
+          holder.className = 'aa-particles';
+          holder.setAttribute('aria-hidden', 'true');
+          document.body.appendChild(holder);
+
+          var renderer = new THREE.WebGLRenderer({ alpha:true, antialias:false, powerPreference:'low-power' });
+          renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+          renderer.setSize(window.innerWidth, window.innerHeight);
+          holder.appendChild(renderer.domElement);
+
+          var scene = new THREE.Scene();
+          var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
+          camera.position.z = 12;
+
+          var isMobile = window.innerWidth < 760;
+          var count = isMobile ? 110 : 240;
+          var pos = new Float32Array(count * 3);
+          for (var p = 0; p < count; p++){
+            pos[p * 3]     = (Math.random() * 2 - 1) * 13;   /* x: -13..13 */
+            pos[p * 3 + 1] = (Math.random() * 2 - 1) * 7.5;  /* y: -7.5..7.5 */
+            pos[p * 3 + 2] = -6 + Math.random() * 10;        /* z: -6..4 (depth) */
+          }
+          var geo = new THREE.BufferGeometry();
+          geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+
+          var cvs = document.createElement('canvas'); cvs.width = cvs.height = 64;
+          var ctx = cvs.getContext('2d');
+          var grad = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
+          grad.addColorStop(0, 'rgba(255,255,255,1)');
+          grad.addColorStop(0.25, 'rgba(255,255,255,.85)');
+          grad.addColorStop(1, 'rgba(255,255,255,0)');
+          ctx.fillStyle = grad; ctx.fillRect(0, 0, 64, 64);
+          var tex = new THREE.CanvasTexture(cvs);
+
+          var mat = new THREE.PointsMaterial({
+            size: 0.11, sizeAttenuation: true, map: tex, color: 0xd2ae6d,
+            transparent: true, opacity: 0.6, depthWrite: false, blending: THREE.AdditiveBlending
+          });
+          var points = new THREE.Points(geo, mat);
+          scene.add(points);
+
+          var baseOpacity = 0.6;
+          function applyTheme(){
+            var light = document.documentElement.getAttribute('data-theme') === 'light';
+            if (light){
+              mat.color.set(0x7a5c26); mat.blending = THREE.NormalBlending; baseOpacity = 0.62; mat.size = 0.15;
+            } else {
+              mat.color.set(0xd2ae6d); mat.blending = THREE.AdditiveBlending; baseOpacity = 0.6; mat.size = 0.11;
+            }
+            mat.needsUpdate = true;
+          }
+          applyTheme();
+          if (window.MutationObserver){
+            new MutationObserver(applyTheme).observe(document.documentElement, { attributes:true, attributeFilter:['data-theme'] });
+          }
+
+          var pmx = 0, pmy = 0;
+          window.addEventListener('pointermove', function(e){ pmx = e.clientX / innerWidth - .5; pmy = e.clientY / innerHeight - .5; }, {passive:true});
+          function onResize(){
+            camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix();
+            renderer.setSize(innerWidth, innerHeight);
+          }
+          window.addEventListener('resize', onResize, {passive:true});
+
+          (function dustLoop(){
+            points.rotation.y += 0.0007;
+            points.rotation.x += 0.00025;
+            points.position.x += (pmx * 0.9 - points.position.x) * 0.04;
+            points.position.y += (pmy * 0.55 - points.position.y) * 0.04;
+            var target = baseOpacity * ((window.scrollY || 0) < innerHeight ? 1 : 0.55);
+            mat.opacity += (target - mat.opacity) * 0.06;
+            renderer.render(scene, camera);
+            requestAnimationFrame(dustLoop);
+          })();
+        } catch (e) { /* particles are decorative — never break the page */ }
+      }
+      if (window.THREE){ buildDust(); }
+      else if (myScript){
+        var base = (myScript.getAttribute('src') || '').replace(/[^\/]+$/, '');
+        var s = document.createElement('script');
+        s.src = base + 'three.min.js';
+        s.onload = buildDust;
+        s.onerror = function(){};
+        document.head.appendChild(s);
+      }
     }
   });
 })();
