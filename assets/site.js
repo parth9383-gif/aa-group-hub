@@ -156,7 +156,7 @@
   if(document.readyState!=='loading') go(); else document.addEventListener('DOMContentLoaded', go);
 })();
 
-/* ============ turn-82 ALIVE — pointer light · tactile · scroll-as-dial ============ */
+/* ============ turn-84 ALIVE2 — premium cursor · scroll-as-dial · clip-reveal ============ */
 (function(){
   function ready(fn){ if(document.readyState !== 'loading') fn(); else document.addEventListener('DOMContentLoaded', fn); }
   ready(function(){
@@ -167,10 +167,9 @@
     /* 1. pointer-reactive spotlight on cards */
     var cards = document.querySelectorAll('.card, .div-card, .pillar, .person, .gitem, .step, .split .media, .rel-card, .tile');
     for (var i = 0; i < cards.length; i++){
-      (function(c, idx){
+      (function(c){
         if (c.classList.contains('alive')) return;
         c.classList.add('alive');
-        c.style.setProperty('--i', idx % 8);
         if (fine && !reduced){
           var spot = document.createElement('span');
           spot.className = 'alive-spot';
@@ -182,25 +181,70 @@
             c.style.setProperty('--y', (e.clientY - r.top) + 'px');
           }, {passive:true});
         }
-      })(cards[i], i);
+      })(cards[i]);
     }
 
+    /* 2. premium cursor — dot + trailing ring, lerp-follow (no jitter) */
+    var cur = null, ring = null, tx = -100, ty = -100, cx = -100, cy = -100, rx = -100, ry = -100, shown = false;
+    function curShow(){ if (cur && shown){ cur.style.opacity = '1'; ring.style.opacity = '1'; } }
+    function curHide(){ if (cur){ cur.style.opacity = '0'; ring.style.opacity = '0'; } }
     if (fine && !reduced){
-      /* 2. aurora follows pointer with lag (idle life) */
-      var amb = document.querySelector('.ambient');
-      var mx = innerWidth/2, my = innerHeight/3;
+      cur = document.createElement('div'); cur.className = 'aa-cursor';
+      ring = document.createElement('div'); ring.className = 'aa-cursor-ring';
+      document.body.appendChild(ring); document.body.appendChild(cur); /* dot paints on top of ring's fill */
+      root.classList.add('aa-cur');
+
+      window.addEventListener('pointermove', function(e){
+        tx = e.clientX; ty = e.clientY;
+        if (!shown){ shown = true; cur.style.opacity = '1'; ring.style.opacity = '1'; }
+      }, {passive:true});
+      document.addEventListener('mouseleave', curHide);
+      document.addEventListener('mouseenter', curShow);
+
+      document.addEventListener('pointerover', function(e){
+        var t = e.target;
+        if (!t || !t.closest) return;
+        if (t.closest('input, textarea, select, [contenteditable="true"]')){ curHide(); return; }
+        curShow();
+        var media = t.closest('.alive, .split .media, .hero-visual, .gitem, .card, .tile, .rel-card, .person');
+        var link = t.closest('a, button, .btn, [role="button"], label, .chip, .nav-cta');
+        ring.classList.toggle('is-media', !!media); cur.classList.toggle('is-media', !!media);
+        ring.classList.toggle('is-link', !!link);   cur.classList.toggle('is-link', !!link);
+      });
+      document.addEventListener('pointerout', function(e){
+        var from = e.target, to = e.relatedTarget;
+        if (to && from && from.contains(to)) return; /* still inside same element */
+        ring.classList.remove('is-media'); cur.classList.remove('is-media');
+        ring.classList.remove('is-link');   cur.classList.remove('is-link');
+        curShow();
+      });
+
+      (function loop(){
+        cx += (tx - cx) * 0.42;
+        cy += (ty - cy) * 0.42;
+        rx += (tx - rx) * 0.16;
+        ry += (ty - ry) * 0.16;
+        cur.style.transform = 'translate3d(' + cx.toFixed(2) + 'px,' + cy.toFixed(2) + 'px,0)';
+        ring.style.transform = 'translate3d(' + rx.toFixed(2) + 'px,' + ry.toFixed(2) + 'px,0)';
+        requestAnimationFrame(loop);
+      })();
+    }
+
+    /* 3. ambient aurora drifts toward cursor (individual translate/rotate) */
+    var amb = document.querySelector('.ambient');
+    if (fine && !reduced && amb){
+      var mx = innerWidth / 2, my = innerHeight / 3;
       window.addEventListener('pointermove', function(e){ mx = e.clientX; my = e.clientY; }, {passive:true});
       (function ambLoop(){
-        if (amb){
-          amb.style.setProperty('--ax', ((mx - innerWidth/2) * 0.04).toFixed(1) + 'px');
-          amb.style.setProperty('--ay', ((my - innerHeight/2) * 0.04).toFixed(1) + 'px');
-        }
-        root.style.setProperty('--mx', mx + 'px');
-        root.style.setProperty('--my', my + 'px');
+        amb.style.setProperty('--ax', ((mx - innerWidth / 2) * 0.05).toFixed(1) + 'px');
+        amb.style.setProperty('--ay', ((my - innerHeight / 2) * 0.05).toFixed(1) + 'px');
+        amb.style.setProperty('--ar', ((mx - innerWidth / 2) * 0.008).toFixed(2) + 'deg');
         requestAnimationFrame(ambLoop);
       })();
+    }
 
-      /* 3. tactile (magnetic + press) buttons */
+    /* 4. tactile (magnetic + press) buttons */
+    if (fine && !reduced){
       var btns = document.querySelectorAll('.btn, .nav-cta, .chip, .phone-btn');
       for (var b = 0; b < btns.length; b++){
         (function(btn){
@@ -208,8 +252,8 @@
           btn.classList.add('alive-btn');
           btn.addEventListener('pointermove', function(e){
             var r = btn.getBoundingClientRect();
-            btn.style.setProperty('--mx', ((e.clientX - r.left - r.width/2) * 0.28).toFixed(1) + 'px');
-            btn.style.setProperty('--my', ((e.clientY - r.top - r.height/2) * 0.28).toFixed(1) + 'px');
+            btn.style.setProperty('--mx', ((e.clientX - r.left - r.width / 2) * 0.3).toFixed(1) + 'px');
+            btn.style.setProperty('--my', ((e.clientY - r.top - r.height / 2) * 0.3).toFixed(1) + 'px');
             btn.style.transform = 'translate3d(var(--mx,0), var(--my,0), 0)';
           }, {passive:true});
           btn.addEventListener('pointerdown', function(){ btn.classList.add('pressed'); });
@@ -219,28 +263,86 @@
       }
     }
 
-    /* 4. scroll parallax on hero media (scroll = dial) */
+    /* 5. scroll-as-dial: multi-layer parallax + subtle rotation.
+          Uses individual `translate`/`rotate` so it composes with reveal/heroPhoto
+          instead of being overridden. Honors [data-speed] / [data-rotate]. */
     if (!reduced){
-      var layers = document.querySelectorAll('.hero__bg img, .hero-visual img, .hero-media img, .split .media img');
-      var ticking = false;
-      function parallax(){
+      var layers = [];
+      var defs = [
+        ['.hero__bg img', 0.22, 0],
+        ['.hero-visual img', 0.14, -0.004],
+        ['.hero-media img', 0.14, -0.003],
+        ['.split .media img', 0.14, -0.003]
+      ];
+      for (var d = 0; d < defs.length; d++){
+        var els = document.querySelectorAll(defs[d][0]);
+        for (var e2 = 0; e2 < els.length; e2++){
+          var el = els[e2];
+          var speed = el.getAttribute('data-speed') ? parseFloat(el.getAttribute('data-speed')) : defs[d][1];
+          var rot = el.getAttribute('data-rotate') ? parseFloat(el.getAttribute('data-rotate')) : defs[d][2];
+          layers.push({ el: el, speed: speed, rot: rot });
+        }
+      }
+      var extra = document.querySelectorAll('[data-speed], [data-rotate]');
+      for (var x = 0; x < extra.length; x++){
+        var seen = false;
+        for (var s = 0; s < layers.length; s++){ if (layers[s].el === extra[x]){ seen = true; break; } }
+        if (seen) continue;
+        layers.push({
+          el: extra[x],
+          speed: parseFloat(extra[x].getAttribute('data-speed') || '0'),
+          rot: parseFloat(extra[x].getAttribute('data-rotate') || '0')
+        });
+      }
+      var tick = false;
+      function onScroll(){
         var y = window.scrollY;
-        if (y <= innerHeight * 1.3){
-          for (var k = 0; k < layers.length; k++){
-            var el = layers[k];
-            var sp = el.closest('.hero__bg') ? 0.22 : 0.14;
-            el.style.transform = 'translate3d(0,' + (y * sp).toFixed(1) + 'px,0)';
+        var limit = innerHeight * 1.6;
+        for (var k = 0; k < layers.length; k++){
+          var L = layers[k];
+          if (y <= limit){
+            L.el.style.setProperty('translate', '0 ' + (y * L.speed).toFixed(1) + 'px');
+            if (L.rot) L.el.style.setProperty('rotate', (y * L.rot).toFixed(2) + 'deg');
           }
         }
-        ticking = false;
+        tick = false;
       }
-      window.addEventListener('scroll', function(){
-        if (ticking) return; ticking = true;
-        requestAnimationFrame(parallax);
-      }, {passive:true});
+      window.addEventListener('scroll', function(){ if (tick) return; tick = true; requestAnimationFrame(onScroll); }, {passive:true});
+      onScroll();
     }
 
-    /* 5. live ECG sweep (cardio) */
+    /* 6. clip-path image unmask (reveals when scrolled into view) */
+    if (!reduced){
+      var clipEls = document.querySelectorAll('.hero-visual img, .hero-media img, .split .media img, .card .ph img, .gitem img, .person__img img, .div-card img');
+      var added = [];
+      for (var c2 = 0; c2 < clipEls.length; c2++){
+        var im = clipEls[c2];
+        if (im.classList.contains('aa-clip')) continue;
+        im.classList.add('aa-clip');
+        added.push(im);
+      }
+      if (added.length && 'IntersectionObserver' in window){
+        var io = new IntersectionObserver(function(entries){
+          for (var z = 0; z < entries.length; z++){
+            if (entries[z].isIntersecting){ entries[z].target.classList.add('is-in'); io.unobserve(entries[z].target); }
+          }
+        }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+        for (var c3 = 0; c3 < added.length; c3++){ io.observe(added[c3]); }
+        /* fail-safe: never leave an in-viewport image masked */
+        setTimeout(function(){
+          for (var c4 = 0; c4 < added.length; c4++){
+            var el = added[c4];
+            if (el.classList.contains('is-in')) continue;
+            var r = el.getBoundingClientRect();
+            if (r.top < innerHeight && r.bottom > 0) el.classList.add('is-in');
+          }
+        }, 2800);
+      } else {
+        for (var c5 = 0; c5 < added.length; c5++){ added[c5].classList.add('is-in'); }
+      }
+    }
+
+    /* 7. live ECG sweep (cardio) */
     var ecg = document.querySelector('.ecg path');
     if (ecg && !reduced){
       ecg.style.animation = 'ecglive 4s linear infinite';

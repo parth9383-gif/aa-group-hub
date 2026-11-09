@@ -390,42 +390,6 @@ main{position:relative;z-index:1}
 [data-theme="light"] .cursor-glow{mix-blend-mode:multiply;background:radial-gradient(circle,rgba(122,90,28,.10),rgba(122,90,28,.04) 42%,transparent 72%)}
 body.glow-on .cursor-glow{opacity:1}
 
-/* ============ turn-82 ALIVE — pointer light · tactile · scroll-as-dial ============ */
-/* Generic: per-site accent set via --alive-spot (see per-site override below). */
-:root{ --spring: cubic-bezier(.22,1.2,.36,1); --alive-spot: rgba(210,174,109,.14); }
-
-/* reveal: spring timing (replaces flat ease) */
-[data-reveal]{ transition-timing-function: var(--spring); }
-.js [data-reveal].is-in{ transition-timing-function: var(--spring); }
-
-/* pointer-reactive spotlight on cards */
-.alive{ position:relative; }
-.alive-spot{
-  position:absolute; inset:0; pointer-events:none; z-index:1; border-radius:inherit;
-  background: radial-gradient(340px circle at var(--x,50%) var(--y,50%), var(--alive-spot), transparent 62%);
-  opacity:0; transition:opacity .35s ease;
-}
-.alive:hover .alive-spot{ opacity:1; }
-[data-theme="light"] .alive-spot{ background: radial-gradient(340px circle at var(--x,50%) var(--y,50%), rgba(0,54,125,.08), transparent 62%); }
-
-/* tactile buttons (magnetic + press) — applied by JS via .alive-btn */
-.alive-btn{ will-change:transform; }
-@media (hover:hover) and (pointer:fine){
-  .alive-btn{ transition: transform .35s var(--spring); }
-  .alive-btn.pressed{ transform: scale(.95); }
-}
-
-/* ambient aurora drifts toward cursor (JS sets --ax/--ay) */
-.ambient{ transform: translate3d(var(--ax,0), var(--ay,0), 0); transition: transform 1.5s cubic-bezier(.2,.8,.2,1); }
-
-/* hero media parallax (JS sets inline transform on scroll) */
-@media (prefers-reduced-motion: reduce){
-  .alive, .alive-spot, .alive-btn{ animation:none!important; transition:none!important; }
-}
-
-/* live ECG sweep (cardio) */
-@keyframes ecglive{ 0%{stroke-dashoffset:1200} 55%{stroke-dashoffset:0} 100%{stroke-dashoffset:-1200} }
-
 /* turn-82 shine sweep on primary buttons */
 .btn{position:relative;overflow:hidden}
 .btn::after{content:"";position:absolute;top:0;left:-130%;width:55%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.34),transparent);transform:skewX(-22deg);pointer-events:none}
@@ -434,3 +398,99 @@ body.glow-on .cursor-glow{opacity:1}
 
 
 [data-theme="dark"] .ambient{mix-blend-mode:screen}
+
+:root{--alive-spot:rgba(212,175,86,.15)}
+/* ============ turn-84 ALIVE2 — premium cursor · scroll-as-dial · clip-reveal ============ */
+/* v2 of the turn-82 "alive" layer — Locomotive "buttery + precise + calm" bar.
+   --alive-spot accent is injected per-site by apply_alive2.py (kept OUT of :root here
+   so the per-site override actually wins — v1 had this silently broken). */
+
+:root{
+  --ease-quint: cubic-bezier(.23,1,.32,1);
+  --ease-cubic: cubic-bezier(.215,.61,.355,1);
+  --cur-rgb: 210,174,109;                /* gold cursor (dark theme) */
+  --cur-ring: .6;
+  --cur-halo: 255,255,255;               /* contrasting hairline behind the ring */
+}
+[data-theme="light"]{ --cur-rgb: 169,135,63; --cur-ring: 1; --cur-halo: 0,0,0; }   /* deep gold (#a9873f) + dark hairline on ivory */
+
+/* ---- calm, zero-overshoot reveals (replace v1 spring overshoot) ---- */
+[data-reveal].in,
+[data-reveal].is-in{ transition-timing-function: var(--ease-quint) !important; }
+
+/* ---- clip-path image unmask (JS adds .aa-clip, reveals .is-in) ---- */
+.js .aa-clip{ clip-path: inset(0 0 100% 0); transition: clip-path 1.15s var(--ease-quint); }
+.js .aa-clip.is-in{ clip-path: inset(0 0 0 0); }
+
+/* ---- premium cursor: dot + trailing ring (lerp-follow, no jitter) ---- */
+.aa-cursor, .aa-cursor-ring{
+  position: fixed; top: 0; left: 0; pointer-events: none; z-index: 999999;
+  border-radius: 50%; opacity: 0; will-change: transform;
+}
+.aa-cursor{
+  width: 8px; height: 8px; margin: -4px 0 0 -4px;
+  background: rgb(var(--cur-rgb));
+  box-shadow: 0 0 0 1px rgba(0,0,0,.18), 0 0 18px 0 rgba(var(--cur-rgb), .55);
+  transition: width .28s var(--ease-quint), height .28s var(--ease-quint), margin .28s var(--ease-quint), opacity .2s ease;
+}
+.aa-cursor-ring{
+  width: 38px; height: 38px; margin: -19px 0 0 -19px;
+  border: 1.5px solid rgba(var(--cur-rgb), var(--cur-ring));
+  box-shadow: 0 0 0 1px rgba(var(--cur-halo), .45);
+  transition: width .34s var(--ease-quint), height .34s var(--ease-quint), margin .34s var(--ease-quint),
+              border-color .34s var(--ease-quint), background-color .34s var(--ease-quint), opacity .2s ease;
+}
+/* hover states animate size via width/height/margin (NOT scale) so the cursor never
+   drifts off the pointer point */
+.aa-cursor-ring.is-link{ width: 58px; height: 58px; margin: -29px 0 0 -29px; border-color: rgb(var(--cur-rgb)); }
+.aa-cursor-ring.is-media{ width: 70px; height: 70px; margin: -35px 0 0 -35px; border-color: rgb(var(--cur-rgb)); }
+/* dot stays a constant 8px so it is always visible even over busy media */
+/* light theme: 2px gold ring + subtle dark hairline; gold dot (no heavy outline = no bullseye) */
+[data-theme="light"] .aa-cursor-ring{ border-width: 2px; box-shadow: 0 0 0 1px rgba(0,0,0,.38); }
+[data-theme="light"] .aa-cursor{ box-shadow: 0 0 0 1px rgba(0,0,0,.28), 0 0 10px 0 rgba(var(--cur-rgb), .4); }
+@media (hover:hover) and (pointer:fine){
+  html.aa-cur, html.aa-cur *{ cursor: none !important; }
+  html.aa-cur input, html.aa-cur textarea, html.aa-cur select,
+  html.aa-cur [contenteditable="true"]{ cursor: auto !important; }
+}
+
+/* ---- pointer-reactive spotlight on cards (uses injected --alive-spot) ---- */
+.alive{ position: relative; }
+.alive-spot{
+  position: absolute; inset: 0; pointer-events: none; z-index: 1; border-radius: inherit;
+  background: radial-gradient(340px circle at var(--x,50%) var(--y,50%), var(--alive-spot, rgba(212,175,86,.15)), transparent 62%);
+  opacity: 0; transition: opacity .35s ease;
+}
+.alive:hover .alive-spot{ opacity: 1; }
+[data-theme="light"] .alive-spot{
+  background: radial-gradient(340px circle at var(--x,50%) var(--y,50%), rgba(0,0,0,.07), transparent 62%);
+}
+
+/* ---- tactile buttons (magnetic + press) ---- */
+.alive-btn{ will-change: transform; }
+@media (hover:hover) and (pointer:fine){
+  .alive-btn{ transition: transform .4s var(--ease-cubic); }
+  .alive-btn.pressed{ transform: scale(.95); }
+}
+
+/* ---- ambient aurora drifts toward cursor (individual translate/rotate = composes
+        with the base aa-aurora transform animation instead of being overridden) ---- */
+.ambient{
+  translate: var(--ax,0) var(--ay,0);
+  rotate: var(--ar,0deg);
+  transition: translate 1.6s var(--ease-cubic), rotate 1.6s var(--ease-cubic);
+}
+
+/* ---- idle float for cardio hero card (individual translate = no reveal conflict) ---- */
+@keyframes aa-float{ 0%,100%{ translate: 0 0 } 50%{ translate: 0 -10px } }
+.hero-visual{ animation: aa-float 8s var(--ease-cubic) infinite; }
+
+/* ---- live ECG (cardio) ---- */
+@keyframes ecglive{ 0%{ stroke-dashoffset: 1200 } 55%{ stroke-dashoffset: 0 } 100%{ stroke-dashoffset: -1200 } }
+
+/* ---- reduced motion: everything off ---- */
+@media (prefers-reduced-motion: reduce){
+  .aa-cursor, .aa-cursor-ring, .alive, .alive-spot, .alive-btn,
+  .aa-clip, .hero-visual, .ambient{ animation: none !important; transition: none !important; }
+  .js .aa-clip{ clip-path: none; }
+}
