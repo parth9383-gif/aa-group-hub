@@ -184,3 +184,106 @@
   }
   if(document.readyState!=='loading') go(); else document.addEventListener('DOMContentLoaded', go);
 })();
+
+/* ============ turn-82 ALIVE — pointer light · tactile · scroll-as-dial ============ */
+(function(){
+  function ready(fn){ if(document.readyState !== 'loading') fn(); else document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var fine = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var root = document.documentElement;
+
+    /* 1. pointer-reactive spotlight on cards */
+    var cards = document.querySelectorAll('.card, .div-card, .pillar, .person, .gitem, .step, .split .media, .rel-card, .tile');
+    for (var i = 0; i < cards.length; i++){
+      (function(c, idx){
+        if (c.classList.contains('alive')) return;
+        c.classList.add('alive');
+        c.style.setProperty('--i', idx % 8);
+        if (fine && !reduced){
+          var spot = document.createElement('span');
+          spot.className = 'alive-spot';
+          spot.setAttribute('aria-hidden', 'true');
+          c.insertBefore(spot, c.firstChild);
+          c.addEventListener('pointermove', function(e){
+            var r = c.getBoundingClientRect();
+            c.style.setProperty('--x', (e.clientX - r.left) + 'px');
+            c.style.setProperty('--y', (e.clientY - r.top) + 'px');
+          }, {passive:true});
+        }
+      })(cards[i], i);
+    }
+
+    if (fine && !reduced){
+      /* 2. aurora follows pointer with lag (idle life) */
+      var amb = document.querySelector('.ambient');
+      var mx = innerWidth/2, my = innerHeight/3;
+      window.addEventListener('pointermove', function(e){ mx = e.clientX; my = e.clientY; }, {passive:true});
+      (function ambLoop(){
+        if (amb){
+          amb.style.setProperty('--ax', ((mx - innerWidth/2) * 0.04).toFixed(1) + 'px');
+          amb.style.setProperty('--ay', ((my - innerHeight/2) * 0.04).toFixed(1) + 'px');
+        }
+        root.style.setProperty('--mx', mx + 'px');
+        root.style.setProperty('--my', my + 'px');
+        requestAnimationFrame(ambLoop);
+      })();
+
+      /* 3. tactile (magnetic + press) buttons */
+      var btns = document.querySelectorAll('.btn, .nav-cta, .chip, .phone-btn');
+      for (var b = 0; b < btns.length; b++){
+        (function(btn){
+          if (btn.classList.contains('theme-toggle') || btn.classList.contains('nav-toggle') || btn.classList.contains('alive-btn')) return;
+          btn.classList.add('alive-btn');
+          btn.addEventListener('pointermove', function(e){
+            var r = btn.getBoundingClientRect();
+            btn.style.setProperty('--mx', ((e.clientX - r.left - r.width/2) * 0.28).toFixed(1) + 'px');
+            btn.style.setProperty('--my', ((e.clientY - r.top - r.height/2) * 0.28).toFixed(1) + 'px');
+            btn.style.transform = 'translate3d(var(--mx,0), var(--my,0), 0)';
+          }, {passive:true});
+          btn.addEventListener('pointerdown', function(){ btn.classList.add('pressed'); });
+          btn.addEventListener('pointerup', function(){ btn.classList.remove('pressed'); });
+          btn.addEventListener('pointerleave', function(){ btn.classList.remove('pressed'); btn.style.transform = ''; });
+        })(btns[b]);
+      }
+    }
+
+    /* 4. scroll parallax on hero media (scroll = dial) */
+    if (!reduced){
+      var layers = document.querySelectorAll('.hero__bg img, .hero-visual img, .hero-media img, .split .media img');
+      var ticking = false;
+      function parallax(){
+        var y = window.scrollY;
+        if (y <= innerHeight * 1.3){
+          for (var k = 0; k < layers.length; k++){
+            var el = layers[k];
+            var sp = el.closest('.hero__bg') ? 0.22 : 0.14;
+            el.style.transform = 'translate3d(0,' + (y * sp).toFixed(1) + 'px,0)';
+          }
+        }
+        ticking = false;
+      }
+      window.addEventListener('scroll', function(){
+        if (ticking) return; ticking = true;
+        requestAnimationFrame(parallax);
+      }, {passive:true});
+    }
+
+    /* 5. live ECG sweep (cardio) */
+    var ecg = document.querySelector('.ecg path');
+    if (ecg && !reduced){
+      ecg.style.animation = 'ecglive 4s linear infinite';
+      ecg.style.strokeDasharray = '1200';
+    }
+  });
+})();
+
+/* ==== turn-82: reveal fail-safe (content is never left hidden) ==== */
+(function(){
+  function revealAll(){
+    var els = document.querySelectorAll('[data-reveal]');
+    for (var i=0;i<els.length;i++){ els[i].classList.add('is-in'); els[i].classList.add('in'); }
+  }
+  if (document.readyState !== 'loading') setTimeout(revealAll, 2600);
+  else document.addEventListener('DOMContentLoaded', function(){ setTimeout(revealAll, 2600); });
+})();

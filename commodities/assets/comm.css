@@ -292,7 +292,7 @@ body.glow-on .cursor-glow{opacity:1}
 }
 
 /* ===== turn-79: ambient aurora + 3D motion ===== */
-.ambient{position:fixed;inset:-12%;z-index:0;pointer-events:none;filter:blur(26px);opacity:.5;background:radial-gradient(42% 38% at 20% 16%,rgba(214,184,106,.14),transparent 70%),radial-gradient(36% 32% at 82% 12%,rgba(140,168,190,.10),transparent 70%),radial-gradient(46% 42% at 50% 104%,rgba(201,162,74,.11),transparent 72%);animation:aa-aurora 26s ease-in-out infinite alternate}
+.ambient{position:fixed;inset:-12%;z-index:0;pointer-events:none;filter:blur(26px);opacity:.5;background:radial-gradient(42% 38% at 20% 16%,rgba(212,175,86,.16),transparent 70%),radial-gradient(36% 32% at 82% 12%,rgba(70,110,170,.13),transparent 70%),radial-gradient(46% 42% at 50% 104%,rgba(212,175,86,.11),transparent 72%);animation:aa-aurora 26s ease-in-out infinite alternate}
 @keyframes aa-aurora{0%{transform:translate3d(-2%,-1%,0) scale(1)}50%{transform:translate3d(2%,1.5%,0) scale(1.05)}100%{transform:translate3d(-1%,2%,0) scale(1.02)}}
 main{position:relative;z-index:1}
 .site-footer,.site-foot{position:relative;z-index:1}
@@ -302,3 +302,49 @@ main{position:relative;z-index:1}
 .cursor-glow{position:fixed;top:0;left:0;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;pointer-events:none;z-index:78;background:radial-gradient(circle,rgba(214,184,106,.12),rgba(214,184,106,.04) 42%,transparent 72%);mix-blend-mode:screen;opacity:0;transition:opacity .5s}
 [data-theme="light"] .cursor-glow{mix-blend-mode:multiply;background:radial-gradient(circle,rgba(122,90,28,.10),rgba(122,90,28,.04) 42%,transparent 72%)}
 body.glow-on .cursor-glow{opacity:1}
+
+:root{--alive-spot:rgba(192,138,90,.17)}
+/* ============ turn-82 ALIVE — pointer light · tactile · scroll-as-dial ============ */
+/* Generic: per-site accent set via --alive-spot (see per-site override below). */
+:root{ --spring: cubic-bezier(.22,1.2,.36,1); --alive-spot: rgba(210,174,109,.14); }
+
+/* reveal: spring timing (replaces flat ease) */
+[data-reveal]{ transition-timing-function: var(--spring); }
+.js [data-reveal].is-in{ transition-timing-function: var(--spring); }
+
+/* pointer-reactive spotlight on cards */
+.alive{ position:relative; }
+.alive-spot{
+  position:absolute; inset:0; pointer-events:none; z-index:1; border-radius:inherit;
+  background: radial-gradient(340px circle at var(--x,50%) var(--y,50%), var(--alive-spot), transparent 62%);
+  opacity:0; transition:opacity .35s ease;
+}
+.alive:hover .alive-spot{ opacity:1; }
+[data-theme="light"] .alive-spot{ background: radial-gradient(340px circle at var(--x,50%) var(--y,50%), rgba(0,54,125,.08), transparent 62%); }
+
+/* tactile buttons (magnetic + press) — applied by JS via .alive-btn */
+.alive-btn{ will-change:transform; }
+@media (hover:hover) and (pointer:fine){
+  .alive-btn{ transition: transform .35s var(--spring); }
+  .alive-btn.pressed{ transform: scale(.95); }
+}
+
+/* ambient aurora drifts toward cursor (JS sets --ax/--ay) */
+.ambient{ transform: translate3d(var(--ax,0), var(--ay,0), 0); transition: transform 1.5s cubic-bezier(.2,.8,.2,1); }
+
+/* hero media parallax (JS sets inline transform on scroll) */
+@media (prefers-reduced-motion: reduce){
+  .alive, .alive-spot, .alive-btn{ animation:none!important; transition:none!important; }
+}
+
+/* live ECG sweep (cardio) */
+@keyframes ecglive{ 0%{stroke-dashoffset:1200} 55%{stroke-dashoffset:0} 100%{stroke-dashoffset:-1200} }
+
+/* turn-82 shine sweep on primary buttons */
+.btn{position:relative;overflow:hidden}
+.btn::after{content:"";position:absolute;top:0;left:-130%;width:55%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.34),transparent);transform:skewX(-22deg);pointer-events:none}
+.btn:hover::after{animation:aa-shine .9s ease}
+@keyframes aa-shine{from{left:-130%}to{left:140%}}
+
+
+[data-theme="dark"] .ambient{mix-blend-mode:screen}
