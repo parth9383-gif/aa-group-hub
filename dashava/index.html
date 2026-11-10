@@ -22,10 +22,9 @@
       radial-gradient(1100px 640px at 18% -8%, var(--stage-glow1), transparent 60%),
       radial-gradient(1000px 760px at 100% 112%, var(--stage-glow2), transparent 55%),
       var(--stage-bg);
-    min-height:100vh; display:flex; align-items:center; justify-content:center;
-    padding:34px 16px; color:#e8d8cd;
+    min-height:100vh; display:flex; padding:34px 16px; color:#e8d8cd;
   }
-  .stage{ width:100%; max-width:940px; }
+  .stage{ width:100%; max-width:940px; margin:auto; }
   .stage-head{ text-align:center; margin-bottom:24px; }
   .stage-head .brand-serif{ font-family:'Cormorant Garamond',serif; font-weight:600; font-size:clamp(30px,5vw,44px); letter-spacing:.14em; color:#f3e2d6; }
   .stage-head .brand-serif em{ font-style:italic; font-weight:400; color:#d9b9a5; }
@@ -79,7 +78,7 @@
   .icon-btn svg{ width:16px; height:16px; }
   .dot{ position:absolute; top:6px; right:6px; width:6px; height:6px; border-radius:50%; background:#d33; }
 
-  .scroll{ flex:1; overflow-y:auto; padding:0 18px 14px; scrollbar-width:none; }
+  .scroll{ flex:1; overflow-y:auto; padding:0 18px 42px; scrollbar-width:none; }
   .scroll::-webkit-scrollbar{ display:none; }
 
   /* greeting row: avatar + text | theme pill */
@@ -212,22 +211,22 @@
                     <radialGradient id="moonL" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f8e9c4"/><stop offset="1" stop-color="#e9cf9c"/></radialGradient>
                   </defs>
                   <rect width="170" height="282" fill="url(#skyL)"/>
-                  <circle class="moon-anim" cx="120" cy="58" r="26" fill="url(#moonL)"/>
-                  <circle cx="132" cy="50" r="23" fill="#f2d5ba"/>
-                  <path d="M24 196 Q60 150 60 150 L110 150 Q110 150 146 196 L146 216 Q85 228 24 216 Z" fill="#9c7866" opacity=".92"/>
-                  <path d="M60 150 Q85 118 110 150" fill="none" stroke="#b08d7a" stroke-width="8" stroke-linecap="round"/>
-                  <path d="M0 282 L0 246 Q85 208 170 246 L170 282 Z" fill="url(#poolL)" opacity=".95"/>
-                  <path d="M40 268 Q85 260 130 268" fill="none" stroke="#f3e2c8" stroke-width="1.4" opacity=".5"/>
-                  <g fill="#e97fa4"><circle class="float" cx="38" cy="150" r="10"/><circle cx="60" cy="138" r="8"/><circle cx="24" cy="162" r="8"/></g>
-                  <g fill="#d96f96"><circle cx="132" cy="150" r="10"/><circle cx="112" cy="138" r="8"/><circle cx="146" cy="162" r="8"/></g>
-                  <g fill="#f7efe2" opacity=".85"><circle cx="60" cy="48" r="1.5"/><circle cx="96" cy="66" r="1.2"/><circle cx="140" cy="90" r="1.5"/></g>
+                  <circle class="moon-anim" cx="85" cy="66" r="25" fill="url(#moonL)"/>
+                  <circle cx="97" cy="58" r="21" fill="#f2d5ba"/>
+                  <path d="M14 214 Q14 122 85 122 Q156 122 156 214 Z" fill="#a97f68"/>
+                  <path d="M14 214 Q14 122 85 122 Q156 122 156 214" fill="none" stroke="#8f684f" stroke-width="3" opacity=".5"/>
+                  <path d="M0 282 L0 232 Q85 210 170 232 L170 282 Z" fill="url(#poolL)" opacity=".95"/>
+                  <path d="M40 266 Q85 258 130 266" fill="none" stroke="#f3e2c8" stroke-width="1.4" opacity=".5"/>
+                  <g fill="#e97fa4"><circle class="float" cx="30" cy="128" r="10"/><circle cx="52" cy="116" r="8"/><circle cx="18" cy="142" r="7"/></g>
+                  <g fill="#d96f96"><circle cx="140" cy="128" r="10"/><circle cx="118" cy="116" r="8"/><circle cx="152" cy="142" r="7"/></g>
+                  <g fill="#f7efe2" opacity=".85"><circle cx="50" cy="44" r="1.5"/><circle cx="108" cy="38" r="1.2"/><circle cx="140" cy="72" r="1.4"/><circle cx="30" cy="66" r="1.1"/></g>
                 </svg>
               </div>
             </section>
 
             <nav class="tabs rv d3">
               <button class="tab active"><span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 2.4 3 4.7 3 7a3 3 0 0 1-6 0c0-2.3 1-4.6 3-7z"/><path d="M5.5 10.5C7 13 8 14.5 9.5 15.5"/><path d="M18.5 10.5C17 13 16 14.5 14.5 15.5"/><path d="M4.5 20c2.3-1 4.3-1.2 7.5 0s5.2 1 7.5 0"/></svg></span><span class="lbl">Today</span></button>
-              <button class="tab"><span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.6" transform="rotate(-18 12 12)"/></svg></span><span class="lbl">Transits</span></button>
+              <button class="tab"><span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><ellipse cx="12" cy="12" rx="9" ry="3.2"/></svg></span><span class="lbl">Transits</span></button>
               <button class="tab"><span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.5 19 16H5z"/><circle cx="12" cy="4.5" r="1.6" fill="currentColor" stroke="none"/><circle cx="5" cy="16" r="1.6" fill="currentColor" stroke="none"/><circle cx="19" cy="16" r="1.6" fill="currentColor" stroke="none"/></svg></span><span class="lbl">Dasha</span></button>
               <button class="tab"><span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-6-3.4-6-8.4A3.2 3.2 0 0 1 12 8.2a3.2 3.2 0 0 1 6 3.4C18 16.6 12 20 12 20Z"/></svg></span><span class="lbl">Relationships</span></button>
               <button class="tab"><span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 20V11M9.5 20V6M14.5 20v-8M19 20V4"/></svg></span><span class="lbl">Career</span></button>
@@ -314,22 +313,22 @@
                     <radialGradient id="moonD" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f3e4c2"/><stop offset="1" stop-color="#d9c095"/></radialGradient>
                   </defs>
                   <rect width="170" height="282" fill="url(#skyD)"/>
-                  <circle class="moon-anim" cx="120" cy="58" r="26" fill="url(#moonD)"/>
-                  <circle cx="132" cy="50" r="23" fill="#4a2630"/>
-                  <path d="M24 196 Q60 150 60 150 L110 150 Q110 150 146 196 L146 216 Q85 228 24 216 Z" fill="#3a1b20" opacity=".95"/>
-                  <path d="M60 150 Q85 118 110 150" fill="none" stroke="#6e4a41" stroke-width="8" stroke-linecap="round"/>
-                  <path d="M0 282 L0 246 Q85 208 170 246 L170 282 Z" fill="url(#poolD)" opacity=".95"/>
-                  <path d="M40 268 Q85 260 130 268" fill="none" stroke="#f3e2c8" stroke-width="1.4" opacity=".4"/>
-                  <g fill="#c96f95"><circle class="float" cx="38" cy="150" r="10"/><circle cx="60" cy="138" r="8"/><circle cx="24" cy="162" r="8"/></g>
-                  <g fill="#b25a80"><circle cx="132" cy="150" r="10"/><circle cx="112" cy="138" r="8"/><circle cx="146" cy="162" r="8"/></g>
-                  <g fill="#f7efe2" opacity=".85"><circle cx="60" cy="48" r="1.5"/><circle cx="96" cy="66" r="1.2"/><circle cx="140" cy="90" r="1.5"/></g>
+                  <circle class="moon-anim" cx="85" cy="66" r="25" fill="url(#moonD)"/>
+                  <circle cx="97" cy="58" r="21" fill="#4a2630"/>
+                  <path d="M14 214 Q14 122 85 122 Q156 122 156 214 Z" fill="#3a1b20"/>
+                  <path d="M14 214 Q14 122 85 122 Q156 122 156 214" fill="none" stroke="#6e4a41" stroke-width="3" opacity=".6"/>
+                  <path d="M0 282 L0 232 Q85 210 170 232 L170 282 Z" fill="url(#poolD)" opacity=".95"/>
+                  <path d="M40 266 Q85 258 130 266" fill="none" stroke="#f3e2c8" stroke-width="1.4" opacity=".4"/>
+                  <g fill="#c96f95"><circle class="float" cx="30" cy="128" r="10"/><circle cx="52" cy="116" r="8"/><circle cx="18" cy="142" r="7"/></g>
+                  <g fill="#b25a80"><circle cx="140" cy="128" r="10"/><circle cx="118" cy="116" r="8"/><circle cx="152" cy="142" r="7"/></g>
+                  <g fill="#f7efe2" opacity=".85"><circle cx="50" cy="44" r="1.5"/><circle cx="108" cy="38" r="1.2"/><circle cx="140" cy="72" r="1.4"/><circle cx="30" cy="66" r="1.1"/></g>
                 </svg>
               </div>
             </section>
 
             <nav class="tabs rv d3">
               <button class="tab active"><span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 2.4 3 4.7 3 7a3 3 0 0 1-6 0c0-2.3 1-4.6 3-7z"/><path d="M5.5 10.5C7 13 8 14.5 9.5 15.5"/><path d="M18.5 10.5C17 13 16 14.5 14.5 15.5"/><path d="M4.5 20c2.3-1 4.3-1.2 7.5 0s5.2 1 7.5 0"/></svg></span><span class="lbl">Today</span></button>
-              <button class="tab"><span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.6" transform="rotate(-18 12 12)"/></svg></span><span class="lbl">Transits</span></button>
+              <button class="tab"><span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><ellipse cx="12" cy="12" rx="9" ry="3.2"/></svg></span><span class="lbl">Transits</span></button>
               <button class="tab"><span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.5 19 16H5z"/><circle cx="12" cy="4.5" r="1.6" fill="currentColor" stroke="none"/><circle cx="5" cy="16" r="1.6" fill="currentColor" stroke="none"/><circle cx="19" cy="16" r="1.6" fill="currentColor" stroke="none"/></svg></span><span class="lbl">Dasha</span></button>
               <button class="tab"><span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-6-3.4-6-8.4A3.2 3.2 0 0 1 12 8.2a3.2 3.2 0 0 1 6 3.4C18 16.6 12 20 12 20Z"/></svg></span><span class="lbl">Relationships</span></button>
               <button class="tab"><span class="tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 20V11M9.5 20V6M14.5 20v-8M19 20V4"/></svg></span><span class="lbl">Career</span></button>
