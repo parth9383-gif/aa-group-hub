@@ -1,7 +1,7 @@
 /* Ontario Cardio Imaging — premium light medical design system (AA Group family) */
 :root{
   --bg:#f4f1ea; --bg-2:#fbf9f3; --panel:#fbf9f5; --panel-2:#fbf9f3;
-  --ink:#0c0d0f; --muted:#5d5850; --dim:#8a857b;
+  --ink:#0c0d0f; --muted:#4f4b44; --dim:#635f57;
   --teal:#0048a8; --teal-deep:#00367d; --teal-wash:#e8eef8;
   --brass:#c23217; --brass-bright:#d83018; --brass-deep:#9c2410;
   --line:rgba(12,13,15,.08); --line-teal:rgba(0,72,168,.28); --line-brass:rgba(216,48,24,.3);
@@ -406,4 +406,5 @@ main{position:relative;z-index:1}
   .js .aa-clip{ clip-path: none; }
 }
 
-:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:4px}
+[data-theme="dark"] .btn:not(.ghost),[data-theme="dark"] .nav .nav-cta,[data-theme="dark"] .phone-btn{background:var(--teal-deep);color:#fff}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:4px}

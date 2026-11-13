@@ -329,7 +329,7 @@ html.js .hero h1.replay .mask__in{translate:0 112%;animation:maskIn 1s var(--eas
   --gold:#836418;                         /* deep brass — accent/italic text */
   --gold-hi:#836418;                      /* deep brass — eyebrow/links/labels (text) */
   --gold-deep:#5F4710;
-  --gold-100:#C9A24B; --gold-300:#A07E33; --gold-500:#836418; --gold-700:#5F4710;
+  --gold-100:#5F4710; --gold-300:#7A5C18; --gold-500:#836418; --gold-700:#5F4710;
   --line-dark:rgba(27,25,22,.13);
   --line-gold:rgba(131,100,24,.34);
   --sh-2:0 1px 2px rgba(68,50,18,.06),0 8px 24px -12px rgba(68,50,18,.14);
