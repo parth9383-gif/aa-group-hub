@@ -405,3 +405,5 @@ main{position:relative;z-index:1}
   .aa-clip, .hero-visual, .ambient{ animation: none !important; transition: none !important; }
   .js .aa-clip{ clip-path: none; }
 }
+
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:4px}

@@ -407,3 +407,5 @@ body.glow-on .cursor-glow{opacity:1}
   .aa-clip, .hero-visual, .ambient{ animation: none !important; transition: none !important; }
   .js .aa-clip{ clip-path: none; }
 }
+
+:focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px;border-radius:4px}
