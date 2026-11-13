@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://parth9383-gif.github.io/aa-group-hub/sitemap.xml

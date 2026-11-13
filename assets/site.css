@@ -560,12 +560,6 @@ body.glow-on .cursor-glow{opacity:1}
 .hero h1, .page-hero h1{ transform-style:preserve-3d; will-change:transform; }
 
 /* ============================================================
-   9 · GOLD-DUST PARTICLES (Three.js fixed canvas, injected by JS)
-   ============================================================ */
-.aa-particles{ position:fixed; inset:0; z-index:1; pointer-events:none; }
-.aa-particles canvas{ position:absolute; inset:0; display:block; }
-
-/* ============================================================
    10 · idle float (cardio hero) + live ECG — kept
    ============================================================ */
 @keyframes aa-float{ 0%,100%{ translate: 0 0 } 50%{ translate: 0 -10px } }

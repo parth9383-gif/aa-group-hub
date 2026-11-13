@@ -5,8 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact — AA Investment Group</title>
 <meta name="description" content="AA Investment Group — direct channels for capital and land inquiries.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Contact — AA Investment Group">
+<meta property="og:description" content="AA Investment Group — direct channels for capital and land inquiries.">
 <meta name="theme-color" content="#0c0d0f">
-<meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -115,5 +117,36 @@
 </footer>
 
 <script src="assets/inv.js"></script>
+<script>
+(function(){
+  var f = document.getElementById('contact-form');
+  if(!f) return;
+  var status = document.createElement('p');
+  status.setAttribute('aria-live', 'polite');
+  status.style.cssText = 'margin-top:12px;font-size:13px;line-height:1.5;';
+  f.appendChild(status);
+
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = (document.getElementById('cf-name').value || '').trim();
+    var email = (document.getElementById('cf-email').value || '').trim();
+    var phone = (document.getElementById('cf-phone').value || '').trim();
+    var msg = (document.getElementById('cf-msg').value || '').trim();
+
+    if(!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !msg){
+      status.style.color = '#e07a5f';
+      status.textContent = 'Please enter your name, a valid email address, and your inquiry.';
+      return;
+    }
+
+    var to = 'info@aainvestmentgroup.com';
+    var subject = 'Capital Brief — ' + name;
+    var body = 'Name: ' + name + '\nEmail: ' + email + (phone ? '\nPhone: ' + phone : '') + '\n\n' + msg;
+    status.style.color = 'var(--gold-hi)';
+    status.innerHTML = 'Opening your email app… If it does not open, please email <a href="mailto:' + to + '">' + to + '</a> directly.';
+    window.location.href = 'mailto:' + to + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  });
+})();
+</script>
 </body>
 </html>
