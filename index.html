@@ -17,9 +17,9 @@
 <script>document.documentElement.classList.add('js');</script>
 <style>
 /* ===== home-specific sections ===== */
-.portrait-stage{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:560px;overflow:hidden}
+.portrait-stage{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;min-height:0;overflow:visible}
 .portrait-stage__halo{display:none}
-.portrait-wrap{position:relative;display:grid;place-items:center;z-index:1}
+.portrait-wrap{position:relative;display:grid;place-items:center;z-index:1;width:100%}
 .mono-panel{position:absolute;left:50%;top:0;translate:-50% -24%;z-index:0;pointer-events:none;opacity:.4;
   display:flex;flex-direction:column;align-items:center;line-height:.72}
 .mono__a{font-family:var(--serif);font-weight:700;letter-spacing:-.05em;color:transparent;
@@ -35,7 +35,7 @@
   background:linear-gradient(180deg,rgba(14,15,18,0) 55%,rgba(14,15,18,.55) 100%)}
 .portrait__caption{position:absolute;left:20px;bottom:18px;z-index:3;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(var(--txt-rgb),.75);font-weight:600}
 .portrait__caption b{color:var(--gold-hi)}
-.chips{position:relative;z-index:3;display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:26px}
+.chips{position:relative;z-index:3;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:0}
 .chip{font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--gold-hi);
   padding:6px 12px;border:1px solid var(--line-gold);border-radius:var(--radius-pill);background:rgba(210,174,109,.06);
   transition:background var(--t-fast),border-color var(--t-fast),transform var(--t-fast)}
@@ -45,8 +45,12 @@
 
 /* standard (4 pillars) */
 .std{position:relative;background:var(--panel-2);border-bottom:1px solid var(--line-dark);overflow:hidden}
-.std__ghost{position:absolute;top:-20px;right:clamp(.5rem,3vw,2rem);font:400 clamp(6rem,18vw,15rem)/1 var(--sans);letter-spacing:-.05em;
-  color:transparent;-webkit-text-stroke:1px rgba(210,174,109,.14);pointer-events:none;user-select:none}
+.std__ghost{position:absolute;top:16px;right:clamp(.5rem,3vw,2.5rem);width:clamp(180px,24vw,320px);height:auto;opacity:.08;pointer-events:none;user-select:none;
+  filter:brightness(0) invert(1) sepia(.3) saturate(2.2) hue-rotate(5deg) brightness(1.05)}
+[data-theme="light"] .std__ghost{filter:none;opacity:.07}
+.std__eyebrow-logo{display:inline-block;height:15px;width:auto;vertical-align:-2px;margin-inline:2px;
+  filter:brightness(0) invert(1) sepia(.3) saturate(2.2) hue-rotate(5deg) brightness(1.05)}
+[data-theme="light"] .std__eyebrow-logo{filter:none}
 .std__grid{display:grid;grid-template-columns:5fr 7fr;gap:56px;padding-block:100px 88px}
 .std__intro{position:sticky;top:calc(var(--header-h) + 32px);align-self:start}
 .std__lede{color:rgba(var(--txt-rgb),.68);font-size:15px;max-width:340px;line-height:1.6;margin-top:4px}
@@ -196,10 +200,10 @@
 
   <!-- ===== STANDARD ===== -->
   <section class="std" id="standard">
-    <span class="std__ghost" aria-hidden="true">AA</span>
+    <img class="std__ghost" src="media/site/Untitled-1-01-300x93.png" alt="" width="300" height="93" aria-hidden="true">
     <div class="container std__grid">
       <div class="std__intro" data-reveal>
-        <p class="eyebrow">The <span class="aa-inline"><span class="aa-inline__sm">A</span><span class="aa-inline__lg">A</span></span> Standard</p>
+        <p class="eyebrow">The <img class="std__eyebrow-logo" src="media/site/Untitled-1-01-300x93.png" alt="AA" width="300" height="93"> Standard</p>
         <h2 class="section__title" style="margin-top:14px">What did not change between one restaurant and five.</h2>
         <div class="section__hair" aria-hidden="true"></div>
         <p class="std__lede">Scale is the easy part to see. These four carried it from the first restaurant to 1,200 people.</p>

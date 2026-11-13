@@ -42,7 +42,16 @@
       applyTheme(cur === 'light' ? 'dark' : 'light');
     });
     var headerCta = document.querySelector('.header__cta');
-    if (headerCta && headerCta.parentNode){ headerCta.parentNode.insertBefore(themeBtn, headerCta); }
+    var navToggleBtn = document.querySelector('.nav-toggle');
+    if (navToggleBtn && navToggleBtn.parentNode){
+      var controls = document.createElement('div');
+      controls.className = 'header__controls';
+      navToggleBtn.parentNode.insertBefore(controls, navToggleBtn);
+      controls.appendChild(themeBtn);
+      controls.appendChild(navToggleBtn);
+    } else if (headerCta && headerCta.parentNode){
+      headerCta.parentNode.insertBefore(themeBtn, headerCta);
+    }
 
     var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -344,7 +353,6 @@
     if (!reduced){
       var layers = [];
       var defs = [
-        ['.portrait-wrap', 0.06, 0.0012],   /* hub portrait */
         ['.mono-panel', 0.14, 0],           /* hub ghost "A" */
         ['.book-hero', 0.05, 0],            /* hub book cover */
         ['.hero-visual img', 0.14, -0.004], /* cardio hero */
