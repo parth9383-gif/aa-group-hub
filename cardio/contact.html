@@ -43,16 +43,56 @@
         <a href="mailto:info@ontariocardioimaging.com">Email us →</a>
       </div>
       <div class="dc" data-reveal style="--d:.14s">
-        <b>Our Fax Number</b><span>1800-886-7676</span>
+        <b>Our Fax Number</b><span>1-800-886-7676</span>
       </div>
     </div>
     <div class="hours" data-reveal style="--d:.1s">
       <h4>Opening Hours</h4>
       <div class="row"><span>Mon to Fri</span><span>10 AM – 6 PM</span></div>
-      <div class="row"><span>Saturday</span><span>10 AM – 03 PM</span></div>
+      <div class="row"><span>Saturday</span><span>10 AM – 3 PM</span></div>
       <div class="row"><span>Sunday</span><span>Closed</span></div>
-      <div class="row"><span>After hour Clinic</span><span>6:00 pm - 9:00 pm on select week days</span></div>
+      <div class="row"><span>After-Hours Clinic</span><span>6:00 pm - 9:00 pm on select weekdays</span></div>
     </div>
+  </div>
+</section>
+<section class="sec" style="padding-top:16px">
+  <div class="wrap" style="max-width:720px">
+    <p class="eyebrow" data-reveal>Request an Appointment</p>
+    <h2 style="margin-top:10px;font-size:clamp(26px,3.2vw,38px)" data-reveal>Book a <em>Diagnostic Visit</em></h2>
+    <form id="cardio-form" novalidate style="margin-top:24px;display:grid;gap:14px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px">
+        <label style="display:grid;gap:6px;font-size:13px;font-weight:600">Full Name
+          <input id="cf-name" type="text" placeholder="Your full name" required style="padding:12px 14px;border-radius:8px;border:1px solid var(--line);background:var(--bg-2);color:inherit;font:inherit">
+        </label>
+        <label style="display:grid;gap:6px;font-size:13px;font-weight:600">Phone Number
+          <input id="cf-phone" type="tel" placeholder="(905) 555-0123" required style="padding:12px 14px;border-radius:8px;border:1px solid var(--line);background:var(--bg-2);color:inherit;font:inherit">
+        </label>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px">
+        <label style="display:grid;gap:6px;font-size:13px;font-weight:600">Email
+          <input id="cf-email" type="email" placeholder="you@example.com" required style="padding:12px 14px;border-radius:8px;border:1px solid var(--line);background:var(--bg-2);color:inherit;font:inherit">
+        </label>
+        <label style="display:grid;gap:6px;font-size:13px;font-weight:600">Service Needed
+          <select id="cf-service" style="padding:12px 14px;border-radius:8px;border:1px solid var(--line);background:var(--bg-2);color:inherit;font:inherit">
+            <option>Echocardiography</option>
+            <option>Stress Test</option>
+            <option>Stress Echo</option>
+            <option>Holter Monitoring</option>
+            <option>Ambulatory Blood Pressure</option>
+            <option>Contrast &amp; Saline Studies</option>
+            <option>General Inquiry</option>
+          </select>
+        </label>
+      </div>
+      <label style="display:grid;gap:6px;font-size:13px;font-weight:600">Preferred Day / Notes
+        <textarea id="cf-msg" rows="3" placeholder="Preferred date/time or referral details..." required style="padding:12px 14px;border-radius:8px;border:1px solid var(--line);background:var(--bg-2);color:inherit;font:inherit;resize:vertical"></textarea>
+      </label>
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+        <button class="btn" type="submit">Request Appointment</button>
+        <span style="font-size:12.5px;opacity:.75">Or call <a href="tel:905-426-9555">905-426-9555</a> directly.</span>
+      </div>
+      <p id="cardio-status" aria-live="polite" style="font-size:13px;line-height:1.5;margin:0"></p>
+    </form>
   </div>
 </section>
 </main>
@@ -69,13 +109,14 @@
         <a href="services.html">Our Services</a>
         <a href="contact.html">Contact Us</a>
         <a href="about.html">About Us</a>
+        <a href="../index.html">AA Group of Companies</a>
       </div>
       <div class="foot-col">
         <h4>Opening Hours</h4>
         <span>Mon to Fri 10 AM – 6 PM</span>
-        <span>Saturday 10 AM – 03 PM</span>
+        <span>Saturday 10 AM – 3 PM</span>
         <span>Sunday Closed</span>
-        <span>After hour Clinic : 6:00 pm - 9:00 pm on select week days (please call the clinic to check our After Hour Schedule for the week)</span>
+        <span>After-Hours Clinic : 6:00 pm - 9:00 pm on select weekdays (please call the clinic to check our After-Hours Schedule for the week)</span>
       </div>
     </div>
     <div class="foot-bottom">
@@ -85,5 +126,31 @@
   </div>
 </footer>
 <script src="assets/cardio.js"></script>
+<script>
+(function(){
+  var f = document.getElementById('cardio-form');
+  if(!f) return;
+  var st = document.getElementById('cardio-status');
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = (document.getElementById('cf-name').value || '').trim();
+    var phone = (document.getElementById('cf-phone').value || '').trim();
+    var email = (document.getElementById('cf-email').value || '').trim();
+    var svc = document.getElementById('cf-service').value;
+    var msg = (document.getElementById('cf-msg').value || '').trim();
+    if(!name || !phone || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !msg){
+      st.style.color = '#c0392b';
+      st.textContent = 'Please enter your name, phone number, a valid email, and preferred visit details.';
+      return;
+    }
+    var to = 'info@ontariocardioimaging.com';
+    var subject = 'Appointment Request — ' + svc + ' (' + name + ')';
+    var body = 'Name: ' + name + '\nPhone: ' + phone + '\nEmail: ' + email + '\nService: ' + svc + '\n\n' + msg;
+    st.style.color = 'var(--blue)';
+    st.innerHTML = 'Opening your email app… If it does not open, please call <a href="tel:905-426-9555">905-426-9555</a> or email <a href="mailto:' + to + '">' + to + '</a>.';
+    window.location.href = 'mailto:' + to + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  });
+})();
+</script>
 </body>
 </html>
